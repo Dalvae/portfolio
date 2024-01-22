@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import {
@@ -9,7 +9,7 @@ import {
   faMedium,
   faStackOverflow,
 } from "@fortawesome/free-brands-svg-icons";
-import { Box, HStack, Link } from "@chakra-ui/react";
+import { Box, HStack, Link, color } from "@chakra-ui/react";
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 
 interface Social {
@@ -39,6 +39,25 @@ const socials: Social[] = [
 const Header: React.FC = () => {
   const headerRef = useRef(null); // Referencia para el encabezado
   const lastScrollY = useRef(0); //
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const updateMobileStatus = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    updateMobileStatus();
+    window.addEventListener("resize", updateMobileStatus);
+
+    return () => {
+      window.removeEventListener("resize", updateMobileStatus);
+    };
+  }, []);
+
+  // Estilos para íconos en modo móvil
+  const iconStyle = isMobile ? { fontSize: "1em" } : { fontSize: "2em" };
+  const linkContainerStyle = isMobile ? { spacing: 4 } : { spacing: 8 };
+  const linkStyle = isMobile ? { fontSize: "0.8em" } : { fontSize: "1em" };
 
   const handleClick = (anchor: string) => () => {
     const id = `${anchor}-section`;
@@ -86,7 +105,7 @@ const Header: React.FC = () => {
         <HStack
           px={16}
           py={4}
-          justifyContent="space-between"
+          justifyContent={isMobile ? "space-between" : "space-around"}
           alignItems="center"
         >
           <nav>
@@ -102,16 +121,20 @@ const Header: React.FC = () => {
                   <FontAwesomeIcon
                     icon={social.icon}
                     size="2x"
-                    style={{ color: "white" }}
+                    style={iconStyle}
                   />
                 </a>
               ))}
             </HStack>
           </nav>
           <nav>
-            <HStack spacing={8}>
-              <Link href="#projects-section">Projects</Link>
-              <Link href="#contactme-section">Contact Me</Link>
+            <HStack {...linkContainerStyle}>
+              <Link href="#projects-section" style={linkStyle}>
+                Projects
+              </Link>
+              <Link href="#contactme-section" style={linkStyle}>
+                Contact Me
+              </Link>
             </HStack>
           </nav>
         </HStack>
