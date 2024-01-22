@@ -36,6 +36,9 @@ const LandingSection = () => (
         as="h1"
         size="xl"
         color="white"
+        alignItems="center"
+        textAlign="center"
+        px={6}
       >
         {greeting}
       </Heading>
