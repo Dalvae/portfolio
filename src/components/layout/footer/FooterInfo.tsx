@@ -91,11 +91,7 @@ const Divider = ({ className }: { className?: string }) => {
 const PoweredBy = ({ className }: { className: string }) => {
   return (
     <span className={className}>
-      Powered by{" "}
-      <StyledLink href="https://github.com/mx-space" target="_blank">
-        Vercel
-      </StyledLink>
-      . <Divider />
+      <Divider />
       <StyledLink href="https://github.com/dalvae" target="_blank">
         Dalvae
       </StyledLink>
