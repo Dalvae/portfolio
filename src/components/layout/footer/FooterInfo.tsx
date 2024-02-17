@@ -128,9 +128,6 @@ const FooterBottom = () => {
           </a>
           <Divider className="inline" />
         </span>
-        <span className="mt-3 block md:mt-0 md:inline">
-          Stay hungry. Stay foolish.
-        </span>
       </p>
       <p>
         <PoweredBy className="my-3 block md:my-0 md:inline" />

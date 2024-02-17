@@ -209,8 +209,8 @@ const Welcome = () => {
           )}
         >
           <small>
-            "Si el agua es simple y el pan bueno, mi corazón es pan y agua."
-            Pablo de Rokha
+            &quot;Si el agua es simple y el pan bueno, mi corazón es pan y
+            agua.&quot; Pablo de Rokha
           </small>
           <span className="mt-8 animate-bounce">
             <i className="icon-[mingcute--right-line] rotate-90 text-2xl" />
