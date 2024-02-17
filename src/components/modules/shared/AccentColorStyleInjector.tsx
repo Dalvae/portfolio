@@ -1,47 +1,47 @@
-import Color from 'colorjs.io'
-import type { FC } from 'react'
+import Color from "colorjs.io";
+import type { FC } from "react";
 
 const hexToOklchString = (hex: string) => {
-  return new Color(hex).oklch
-}
+  return new Color(hex).oklch;
+};
 
 const accentColorLight = [
   // 浅葱
-  '#33A6B8',
+  "#33A6B8",
 
-  '#FF6666',
-  '#26A69A',
-  '#fb7287',
-  '#69a6cc',
-]
+  // '#FF6666',
+  // '#26A69A',
+  // '#fb7287',
+  // '#69a6cc',
+];
 const accentColorDark = [
   // 桃
-  '#F596AA',
+  //"#F596AA",
 
-  '#A0A7D4',
-  '#ff7b7b',
-  '#99D8CF',
-  '#838BC6',
-]
-const defaultAccentColor = { light: accentColorLight, dark: accentColorDark }
+  //"#A0A7D4",
+  "#ff7b7b",
+  //"#99D8CF",
+  //#838BC6",
+];
+const defaultAccentColor = { light: accentColorLight, dark: accentColorDark };
 export const AccentColorStyleInjector: FC<{
-  color?: AccentColor
+  color?: AccentColor;
 }> = ({ color }) => {
-  const { light, dark } = color || defaultAccentColor
+  const { light, dark } = color || defaultAccentColor;
 
-  const lightColors = light ?? accentColorLight
-  const darkColors = dark ?? accentColorDark
+  const lightColors = light ?? accentColorLight;
+  const darkColors = dark ?? accentColorDark;
 
-  const Length = Math.max(lightColors.length ?? 0, darkColors.length ?? 0)
-  const randomSeedRef = (Math.random() * Length) | 0
-  const currentAccentColorLRef = lightColors[randomSeedRef]
-  const currentAccentColorDRef = darkColors[randomSeedRef]
+  const Length = Math.max(lightColors.length ?? 0, darkColors.length ?? 0);
+  const randomSeedRef = (Math.random() * Length) | 0;
+  const currentAccentColorLRef = lightColors[randomSeedRef];
+  const currentAccentColorDRef = darkColors[randomSeedRef];
 
-  const lightOklch = hexToOklchString(currentAccentColorLRef)
-  const darkOklch = hexToOklchString(currentAccentColorDRef)
+  const lightOklch = hexToOklchString(currentAccentColorLRef);
+  const darkOklch = hexToOklchString(currentAccentColorDRef);
 
-  const [hl, sl, ll] = lightOklch
-  const [hd, sd, ld] = darkOklch
+  const [hl, sl, ll] = lightOklch;
+  const [hd, sd, ld] = darkOklch;
 
   return (
     <style
@@ -58,8 +58,8 @@ export const AccentColorStyleInjector: FC<{
         `,
       }}
     />
-  )
-}
+  );
+};
 
 // const isSafari = () =>
 //   /^((?!chrome|android).)*safari/i.test(navigator.userAgent)
