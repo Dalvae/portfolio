@@ -1,7 +1,6 @@
 "use client";
 
 import { useOnlineCount } from "@/atoms";
-import { ImpressionView } from "@/components/common/ImpressionTracker";
 import { Divider } from "@/components/ui/divider";
 import { FloatPopover } from "@/components/ui/float-popover";
 import { NumberSmoothTransition } from "@/components/ui/number-transition/NumberSmoothTransition";
@@ -48,10 +47,6 @@ const ConnectedIndicator = () => {
 
   return (
     <div className="inline-flex items-center">
-      <ImpressionView
-        trackerMessage="socket_status"
-        action={TrackerAction.Impression}
-      />
       {connected ? (
         <>
           <span
