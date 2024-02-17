@@ -317,7 +317,7 @@ const Projects = () => {
                         className="mask-cover absolute inset-0 top-0 z-[-1]"
                       >
                         <div
-                          className="absolute inset-0 h-full w-full bg-cover bg-center opacity-100 group-hover:opacity-50 transition-opacity duration-200"
+                          className="absolute inset-0 h-full w-full bg-cover bg-center opacity-100 group-hover:opacity-50 transition-opacity duration-200 rounded-md"
                           style={{
                             backgroundImage: `url(${imageSrc})`,
                           }}
@@ -340,10 +340,7 @@ const Projects = () => {
             className="relative mt-12 w-full text-center"
           >
             <MotionButtonBase>
-              <Link
-                className="shiro-link--underline"
-                href="/proyectos" // Enlazar a una página de proyectos predeterminada
-              >
+              <Link className="shiro-link--underline" href="/proyectos">
                 Do you want some more?
               </Link>
             </MotionButtonBase>
