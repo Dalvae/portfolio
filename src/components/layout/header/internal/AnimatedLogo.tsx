@@ -4,7 +4,6 @@ import { useViewport } from "@/atoms";
 import { useHeaderMetaShouldShow } from "./hooks";
 import { SiteOwnerAvatar } from "./SiteOwnerAvatar";
 import { AnimatePresence, m } from "framer-motion";
-// Eliminar el componente TapableLogo relacionado con React Query
 const Logo = () => {
   return (
     <>
@@ -14,7 +13,6 @@ const Logo = () => {
   );
 };
 
-// Modificar el componente AnimatedLogo para que use Logo en lugar de TapableLogo
 export const AnimatedLogo = () => {
   const shouldShowMeta = useHeaderMetaShouldShow();
   const isDesktop = useViewport(($) => $.lg && $.w !== 0);
