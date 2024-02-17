@@ -109,7 +109,7 @@ const Welcome = () => {
       { type: "p", text: "A Full Stack developer", class: "text-xl" },
     ],
   };
-  const description = "Las papas fritas son increíbles";
+  const description = "Turning ideas into digital realities";
   const avatar =
     "https://res.cloudinary.com/dwxc8s4mq/image/upload/w_3000,h_3000,c_crop,g_face/avatarcirculo_vj7jqi.webp"; // Reemplaza con la URL de tu imagen
 
