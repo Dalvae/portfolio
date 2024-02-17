@@ -210,7 +210,7 @@ const Welcome = () => {
         >
           <small>
             &quot;Si el agua es simple y el pan bueno, mi corazón es pan y
-            agua.&quot; Pablo de Rokha
+            agua&quot;. Pablo de Rokha
           </small>
           <span className="mt-8 animate-bounce">
             <i className="icon-[mingcute--right-line] rotate-90 text-2xl" />
@@ -266,7 +266,7 @@ const Projects = () => {
           And maybe some future ones.
         </m.h2>
         <div>
-          <ul className="space-y-4">
+          <ul className="space-y-4 ">
             {projects.map((project, i) => {
               const imageSrc = project.image;
 
@@ -285,7 +285,7 @@ const Projects = () => {
                   className={clsx(
                     "relative h-[300px]  w-[580px]  rounded-md",
                     "border border-slate-200 dark:border-neutral-700/80",
-                    "group p-4 pb-0 group "
+                    "group p-4 pb-0 group relative "
                   )}
                 >
                   <Link
@@ -314,14 +314,22 @@ const Projects = () => {
                     {!!imageSrc && (
                       <div
                         aria-hidden
-                        className="mask-cover absolute inset-0 top-0 z-[-1]"
+                        className="mask-cover absolute inset-0 top-0 z-[-1] rounded-md"
+                        style={{
+                          backgroundImage: `url(${imageSrc})`,
+                          backgroundSize: "cover",
+                          backgroundPosition: "center",
+                        }}
                       >
                         <div
-                          className="absolute inset-0 h-full w-full bg-cover bg-center opacity-100 group-hover:opacity-50 transition-opacity duration-200 rounded-md"
-                          style={{
-                            backgroundImage: `url(${imageSrc})`,
-                          }}
-                        />
+                          className={clsx(
+                            "absolute inset-0 transition-all duration-200 ease-in-out",
+                            "group-hover:[-webkit-backdrop-filter:saturate(180%)_blur(20px)]",
+                            "group-hover:[backdrop-filter:saturate(180%)_blur(20px)]",
+                            "bg-transparent group-hover:bg-themed-bg_opacity",
+                            "border-transparent group-hover:[border-bottom:1px_solid_rgba(187,187,187,0.2)] rounded-md"
+                          )}
+                        ></div>
                       </div>
                     )}
                   </Link>
