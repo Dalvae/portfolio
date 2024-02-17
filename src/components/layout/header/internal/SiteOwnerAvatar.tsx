@@ -10,15 +10,14 @@ export const SiteOwnerAvatar = ({
 }: {
   className: ClassNameType;
 }) => {
-  const { theme } = useTheme();
+  const { resolvedTheme } = useTheme();
 
   const avatarDark =
     "https://res.cloudinary.com/dwxc8s4mq/image/upload/v1707097436/logodalvaeblanco_mgqirc.png";
   const avatarLight =
     "https://res.cloudinary.com/dwxc8s4mq/image/upload/v1707086863/logodalvae_thz65z.png";
 
-  const avatar = theme === "dark" ? avatarDark : avatarLight;
-
+  const avatar = resolvedTheme === "light" ? avatarLight : avatarDark;
   return (
     <div
       className={clsxm(
