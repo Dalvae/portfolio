@@ -228,7 +228,7 @@ const Projects = () => {
       link: "https://www.sublimahyca.cl/",
       image:
         "https://res.cloudinary.com/dwxc8s4mq/image/upload/v1707073977/photo1_sv4ekw.jpg",
-      technologies: ["react", "typescript"] as TechnologyType[],
+      technologies: ["react", "typescript"],
     },
     {
       name: "Carcaj",
