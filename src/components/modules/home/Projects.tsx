@@ -133,7 +133,7 @@ export const ProjectsContainer = () => {
         >
           <MotionButtonBase>
             <Link className="shiro-link--underline" href="/proyectos">
-              Do you want some more?
+              What's your next big idea? Let's work together.
             </Link>
           </MotionButtonBase>
         </m.div>
