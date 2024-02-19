@@ -1,23 +1,24 @@
 "use client";
-import React, { createElement, forwardRef, useCallback, useRef } from "react";
+import React, {
+  useEffect,
+  forwardRef,
+  useState,
+  useRef,
+  MutableRefObject,
+} from "react";
 import Link from "next/link";
 import clsx from "clsx";
 import { MotionButtonBase } from "@/components/ui/button";
-
 import type { PropsWithChildren } from "react";
-
 import {
   microReboundPreset,
   softBouncePreset,
   softSpringPreset,
 } from "@/constants/spring";
-import {
-  isSupportTechnology,
-  TechnologyIcon,
-} from "@/components/modules/home/TecnologyIcon";
-import { clsxm } from "@/lib/helper";
 
-import { m, useInView } from "framer-motion";
+import { clsxm } from "@/lib/helper";
+import ProjectCard from "./projectCard";
+import { m, useInView, useViewportScroll, useTransform } from "framer-motion";
 
 const Screen = forwardRef<
   HTMLDivElement,
@@ -43,7 +44,7 @@ const Screen = forwardRef<
 });
 Screen.displayName = "Screen";
 
-export const Projects = () => {
+export const ProjectsContainer = () => {
   const projects = [
     {
       name: "Sublimahyca",
@@ -68,6 +69,26 @@ export const Projects = () => {
     },
   ];
 
+  const [activeProjectIndex, setActiveProjectIndex] = useState(0);
+  const scrollRef = useRef<HTMLDivElement>(
+    null
+  ) as MutableRefObject<HTMLDivElement | null>; // Type assertion for scrollRef
+
+  const handleScroll = () => {
+    if (activeProjectIndex < projects.length - 1) {
+      setActiveProjectIndex((current) => current + 1);
+    }
+  };
+
+  useEffect(() => {
+    const element = scrollRef.current;
+    if (element) {
+      element.addEventListener("scroll", handleScroll);
+      return () => element.removeEventListener("scroll", handleScroll);
+    }
+  }, [activeProjectIndex]);
+
+  const handleAnimationComplete = () => {};
   return (
     <Screen className="h-fit min-h-[120vh]">
       <m.h2
@@ -83,80 +104,22 @@ export const Projects = () => {
         className="text-3xl font-medium leading-loose"
       >
         Here are my recents projects
-        <br />
-        And maybe some future ones.
       </m.h2>
       <div>
-        <ul className="space-y-4 ">
-          {projects.map((project, i) => {
-            const imageSrc = project.image;
-
-            return (
-              <m.li
-                animate={{
-                  opacity: 1,
-                  x: 0,
-                }}
-                initial={{ opacity: 0.001, x: 50 }}
-                transition={{
-                  ...softSpringPreset,
-                  delay: 0.3 + 0.2 * i,
-                }}
-                key={i}
-                className={clsx(
-                  "relative h-[300px]  w-[580px]  rounded-md",
-                  "border border-slate-200 dark:border-neutral-700/80",
-                  "group p-4 pb-0 group relative "
-                )}
-              >
-                <Link
-                  className="flex h-full w-full flex-col"
-                  href={project.link}
-                >
-                  <h4 className="truncate text-xl font-medium text-black group-hover:text-white transition-colors duration-200">
-                    {project.name}
-                  </h4>
-
-                  <MotionButtonBase className="absolute bottom-4 right-4 flex items-center p-2 text-accent/95 opacity-0 duration-200 group-hover:opacity-100">
-                    Visit the Site
-                    <i className="icon-[mingcute--arrow-right-line]" />
-                  </MotionButtonBase>
-                  <div className="absolute right-4 top-4 flex space-x-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                    {project.technologies
-                      .filter(isSupportTechnology)
-                      .map((tech, index) => (
-                        <TechnologyIcon
-                          key={index}
-                          type={tech}
-                          className={`transition-opacity duration-200`}
-                        />
-                      ))}
-                  </div>
-                  {!!imageSrc && (
-                    <div
-                      aria-hidden
-                      className="mask-cover absolute inset-0 top-0 z-[-1] rounded-md"
-                      style={{
-                        backgroundImage: `url(${imageSrc})`,
-                        backgroundSize: "cover",
-                        backgroundPosition: "center",
-                      }}
-                    >
-                      <div
-                        className={clsx(
-                          "absolute inset-0 transition-all duration-200 ease-in-out",
-                          "group-hover:[-webkit-backdrop-filter:saturate(180%)_blur(20px)]",
-                          "group-hover:[backdrop-filter:saturate(180%)_blur(20px)]",
-                          "bg-transparent group-hover:bg-themed-bg_opacity",
-                          "border-transparent group-hover:[border-bottom:1px_solid_rgba(187,187,187,0.2)] rounded-md"
-                        )}
-                      ></div>
-                    </div>
-                  )}
-                </Link>
-              </m.li>
-            );
-          })}
+        <ul className="space-y-4">
+          {projects.map((project, i) => (
+            <ProjectCard
+              key={i}
+              project={project}
+              isActive={i === activeProjectIndex}
+              onAnimationComplete={() => {
+                // Solo procede a la siguiente tarjeta si esta tarjeta está activa
+                if (i === activeProjectIndex) {
+                  handleAnimationComplete();
+                }
+              }}
+            />
+          ))}
         </ul>
 
         <m.div
