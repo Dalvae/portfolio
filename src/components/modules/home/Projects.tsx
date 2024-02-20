@@ -15,10 +15,26 @@ import {
   softBouncePreset,
   softSpringPreset,
 } from "@/constants/spring";
-
+import {
+  usePageScrollDirection,
+  usePageScrollLocation,
+} from "@/providers/root/page-scroll-info-provider";
+import {
+  useIsScrollDownAndPageIsOver,
+  useIsScrollUpAndPageIsOver,
+} from "@/providers/root/page-scroll-info-provider";
+import useDebounceValue from "@/hooks/common/use-debounce-value";
 import { clsxm } from "@/lib/helper";
 import ProjectCard from "./projectCard";
 import { m, useInView, useViewportScroll, useTransform } from "framer-motion";
+import { debounce } from "@/lib/_";
+
+type ProjectType = {
+  name: string;
+  link: string;
+  image: string;
+  technologies: string[];
+};
 
 const Screen = forwardRef<
   HTMLDivElement,
@@ -44,7 +60,13 @@ const Screen = forwardRef<
 });
 Screen.displayName = "Screen";
 
-export const ProjectsContainer = () => {
+export const ProjectsContainer: React.FC = () => {
+  const [activeProject, setActiveProject] = useState<number>(0);
+  const [isScrollEnabled, setIsScrollEnabled] = useState(true);
+  const scrollDirection = usePageScrollDirection();
+  const scrollLocation = usePageScrollLocation();
+  const isInViewRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(isInViewRef, { once: false, amount: 0.6 });
   const projects = [
     {
       name: "Sublimahyca",
@@ -68,29 +90,47 @@ export const ProjectsContainer = () => {
       technologies: ["Tecnología 3", "Tecnología 4"],
     },
   ];
-
-  const [activeProjectIndex, setActiveProjectIndex] = useState(0);
-  const scrollRef = useRef<HTMLDivElement>(
-    null
-  ) as MutableRefObject<HTMLDivElement | null>; // Type assertion for scrollRef
-
-  const handleScroll = () => {
-    if (activeProjectIndex < projects.length - 1) {
-      setActiveProjectIndex((current) => current + 1);
-    }
-  };
-
   useEffect(() => {
-    const element = scrollRef.current;
-    if (element) {
-      element.addEventListener("scroll", handleScroll);
-      return () => element.removeEventListener("scroll", handleScroll);
-    }
-  }, [activeProjectIndex]);
+    const handleScroll = () => {
+      // Verificar si la sección de proyectos está completamente en vista
+      if (isInView) {
+        // Desactivar el scroll general de la página
+        document.body.style.overflow = "hidden";
 
-  const handleAnimationComplete = () => {};
+        if (scrollDirection === "down") {
+          // Avanzar al siguiente proyecto si no es el último
+          if (activeProject < projects.length - 1) {
+            setActiveProject((prev) => prev + 1);
+          } else {
+            // Reactivar el scroll al llegar al último proyecto y seguir intentando avanzar
+            document.body.style.overflow = "";
+          }
+        } else if (scrollDirection === "up") {
+          // Retroceder al proyecto anterior si no es el primero
+          if (activeProject > 0) {
+            setActiveProject((prev) => prev - 1);
+          } else {
+            // Reactivar el scroll al intentar retroceder en el primer proyecto
+            document.body.style.overflow = "";
+          }
+        }
+      } else {
+        // Reactivar el scroll si la sección de proyectos sale de vista
+        document.body.style.overflow = "";
+      }
+    };
+
+    // Debido a que estamos usando la dirección del scroll como una dependencia, asegúrate
+    // de que `scrollDirection` se actualice adecuadamente en cada evento de scroll.
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [activeProject, projects.length, isInView, scrollDirection]);
+
   return (
-    <Screen className="h-fit min-h-[120vh]">
+    <Screen ref={isInViewRef} className="h-fit min-h-[120vh]">
       <m.h2
         initial={{
           opacity: 0.0001,
@@ -107,17 +147,11 @@ export const ProjectsContainer = () => {
       </m.h2>
       <div>
         <ul className="space-y-4">
-          {projects.map((project, i) => (
+          {projects.map((project, index) => (
             <ProjectCard
-              key={i}
+              key={index}
               project={project}
-              isActive={i === activeProjectIndex}
-              onAnimationComplete={() => {
-                // Solo procede a la siguiente tarjeta si esta tarjeta está activa
-                if (i === activeProjectIndex) {
-                  handleAnimationComplete();
-                }
-              }}
+              isActive={index === activeProject}
             />
           ))}
         </ul>

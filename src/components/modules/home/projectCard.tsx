@@ -1,6 +1,10 @@
 import React from "react";
-import { useRef } from "react";
-import { motion } from "framer-motion";
+import { useEffect } from "react";
+import { motion, useAnimation } from "framer-motion";
+import {
+  usePageScrollDirection,
+  usePageScrollLocation,
+} from "@/providers/root/page-scroll-info-provider";
 import { m, useInView } from "framer-motion";
 import Link from "next/link";
 import { MotionButtonBase } from "@/components/ui/button";
@@ -9,6 +13,7 @@ import {
   isSupportTechnology,
 } from "@/components/modules/home/TecnologyIcon";
 import clsx from "clsx";
+
 type ProjectType = {
   name: string;
   link: string;
@@ -16,40 +21,30 @@ type ProjectType = {
   technologies: string[];
 };
 
-const ProjectCard = ({
-  project,
-  isActive,
-  onAnimationComplete, // Tipo correcto para una función
-}: {
+interface ProjectCardProps {
   project: ProjectType;
   isActive: boolean;
-  onAnimationComplete: () => void; // Tipo correcto para una función
-}) => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true });
+}
 
-  const variants = {
-    hidden: { opacity: 0, y: 200 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      //   scale: isActive ? 1.1 : 1.0, // Usa 'isActive' para determinar el scale
-      transition: {
-        duration: 0.5,
-        onComplete: isActive ? onAnimationComplete : undefined,
-      },
-    },
-    exit: { x: "-100%", transition: { duration: 0.5 } },
-  };
+const ProjectCard: React.FC<ProjectCardProps> = ({ project, isActive }) => {
+  const controls = useAnimation();
+
+  useEffect(() => {
+    if (isActive) {
+      // Inicia la animación para entrar o expandirse dependiendo de isActive
+      controls.start({ opacity: 1, scale: 1.1, y: 0 });
+    } else {
+      // Controla la salida o reposo de la tarjeta cuando no está activa
+      controls.start({ opacity: 0, scale: 1, y: "-100%" });
+    }
+  }, [isActive, controls]);
 
   return (
     <m.div
-      ref={ref}
-      variants={variants}
-      initial="hidden"
-      animate={isInView ? "visible" : "hidden"}
+      animate={controls}
+      initial={{ opacity: 0, scale: 0.9, x: "100%" }}
+      // variants={variants}
       exit="exit"
-      onAnimationComplete={() => isActive && onAnimationComplete()} // Llama a onAnimationComplete solo si isActive es true
       className={clsx(
         "relative h-[300px] w-[580px] rounded-md",
         "border border-slate-200 dark:border-neutral-700/80",

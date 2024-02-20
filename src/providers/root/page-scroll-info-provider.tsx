@@ -87,10 +87,25 @@ const useIsScrollUpAndPageIsOver = (threshold: number) => {
     )
   );
 };
+
+const useIsScrollDownAndPageIsOver = (threshold: number) => {
+  return useAtomValue(
+    useMemo(
+      () =>
+        atom((get) => {
+          const scrollLocation = get(pageScrollLocationAtom);
+          const scrollDirection = get(pageScrollDirectionAtom);
+          return scrollLocation > threshold && scrollDirection === "down";
+        }),
+      [threshold]
+    )
+  );
+};
 export {
   usePageScrollDirection,
   usePageScrollLocation,
   useIsScrollUpAndPageIsOver,
   usePageScrollLocationSelector,
   usePageScrollDirectionSelector,
+  useIsScrollDownAndPageIsOver,
 };
