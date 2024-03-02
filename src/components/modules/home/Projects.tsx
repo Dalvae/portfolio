@@ -40,6 +40,7 @@ const Screen = forwardRef<
   HTMLDivElement,
   PropsWithChildren<{
     className?: string;
+    style?: React.CSSProperties;
   }>
 >((props, ref) => {
   const inViewRef = useRef<HTMLSpanElement>(null);
@@ -48,8 +49,9 @@ const Screen = forwardRef<
   return (
     <div
       ref={ref}
+      style={props.style}
       className={clsxm(
-        "relative flex h-screen min-h-[900px] flex-col center",
+        "relative flex h-screen min-h-[900px] flex-col align-center ",
         props.className
       )}
     >
@@ -90,47 +92,15 @@ export const ProjectsContainer: React.FC = () => {
       technologies: ["Tecnología 3", "Tecnología 4"],
     },
   ];
-  useEffect(() => {
-    const handleScroll = () => {
-      // Verificar si la sección de proyectos está completamente en vista
-      if (isInView) {
-        // Desactivar el scroll general de la página
-        document.body.style.overflow = "hidden";
 
-        if (scrollDirection === "down") {
-          // Avanzar al siguiente proyecto si no es el último
-          if (activeProject < projects.length - 1) {
-            setActiveProject((prev) => prev + 1);
-          } else {
-            // Reactivar el scroll al llegar al último proyecto y seguir intentando avanzar
-            document.body.style.overflow = "";
-          }
-        } else if (scrollDirection === "up") {
-          // Retroceder al proyecto anterior si no es el primero
-          if (activeProject > 0) {
-            setActiveProject((prev) => prev - 1);
-          } else {
-            // Reactivar el scroll al intentar retroceder en el primer proyecto
-            document.body.style.overflow = "";
-          }
-        }
-      } else {
-        // Reactivar el scroll si la sección de proyectos sale de vista
-        document.body.style.overflow = "";
-      }
-    };
-
-    // Debido a que estamos usando la dirección del scroll como una dependencia, asegúrate
-    // de que `scrollDirection` se actualice adecuadamente en cada evento de scroll.
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, [activeProject, projects.length, isInView, scrollDirection]);
+  const minHeight = projects.length * 100 + 20 + "vh";
 
   return (
-    <Screen ref={isInViewRef} className="h-fit min-h-[120vh]">
+    <Screen
+      ref={isInViewRef}
+      className="h-fit projectscreen<"
+      style={{ minHeight: minHeight }}
+    >
       <m.h2
         initial={{
           opacity: 0.0001,
@@ -141,18 +111,14 @@ export const ProjectsContainer: React.FC = () => {
           y: 0,
         }}
         transition={softSpringPreset}
-        className="text-3xl font-medium leading-loose"
+        className="text-3xl font-medium leading-loose text-center my-5  sticky"
       >
         Here are my recents projects
       </m.h2>
       <div>
         <ul className="space-y-4">
           {projects.map((project, index) => (
-            <ProjectCard
-              key={index}
-              project={project}
-              isActive={index === activeProject}
-            />
+            <ProjectCard key={index} project={project} />
           ))}
         </ul>
 
