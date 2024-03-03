@@ -111,9 +111,8 @@ const Welcome = () => {
   };
   const description = "Turning ideas into digital realities";
   const avatar =
-    "https://res.cloudinary.com/dwxc8s4mq/image/upload/w_3000,h_3000,c_crop,g_face/avatarcirculo_vj7jqi.webp"; // Reemplaza con la URL de tu imagen
+    "https://res.cloudinary.com/dwxc8s4mq/image/upload/w_3000,h_3000,c_crop,g_face/avatarcirculo_mlgwge.webp";
 
-  // Social IDs hardcodeados
   const socialIds = {
     github: "Dalvae",
     linkedin: "diego-alvarez-e",
