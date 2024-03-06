@@ -51,7 +51,7 @@ const Screen = forwardRef<
       ref={ref}
       style={props.style}
       className={clsxm(
-        "relative flex h-screen min-h-[900px] flex-col align-center ",
+        "relative flex min-h-[900px] flex-col align-center",
         props.className
       )}
     >
@@ -93,12 +93,13 @@ export const ProjectsContainer: React.FC = () => {
     },
   ];
 
-  const minHeight = projects.length * 100 + 20 + "vh";
+  const minHeight = projects.length * 200 + 20 + "vh";
 
   return (
     <Screen
       ref={isInViewRef}
-      className="h-fit projectscreen<"
+      className="projectscreen flex flex-col justify-between
+      "
       style={{ minHeight: minHeight }}
     >
       <m.h2
@@ -111,33 +112,31 @@ export const ProjectsContainer: React.FC = () => {
           y: 0,
         }}
         transition={softSpringPreset}
-        className="text-3xl font-medium leading-loose text-center my-5  sticky"
+        className="text-3xl font-medium leading-loose text-center my-4"
       >
         Here are my recents projects
       </m.h2>
-      <div>
-        <ul className="space-y-4">
-          {projects.map((project, index) => (
-            <ProjectCard key={index} project={project} />
-          ))}
-        </ul>
 
-        <m.div
-          initial={{ opacity: 0.0001, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{
-            ...softBouncePreset,
-            delay: 0.3 + 0.2 * projects.length,
-          }}
-          className="relative mt-12 w-full text-center"
-        >
-          <MotionButtonBase>
-            <Link className="shiro-link--underline" href="/proyectos">
-              What's your next big idea? Let's work together.
-            </Link>
-          </MotionButtonBase>
-        </m.div>
-      </div>
+      <ul className="flex-1 flex  flex-col justify-evenly flex-wrap  items-stretch gap-4 px-4 mb-4">
+        {projects.map((project, index) => (
+          <ProjectCard project={project} key={index} />
+        ))}
+      </ul>
+      <m.div
+        initial={{ opacity: 0.0001, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{
+          ...softBouncePreset,
+          delay: 0.3 + 0.2 * projects.length,
+        }}
+        className="relative mt-12 w-full text-center"
+      >
+        <MotionButtonBase>
+          <Link className="shiro-link--underline" href="/proyectos">
+            What's your next big idea? Let's work together.
+          </Link>
+        </MotionButtonBase>
+      </m.div>
     </Screen>
   );
 };
