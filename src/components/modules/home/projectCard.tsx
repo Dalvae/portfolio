@@ -19,6 +19,7 @@ import {
   isSupportTechnology,
 } from "@/components/modules/home/TecnologyIcon";
 import clsx from "clsx";
+import { Position } from "@cloudinary/url-gen/qualifiers";
 
 type ProjectType = {
   name: string;
@@ -38,27 +39,40 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
   // const { scrollY } = useScroll({
   //   offset: ["01", "1.33 1"],
   // });
-  const projectRef = useRef<HTMLDivElement>(null);
+  const projectRef = useRef<HTMLLIElement>(null);
   const { scrollYProgress } = useScroll({
     target: projectRef,
-    offset: ["start end", "end start"],
+    offset: ["0 1", "1.5 0"],
   });
   const { scrollY } = useScroll();
-  // const y = useTransform(scrollY, [0, 200], [100, 0]); // Ajusta estos valores
-  // const opacity = useTransform(scrollY, [0, 500], [0, 1]);
-  const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [0, 1, 0]);
 
+  const opacity = useTransform(scrollYProgress, [0, 0.3], [0, 1]);
+  const scale = useTransform(scrollYProgress, [0, 0.5], [0, 1]);
+  const position = useTransform(scrollYProgress, (pos) => {
+    if (pos < 0.5) {
+      return "relative";
+    } else if (pos >= 0.5 && pos <= 0.8) {
+      return "fixed";
+    } else {
+      return "relative";
+    }
+  });
   return (
-    <div ref={projectRef}>
+    <m.li className="flex flex-col justify-around h-[200vh]" ref={projectRef}>
       <m.div
-        style={{ opacity: opacity }}
+        style={{
+          opacity: opacity,
+          scale: scale,
+          position,
+          backgroundImage: `url(${project.image})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
         className={clsx(
-          "relative rounded-md",
-          "border min-h-[100vh] border-slate-200 dark:border-neutral-700/80",
-          "group p-4 pb-0 project-card"
+          " rounded-md top-20 fixed border border-slate-200 dark:border-neutral-700/80 group p-4 pb-0 project-card"
         )}
       >
-        <Link href={project.link} className="flex h-full w-full flex-col">
+        <Link href={project.link}>
           <h4 className="truncate text-xl font-medium text-black group-hover:text-white transition-colors duration-200">
             {project.name}
           </h4>
@@ -79,21 +93,9 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
                 />
               ))}
           </div>
-
-          {project.image && (
-            <div
-              aria-hidden="true"
-              className="mask-cover absolute inset-0 top-0 z-[-1] rounded-md"
-              style={{
-                backgroundImage: `url(${project.image})`,
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-              }}
-            ></div>
-          )}
         </Link>
       </m.div>
-    </div>
+    </m.li>
   );
 };
 
