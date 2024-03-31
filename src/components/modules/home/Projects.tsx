@@ -76,6 +76,7 @@ export const ProjectsContainer: React.FC = () => {
       image:
         "https://res.cloudinary.com/dwxc8s4mq/image/upload/v1707073977/photo1_sv4ekw.jpg",
       technologies: ["react", "typescript"],
+      description: "Performant Ecommerce builded with the medusa framework",
     },
     {
       name: "Carcaj",
@@ -93,7 +94,7 @@ export const ProjectsContainer: React.FC = () => {
     },
   ];
 
-  const minHeight = projects.length * 200 + 20 + "vh";
+  const minHeight = projects.length * 300 + 20 + "vh";
 
   return (
     <Screen

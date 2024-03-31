@@ -1,17 +1,5 @@
 import React, { useRef } from "react";
-import { useEffect } from "react";
-import {
-  usePageScrollDirection,
-  usePageScrollLocation,
-  usePageScrollLocationSelector,
-} from "@/providers/root/page-scroll-info-provider";
-import {
-  m,
-  useInView,
-  useAnimation,
-  useScroll,
-  useTransform,
-} from "framer-motion";
+import { m, useAnimation, useScroll, useTransform } from "framer-motion";
 import Link from "next/link";
 import { MotionButtonBase } from "@/components/ui/button";
 import {
@@ -19,70 +7,113 @@ import {
   isSupportTechnology,
 } from "@/components/modules/home/TecnologyIcon";
 import clsx from "clsx";
-import { Position } from "@cloudinary/url-gen/qualifiers";
+import Image from "next/image";
 
 type ProjectType = {
   name: string;
   link: string;
   image: string;
   technologies: string[];
+  description: string;
 };
 
 interface ProjectCardProps {
   project: ProjectType;
+  index: number;
+  totalProjects: number;
 }
 
-const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
-  const controls = useAnimation();
-  const ref = useRef<HTMLDivElement>(null);
-  // const scrollY = usePageScrollLocation();
-  // const { scrollY } = useScroll({
-  //   offset: ["01", "1.33 1"],
-  // });
+const ProjectCard: React.FC<ProjectCardProps> = ({
+  project,
+  index,
+  totalProjects,
+}) => {
   const projectRef = useRef<HTMLLIElement>(null);
   const { scrollYProgress } = useScroll({
     target: projectRef,
     offset: ["0 1", "1.5 0"],
   });
-  const { scrollY } = useScroll();
 
   const opacity = useTransform(scrollYProgress, [0, 0.3], [0, 1]);
-  const scale = useTransform(scrollYProgress, [0, 0.5], [0, 1]);
+  const scale = useTransform(scrollYProgress, [0, 0.3, 0.7], [0, 0.5, 0.4]);
   const position = useTransform(scrollYProgress, (pos) => {
-    if (pos < 0.5) {
+    if (pos < 0.32) {
       return "relative";
-    } else if (pos >= 0.5 && pos <= 0.8) {
+    } else if (pos >= 0.32 && pos <= 0.87) {
       return "fixed";
     } else {
       return "relative";
     }
   });
+
+  const infoOpacity = useTransform(scrollYProgress, [0.6, 0.7], [0, 1]);
+  const infoPosition = useTransform(
+    scrollYProgress,
+    [0.6, 0.7],
+    ["100%", "0%"]
+  );
+  const leftPosition = useTransform(
+    scrollYProgress,
+    [0.5, 0.7],
+    ["0%", "-30%"]
+  );
+
   return (
-    <m.li className="flex flex-col justify-around h-[200vh]" ref={projectRef}>
+    <m.li
+      className="flex flex-col justify-around h-[200vh]"
+      style={{ position: "relative" }}
+      ref={projectRef}
+    >
       <m.div
         style={{
           opacity: opacity,
           scale: scale,
           position,
-          backgroundImage: `url(${project.image})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
+          left: leftPosition,
+          width: "100%",
+          paddingTop: "56.51%",
+          borderRadius: "0.375rem",
+          overflow: "hidden",
         }}
         className={clsx(
-          " rounded-md top-20 fixed border border-slate-200 dark:border-neutral-700/80 group p-4 pb-0 project-card"
+          "bottom-1 border border-slate-200 dark:border-neutral-700/80 group project-card"
         )}
       >
+        <div
+          style={{ position: "absolute", top: 0, left: 0, right: 0, bottom: 0 }}
+        >
+          <Image
+            src={project.image}
+            alt={project.name}
+            layout="fill"
+            objectFit="cover"
+            objectPosition="center"
+            quality={90}
+          />
+        </div>
+      </m.div>
+      <m.div
+        style={{
+          position,
+          bottom: "50%",
+          right: infoPosition,
+          transform: "translateY(-50%)",
+          opacity: infoOpacity,
+          width: "50%",
+          padding: "1.5rem",
+          backgroundColor: "rgba(0, 0, 0, 0.7)",
+          borderRadius: "0.375rem",
+        }}
+      >
         <Link href={project.link}>
-          <h4 className="truncate text-xl font-medium text-black group-hover:text-white transition-colors duration-200">
+          <h4 className="text-xl font-medium text-white transition-colors duration-200">
             {project.name}
           </h4>
-
-          <MotionButtonBase className="absolute bottom-4 right-4 flex items-center p-2 text-accent/95 opacity-0 duration-200 group-hover:opacity-100">
+          <MotionButtonBase className="flex items-center p-2 mt-2 text-accent/95 opacity-100 duration-200">
             Visit the Site
-            <i className="icon-[mingcute--arrow-right-line]" />
+            <i className="icon-[mingcute--arrow-right-line] ml-1" />
           </MotionButtonBase>
-
-          <div className="absolute right-4 top-4 flex space-x-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+          <div className="flex space-x-2 mt-4 opacity-100 transition-opacity duration-200">
             {project.technologies
               .filter(isSupportTechnology)
               .map((tech, index) => (
@@ -93,6 +124,9 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
                 />
               ))}
           </div>
+          <p className="mt-2 text-white opacity-100 transition-opacity duration-200">
+            {project.description}
+          </p>
         </Link>
       </m.div>
     </m.li>
