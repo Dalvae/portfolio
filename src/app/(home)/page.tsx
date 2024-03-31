@@ -32,6 +32,7 @@ const Screen = forwardRef<
   HTMLDivElement,
   PropsWithChildren<{
     className?: string;
+    id?: string;
   }>
 >((props, ref) => {
   const inViewRef = useRef<HTMLSpanElement>(null);
@@ -40,6 +41,7 @@ const Screen = forwardRef<
   return (
     <div
       ref={ref}
+      id={props.id}
       className={clsxm(
         "relative flex h-screen min-h-[900px] flex-col center",
         props.className
@@ -246,7 +248,7 @@ const Projects = () => {
   ];
 
   return (
-    <Screen className="h-fit min-h-[120vh]">
+    <Screen id="projects" className="h-fit min-h-[120vh]">
       <TwoColumnLayout leftContainerClassName="h-[30rem] lg:h-1/2">
         <m.h2
           initial={{
@@ -291,9 +293,9 @@ const Projects = () => {
                     className="flex h-full w-full flex-col"
                     href={project.link}
                   >
-                    <h4 className="truncate text-xl font-medium text-black group-hover:text-white transition-colors duration-200">
+                    <h3 className="truncate p-3 text-xl font-bold text-black transition-colors duration-200">
                       {project.name}
-                    </h4>
+                    </h3>
 
                     <MotionButtonBase className="absolute bottom-4 right-4 flex items-center p-2 text-accent/95 opacity-0 duration-200 group-hover:opacity-100">
                       Visit the Site

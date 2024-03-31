@@ -24,14 +24,29 @@ import { MenuPopover } from "./MenuPopover";
 const staticHeaderMenuConfig = [
   {
     path: "/",
-    title: "Inicio",
-    icon: "", // Asegúrate de tener un componente de ícono aquí o elimina esta línea.
+    title: "Home",
+    icon: "",
     subMenu: [
-      { path: "/subpage1", title: "Sub Página 1" },
-      { path: "/subpage2", title: "Sub Página 2" },
+      { path: "//#projects", title: "Projects" },
+      { path: "/", title: "Home" },
     ],
   },
-  // Agrega más ítems según sea necesario
+  {
+    path: "/hobby",
+    title: "Hobby",
+    icon: "",
+    subMenu: [
+      { path: "/hobby/jungle", title: "Jungle" },
+      { path: "/hobby/soon", title: "Soon..." },
+    ],
+  },
+
+  {
+    path: "/blog",
+    title: "Blog",
+    icon: "",
+    subMenu: [],
+  },
 ];
 
 export const HeaderContent = () => {
