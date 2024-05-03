@@ -32,6 +32,7 @@ const Screen = forwardRef<
   HTMLDivElement,
   PropsWithChildren<{
     className?: string;
+    id?: string;
   }>
 >((props, ref) => {
   const inViewRef = useRef<HTMLSpanElement>(null);
@@ -40,6 +41,7 @@ const Screen = forwardRef<
   return (
     <div
       ref={ref}
+      id={props.id}
       className={clsxm(
         "relative flex h-screen min-h-[900px] flex-col center",
         props.className
@@ -114,7 +116,6 @@ const Welcome = () => {
     // https://res.cloudinary.com/dwxc8s4mq/image/upload/v1709487155/avatarcirculo_mlgwge.webp
     "https://res.cloudinary.com/dwxc8s4mq/image/upload/w_3000,h_3000,c_crop,g_face/avatarcirculo_mlgwge.webp";
 
-  // Social IDs hardcodeados
   const socialIds = {
     github: "Dalvae",
     linkedin: "diego-alvarez-e",

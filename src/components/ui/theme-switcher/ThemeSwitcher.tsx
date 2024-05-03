@@ -105,8 +105,7 @@ const ThemeIndicator = () => {
     <div
       className="absolute top-[4px] z-[-1] h-[32px] w-[32px] rounded-full bg-base-100 shadow-[0_1px_2px_0_rgba(127.5,127.5,127.5,.2),_0_1px_3px_0_rgba(127.5,127.5,127.5,.1)] duration-200"
       style={{
-        // Actualiza las posiciones para solo light y dark
-        left: theme === "dark" ? 36 : 4, // Ajusta según necesidades
+        left: theme === "dark" ? 36 : 4,
       }}
     />
   );

@@ -1,36 +1,54 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Personal Portfolio
 
-## Getting Started
+This project is my personal portfolio, built using [Next.js](https://nextjs.org/), designed to showcase my projects, skills, and experience in web development. The portfolio utilizes a variety of modern technologies and libraries to deliver a rich and interactive experience.
 
-First, run the development server:
+## Features
+
+- **Next.js** for an optimized user experience and improved SEO.
+- **Tailwind CSS** for easily customizable and responsive design.
+- **Framer Motion** for smooth and appealing animations.
+- **DaisyUI** and **Radix UI** for custom, accessible UI components.
+- **React Icons** for adding stylized and scalable icons to the UI.
+
+## Technologies Used
+
+- Next.js
+- Tailwind CSS
+- Framer Motion
+- DaisyUI
+- Radix UI
+- React Icons
+- Jotai
+- And more...
+
+## Installation
+
+To run this project locally, you'll need to have [Node.js](https://nodejs.org/) installed on your system. Follow these steps to install and run the project:
+
+1. Clone the repository:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/Dalvae/portfolio.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Install the dependencies:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+cd portfolio
+pnpm install
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+3. Run the project in development mode:
 
-## Learn More
+```bash
+pnpm run dev
+```
 
-To learn more about Next.js, take a look at the following resources:
+4. Visit http://localhost:3000 in your browser to see the project in action.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Contributing
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+If you're interested in contributing to this project, your contributions are welcome! Please read the contribution guidelines before doing so. For major changes, please open an issue first to discuss what you would like to change.
+License
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+This project is licensed under the MIT License - see the LICENSE file for details.
