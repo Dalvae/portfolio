@@ -1,13 +1,16 @@
-'use client'
+"use client";
 
-import { forwardRef } from 'react'
-import { m } from 'framer-motion'
-import type { ForwardRefComponent, HTMLMotionProps } from 'framer-motion'
+import { forwardRef } from "react";
+import { m } from "framer-motion";
+import type { ForwardRefRenderFunction } from "react";
+import type { HTMLMotionProps } from "framer-motion";
 
-export const MotionButtonBase: ForwardRefComponent<
+export const MotionButtonBase: ForwardRefRenderFunction<
   HTMLButtonElement,
-  HTMLMotionProps<'button'>
-> = forwardRef(({ children, ...rest }, ref) => {
+  HTMLMotionProps<"button">
+> = (props, ref) => {
+  const { children, ...rest } = props;
+
   return (
     <m.button
       initial={true}
@@ -19,7 +22,7 @@ export const MotionButtonBase: ForwardRefComponent<
     >
       {children}
     </m.button>
-  )
-})
+  );
+};
 
-MotionButtonBase.displayName = 'MotionButtonBase'
+export default forwardRef(MotionButtonBase);
