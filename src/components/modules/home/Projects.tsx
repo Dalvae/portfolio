@@ -1,40 +1,12 @@
 "use client";
-import React, {
-  useEffect,
-  forwardRef,
-  useState,
-  useRef,
-  MutableRefObject,
-} from "react";
+import React, { forwardRef, useState, useRef } from "react";
 import Link from "next/link";
-import clsx from "clsx";
 import { MotionButtonBase } from "@/components/ui/button";
 import type { PropsWithChildren } from "react";
-import {
-  microReboundPreset,
-  softBouncePreset,
-  softSpringPreset,
-} from "@/constants/spring";
-import {
-  usePageScrollDirection,
-  usePageScrollLocation,
-} from "@/providers/root/page-scroll-info-provider";
-import {
-  useIsScrollDownAndPageIsOver,
-  useIsScrollUpAndPageIsOver,
-} from "@/providers/root/page-scroll-info-provider";
-import useDebounceValue from "@/hooks/common/use-debounce-value";
+import { softBouncePreset, softSpringPreset } from "@/constants/spring";
 import { clsxm } from "@/lib/helper";
 import ProjectCard from "./projectCard";
-import { m, useInView, useViewportScroll, useTransform } from "framer-motion";
-import { debounce } from "@/lib/_";
-
-type ProjectType = {
-  name: string;
-  link: string;
-  image: string;
-  technologies: string[];
-};
+import { m, useInView } from "framer-motion";
 
 const Screen = forwardRef<
   HTMLDivElement,
@@ -49,6 +21,7 @@ const Screen = forwardRef<
   return (
     <div
       ref={ref}
+      id="projects"
       style={props.style}
       className={clsxm(
         "relative flex min-h-[900px] flex-col align-center",
@@ -63,10 +36,6 @@ const Screen = forwardRef<
 Screen.displayName = "Screen";
 
 export const ProjectsContainer: React.FC = () => {
-  const [activeProject, setActiveProject] = useState<number>(0);
-  const [isScrollEnabled, setIsScrollEnabled] = useState(true);
-  const scrollDirection = usePageScrollDirection();
-  const scrollLocation = usePageScrollLocation();
   const isInViewRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(isInViewRef, { once: false, amount: 0.6 });
   const projects = [
@@ -84,7 +53,7 @@ export const ProjectsContainer: React.FC = () => {
       image:
         "https://res.cloudinary.com/dwxc8s4mq/image/upload/v1707073978/photo2_nm5onl.jpg",
       technologies: ["Tecnología 3", "Tecnología 4"],
-      description: "", // Add a description or empty string if not available
+      description: "",
     },
     {
       name: "BUC",
@@ -92,7 +61,7 @@ export const ProjectsContainer: React.FC = () => {
       image:
         "https://res.cloudinary.com/dwxc8s4mq/image/upload/v1707073977/photo3_kzqgfp.jpg",
       technologies: ["Tecnología 3", "Tecnología 4"],
-      description: "", // Add a description or empty string if not available
+      description: "",
     },
   ];
   const minHeight = projects.length * 300 + 20 + "vh";
@@ -100,8 +69,7 @@ export const ProjectsContainer: React.FC = () => {
   return (
     <Screen
       ref={isInViewRef}
-      className="projectscreen flex flex-col justify-between
-      "
+      className="projectscreen flex flex-col justify-between"
       style={{ minHeight: minHeight }}
     >
       <m.h2
@@ -116,7 +84,7 @@ export const ProjectsContainer: React.FC = () => {
         transition={softSpringPreset}
         className="text-3xl font-medium leading-loose text-center my-4"
       >
-        Here are my recents projects
+        Here are my recent projects
       </m.h2>
       <ul className="flex-1 flex flex-col justify-evenly flex-wrap items-stretch gap-4 px-4 mb-4">
         {projects.map((project, index) => (
