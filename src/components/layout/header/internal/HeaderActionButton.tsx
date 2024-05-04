@@ -1,13 +1,12 @@
 import { forwardRef } from "react";
 import clsx from "clsx";
 import type { ForwardRefRenderFunction } from "react";
+import type { ForwardRefComponent } from "framer-motion";
 
-export const HeaderActionButton: ForwardRefRenderFunction<
+export const HeaderActionButton: ForwardRefComponent<
   HTMLButtonElement,
   JSX.IntrinsicElements["button"]
-> = (props, ref) => {
-  const { children, ...rest } = props;
-
+> = forwardRef(({ children, ...rest }, ref) => {
   return (
     <button
       className={clsx(
@@ -23,8 +22,6 @@ export const HeaderActionButton: ForwardRefRenderFunction<
       {children}
     </button>
   );
-};
-
-export default forwardRef(HeaderActionButton);
+});
 
 HeaderActionButton.displayName = "HeaderActionButton";
