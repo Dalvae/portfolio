@@ -84,6 +84,7 @@ export const ProjectsContainer: React.FC = () => {
       image:
         "https://res.cloudinary.com/dwxc8s4mq/image/upload/v1707073978/photo2_nm5onl.jpg",
       technologies: ["Tecnología 3", "Tecnología 4"],
+      description: "", // Add a description or empty string if not available
     },
     {
       name: "BUC",
@@ -91,9 +92,9 @@ export const ProjectsContainer: React.FC = () => {
       image:
         "https://res.cloudinary.com/dwxc8s4mq/image/upload/v1707073977/photo3_kzqgfp.jpg",
       technologies: ["Tecnología 3", "Tecnología 4"],
+      description: "", // Add a description or empty string if not available
     },
   ];
-
   const minHeight = projects.length * 300 + 20 + "vh";
 
   return (
@@ -117,10 +118,14 @@ export const ProjectsContainer: React.FC = () => {
       >
         Here are my recents projects
       </m.h2>
-
-      <ul className="flex-1 flex  flex-col justify-evenly flex-wrap  items-stretch gap-4 px-4 mb-4">
+      <ul className="flex-1 flex flex-col justify-evenly flex-wrap items-stretch gap-4 px-4 mb-4">
         {projects.map((project, index) => (
-          <ProjectCard project={project} key={index} />
+          <ProjectCard
+            project={project}
+            key={index}
+            index={index}
+            totalProjects={projects.length}
+          />
         ))}
       </ul>
       <m.div
