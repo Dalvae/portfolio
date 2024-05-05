@@ -19,10 +19,6 @@ import {
   softBouncePreset,
   softSpringPreset,
 } from "@/constants/spring";
-import {
-  isSupportTechnology,
-  TechnologyIcon,
-} from "@/components/modules/home/TecnologyIcon";
 import { clsxm } from "@/lib/helper";
 import { ProjectsContainer } from "@/components/modules/home/Projects";
 import { m, useInView } from "framer-motion";
