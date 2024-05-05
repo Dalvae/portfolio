@@ -64,7 +64,7 @@ export const ProjectsContainer: React.FC = () => {
       description: "",
     },
   ];
-  const minHeight = projects.length * 300 + 20 + "vh";
+  const minHeight = projects.length * 150 + 20 + "vh";
 
   return (
     <Screen

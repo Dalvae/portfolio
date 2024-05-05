@@ -2,6 +2,7 @@ import React, { useRef } from "react";
 import {
   m,
   useAnimation,
+  useInView,
   useScroll,
   useTransform,
   useSpring,
@@ -15,6 +16,7 @@ import {
 import clsx from "clsx";
 import Image from "next/image";
 import { useIsMobile } from "@/atoms";
+import { left, right } from "@cloudinary/url-gen/qualifiers/textAlignment";
 
 type ProjectType = {
   name: string;
@@ -38,28 +40,25 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   const projectRef = useRef<HTMLLIElement>(null);
   const { scrollYProgress } = useScroll({
     target: projectRef,
-    offset: ["0 1", "1.5 0"],
+    offset: ["0 0.5", "1 0.5"],
   });
-
+  const imageRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(imageRef, { amount: 0.5 });
   const isMobile = useIsMobile();
 
-  const opacity = useTransform(scrollYProgress, [0, 0.3], [0, 1]);
-  const scale = useTransform(scrollYProgress, [0, 0.3, 0.7], [0, 0.6, 0.5]);
-  const mobileScale = useTransform(scrollYProgress, [0, 0.5], [0, 1]);
+  const scale = useTransform(scrollYProgress, [0, 0.6, 0.9], [0, 0.6, 0.5]);
+  const mobileScale = useTransform(scrollYProgress, [0, 0.3], [0, 1]);
   const position = useTransform(scrollYProgress, (pos) => {
-    if (pos < 0.32) {
+    if (pos < 0.3) {
+      console.log("relative");
       return "relative";
-    } else if (pos >= 0.32 && pos <= 0.87) {
-      return "fixed";
+    } else if (pos >= 0.3 && pos <= 0.8) {
+      console.log("sticky");
+      return "sticky";
     } else {
+      console.log("relative");
       return "relative";
     }
-  });
-
-  const opacitySpring = useSpring(opacity, {
-    damping: 15,
-    mass: 0.2,
-    stiffness: 100,
   });
 
   const scaleSpring = useSpring(isMobile ? mobileScale : scale, {
@@ -68,105 +67,113 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
     stiffness: 100,
   });
 
-  const infoOpacity = useTransform(scrollYProgress, [0.6, 0.7], [0, 1]);
-  const infoPosition = useTransform(
-    scrollYProgress,
-    [0.6, 0.7],
-    ["100%", "0%"]
-  );
-  const leftPosition = useTransform(
-    scrollYProgress,
-    [0.5, 0.7],
-    ["0%", "-20%"]
-  );
-  const imageWidth = useTransform(position, (pos) =>
-    pos === "fixed" ? "100vw" : "100%"
-  );
+  const imageAnimation = {
+    hidden: { x: 0, scale: 0 },
+    visible: {
+      x: isMobile ? "0%" : "-20%",
+      scale: isMobile ? 1 : 1,
+      transition: { duration: 0.8, ease: "easeOut" },
+    },
+  };
+  const infoAnimation = {
+    hidden: { left: "-100%" },
+    visible: {
+      left: isMobile ? "0" : "calc(60% + 20px)",
+      transition: { duration: 1.2, ease: "easeOut", delay: 0.4 },
+    },
+  };
 
   return (
-    <m.li
-      className={`flex flex-col justify-around ${
-        isMobile ? "h-[150vh]" : "h-[200vh]"
+    <li
+      className={`flex  flex-col justify-around h-[150vh] ${
+        index === totalProjects - 1 ? "mb-[20vh]" : ""
       }`}
-      style={{ position: "relative", overflow: "hidden" }}
       ref={projectRef}
     >
       <m.div
-        style={{
-          opacity: opacitySpring,
-          scale: scaleSpring,
-          position,
-          top: isMobile
-            ? position.get() === "fixed"
-              ? "10%"
-              : "40%"
-            : position.get() === "fixed"
-            ? "auto"
-            : "0",
-          left: isMobile ? "0" : leftPosition,
-          borderRadius: "0.375rem",
-          transition: "all 0.4s ease-out",
-        }}
-        className={clsx(
-          "md:bottom-1 border border-slate-200 dark:border-neutral-700/80  w-full  "
-        )}
-      >
-        <Image
-          src={project.image}
-          alt={project.name}
-          layout="responsive"
-          width={1600}
-          height={900}
-          objectFit="cover"
-          objectPosition="center"
-          quality={90}
-        />
-      </m.div>
-      <m.div
+        ref={imageRef}
+        animate={isInView ? "visible" : "hidden"}
+        className="flex md:flex-row flex-col"
         style={{
           position,
-          bottom: isMobile ? 0 : "40%",
-          right: isMobile ? 0 : infoPosition,
-          top: position.get() === "fixed" ? "auto" : isMobile ? "auto" : "40%",
-          transform: isMobile ? "none" : "translateY(-50%)",
-          opacity: infoOpacity,
-          width: isMobile ? "100%" : "40%",
-          padding: "1.5rem",
-          backgroundColor: "rgba(0, 0, 0, 0.7)",
-          borderRadius: "0.375rem",
+          width: "100vw",
+          maxWidth: "100vw",
+          top: position.get() === "sticky" ? "80%" : "10px",
+          transform:
+            position.get() === "sticky" && !isMobile
+              ? "translateY(-50%)"
+              : "none",
+          bottom: position.get() === "sticky" ? "0" : "auto",
           transition: "all 0.4s ease-out",
-          height: isMobile ? "50%" : "auto",
         }}
       >
-        <Link
-          href={project.link}
-          className="flex flex-col justify-center items-center p-4"
+        <m.div
+          variants={imageAnimation}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+          style={{
+            scale: isMobile ? mobileScale : scaleSpring,
+            // top: "20%",
+            // bottom: "40%",
+            transition: "all 0.4s ease-out",
+          }}
+          className={clsx(" w-full")}
         >
-          <h2 className=" py-4 text-xl font-medium text-white transition-colors duration-200">
-            {project.name}
-          </h2>
-
-          <p className="mt-2 text-white opacity-100 transition-opacity duration-200">
-            {project.description}
-          </p>
-          <div className="flex space-x-2 mt-4 opacity-100 transition-opacity duration-200">
-            {project.technologies
-              .filter(isSupportTechnology)
-              .map((tech, index) => (
-                <TechnologyIcon
-                  key={index}
-                  type={tech}
-                  className="transition-opacity duration-200"
-                />
-              ))}
-          </div>
-          <MotionButtonBase className="flex items-center  mt-4 text-accent/95 opacity-100 duration-200">
-            Visit the Site
-            <i className="icon-[mingcute--arrow-right-line] ml-1" />
-          </MotionButtonBase>
-        </Link>
+          <Image
+            src={project.image}
+            alt={project.name}
+            layout="responsive"
+            width={1600}
+            height={900}
+            objectFit="cover"
+            quality={90}
+            loading="eager"
+            className="rounded-xl "
+          />
+        </m.div>
+        <m.div
+          variants={infoAnimation}
+          style={{
+            position: isMobile ? "relative" : "absolute",
+            width: isMobile ? "100%" : "40%",
+            padding: "1.5rem",
+            backgroundColor: "rgba(0, 0, 0, 0.7)",
+            borderRadius: "0.75rem",
+            transition: "all 0.4s ease-out",
+            top: isMobile ? "auto" : "50%",
+            left: isMobile ? "0" : "auto",
+            transform: isMobile ? "none" : "translateY(-50%)",
+          }}
+        >
+          <Link
+            href={project.link}
+            className="flex flex-col justify-center items-center "
+          >
+            <h2 className="py-4 text-xl font-medium text-white transition-colors duration-200">
+              {project.name}
+            </h2>
+            <p className="mt-2 text-white opacity-100 transition-opacity duration-200">
+              {project.description}
+            </p>
+            <div className="flex space-x-2 mt-4 opacity-100 transition-opacity duration-200">
+              {project.technologies
+                .filter(isSupportTechnology)
+                .map((tech, index) => (
+                  <TechnologyIcon
+                    key={index}
+                    type={tech}
+                    className="transition-opacity duration-200"
+                  />
+                ))}
+            </div>
+            <MotionButtonBase className="flex items-center my-4 text-accent/95 opacity-100 duration-200">
+              Visit the Site
+              <i className="icon-[mingcute--arrow-right-line] ml-1" />
+            </MotionButtonBase>
+          </Link>
+        </m.div>
       </m.div>
-    </m.li>
+    </li>
   );
 };
 
