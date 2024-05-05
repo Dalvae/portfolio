@@ -43,24 +43,30 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
     offset: ["0 0.5", "1 0.5"],
   });
   const imageRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(imageRef, { amount: 0.5 });
+  const isInView = useInView(imageRef, { amount: 0.3 });
   const isMobile = useIsMobile();
 
   const scale = useTransform(scrollYProgress, [0, 0.6, 0.9], [0, 0.6, 0.5]);
-  const mobileScale = useTransform(scrollYProgress, [0, 0.3], [0, 1]);
+  const mobileScale = useTransform(scrollYProgress, [0, 0.5], [0, 1]);
   const position = useTransform(scrollYProgress, (pos) => {
-    if (pos < 0.3) {
-      console.log("relative");
-      return "relative";
-    } else if (pos >= 0.3 && pos <= 0.8) {
-      console.log("sticky");
-      return "sticky";
+    if (isMobile) {
+      if (pos < 0.2) {
+        console.log("relative");
+        return "relative";
+      } else {
+        console.log("sticky");
+        return "sticky";
+      }
     } else {
-      console.log("relative");
-      return "relative";
+      if (pos >= 0.1 && pos <= 0.8) {
+        console.log("sticky");
+        return "sticky";
+      } else {
+        console.log("relative");
+        return "static";
+      }
     }
   });
-
   const scaleSpring = useSpring(isMobile ? mobileScale : scale, {
     damping: 15,
     mass: 0.2,
@@ -68,18 +74,17 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   });
 
   const imageAnimation = {
-    hidden: { x: 0, scale: 0 },
+    hidden: { x: 0 },
     visible: {
       x: isMobile ? "0%" : "-20%",
-      scale: isMobile ? 1 : 1,
-      transition: { duration: 0.8, ease: "easeOut" },
+      transition: { duration: 0.1, ease: "easeOut" },
     },
   };
   const infoAnimation = {
-    hidden: { left: "-100%" },
+    hidden: { x: "-100%" },
     visible: {
-      left: isMobile ? "0" : "calc(60% + 20px)",
-      transition: { duration: 1.2, ease: "easeOut", delay: 0.4 },
+      x: isMobile ? "0%" : "150%",
+      transition: { duration: 0.7, delay: 0.2 },
     },
   };
 
@@ -93,29 +98,23 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
       <m.div
         ref={imageRef}
         animate={isInView ? "visible" : "hidden"}
-        className="flex md:flex-row flex-col"
+        className="flex flex-col lg:flex-row gap-4"
         style={{
           position,
-          width: "100vw",
-          maxWidth: "100vw",
+          width: "100%",
+          maxWidth: "100%",
           top: position.get() === "sticky" ? "80%" : "10px",
           transform:
             position.get() === "sticky" && !isMobile
               ? "translateY(-50%)"
               : "none",
           bottom: position.get() === "sticky" ? "0" : "auto",
-          transition: "all 0.4s ease-out",
         }}
       >
         <m.div
           variants={imageAnimation}
-          initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
           style={{
             scale: isMobile ? mobileScale : scaleSpring,
-            // top: "20%",
-            // bottom: "40%",
-            transition: "all 0.4s ease-out",
           }}
           className={clsx(" w-full")}
         >
@@ -133,16 +132,22 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         </m.div>
         <m.div
           variants={infoAnimation}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+          transition={{
+            type: "spring",
+            damping: 3,
+            stiffness: 50,
+            restDelta: 0.001,
+          }}
           style={{
-            position: isMobile ? "relative" : "absolute",
+            // position: isMobile ? "relative" : "absolute",
             width: isMobile ? "100%" : "40%",
             padding: "1.5rem",
             backgroundColor: "rgba(0, 0, 0, 0.7)",
             borderRadius: "0.75rem",
-            transition: "all 0.4s ease-out",
             top: isMobile ? "auto" : "50%",
-            left: isMobile ? "0" : "auto",
-            transform: isMobile ? "none" : "translateY(-50%)",
+            transform: isMobile ? "none" : "translate(20%, -50%)",
           }}
         >
           <Link
