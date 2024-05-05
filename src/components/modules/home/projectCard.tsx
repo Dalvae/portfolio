@@ -11,18 +11,18 @@ import Link from "next/link";
 import { MotionButtonBase } from "@/components/ui/button";
 import {
   TechnologyIcon,
-  isSupportTechnology,
+  technologySet,
 } from "@/components/modules/home/TecnologyIcon";
 import clsx from "clsx";
 import Image from "next/image";
 import { useIsMobile } from "@/atoms";
 import { left, right } from "@cloudinary/url-gen/qualifiers/textAlignment";
 
-type ProjectType = {
+export type ProjectType = {
   name: string;
   link: string;
   image: string;
-  technologies: string[];
+  technologies: (keyof typeof technologySet)[];
   description: string;
 };
 
@@ -46,23 +46,19 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   const isInView = useInView(imageRef, { amount: 0.3 });
   const isMobile = useIsMobile();
 
-  const scale = useTransform(scrollYProgress, [0, 0.6, 0.9], [0, 0.6, 0.5]);
+  const scale = useTransform(scrollYProgress, [0, 0.4, 0.7], [0, 0.6, 0.5]);
   const mobileScale = useTransform(scrollYProgress, [0, 0.5], [0, 1]);
   const position = useTransform(scrollYProgress, (pos) => {
     if (isMobile) {
       if (pos < 0.2) {
-        console.log("relative");
         return "relative";
       } else {
-        console.log("sticky");
         return "sticky";
       }
     } else {
-      if (pos >= 0.1 && pos <= 0.8) {
-        console.log("sticky");
+      if (pos >= 0.1 && pos <= 1) {
         return "sticky";
       } else {
-        console.log("relative");
         return "static";
       }
     }
@@ -81,9 +77,9 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
     },
   };
   const infoAnimation = {
-    hidden: { x: "-100%" },
+    hidden: { x: "-400%" },
     visible: {
-      x: isMobile ? "0%" : "150%",
+      x: isMobile ? "0%" : "-10%",
       transition: { duration: 0.7, delay: 0.2 },
     },
   };
@@ -103,7 +99,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           position,
           width: "100%",
           maxWidth: "100%",
-          top: position.get() === "sticky" ? "80%" : "10px",
+          top: position.get() === "sticky" ? "50%" : "20%",
           transform:
             position.get() === "sticky" && !isMobile
               ? "translateY(-50%)"
@@ -141,35 +137,33 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
             restDelta: 0.001,
           }}
           style={{
-            // position: isMobile ? "relative" : "absolute",
             width: isMobile ? "100%" : "40%",
             padding: "1.5rem",
             backgroundColor: "rgba(0, 0, 0, 0.7)",
             borderRadius: "0.75rem",
-            top: isMobile ? "auto" : "50%",
-            transform: isMobile ? "none" : "translate(20%, -50%)",
           }}
+          className="my-auto "
         >
           <Link
             href={project.link}
+            target="_blank"
+            rel="noopener noreferrer"
             className="flex flex-col justify-center items-center "
           >
             <h2 className="py-4 text-xl font-medium text-white transition-colors duration-200">
               {project.name}
             </h2>
-            <p className="mt-2 text-white opacity-100 transition-opacity duration-200">
+            <p className="mt-2 text-white opacity-100 transition-opacity duration-200 break-words">
               {project.description}
             </p>
             <div className="flex space-x-2 mt-4 opacity-100 transition-opacity duration-200">
-              {project.technologies
-                .filter(isSupportTechnology)
-                .map((tech, index) => (
-                  <TechnologyIcon
-                    key={index}
-                    type={tech}
-                    className="transition-opacity duration-200"
-                  />
-                ))}
+              {project.technologies.map((tech, index) => (
+                <TechnologyIcon
+                  key={index}
+                  type={tech}
+                  className="transition-opacity duration-200"
+                />
+              ))}
             </div>
             <MotionButtonBase className="flex items-center my-4 text-accent/95 opacity-100 duration-200">
               Visit the Site

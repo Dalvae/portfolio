@@ -5,7 +5,7 @@ import { MotionButtonBase } from "@/components/ui/button";
 import type { PropsWithChildren } from "react";
 import { softBouncePreset, softSpringPreset } from "@/constants/spring";
 import { clsxm } from "@/lib/helper";
-import ProjectCard from "./projectCard";
+import ProjectCard, { ProjectType } from "./projectCard";
 import { m, useInView } from "framer-motion";
 
 const Screen = forwardRef<
@@ -38,31 +38,62 @@ Screen.displayName = "Screen";
 export const ProjectsContainer: React.FC = () => {
   const isInViewRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(isInViewRef, { once: false, amount: 0.6 });
-  const projects = [
+  const projects: ProjectType[] = [
     {
       name: "Sublimahyca",
       link: "https://www.sublimahyca.cl/",
       image:
         "https://res.cloudinary.com/dwxc8s4mq/image/upload/v1707073977/photo1_sv4ekw.jpg",
-      technologies: ["react", "typescript"],
-      description: "Performant Ecommerce builded with the medusa framework",
+      technologies: [
+        "react",
+        "next",
+        "typescript",
+        "tailwind",
+        "medusa",
+        "postgresql",
+        "redis",
+      ],
+      description:
+        "High-performing ecommerce platform meticulously crafted using the Medusa framework, featuring seamless integration capabilities.",
     },
     {
       name: "Carcaj",
-      link: "http://carcaj.cl/",
+      link: "https://carcaj.cl/",
       image:
         "https://res.cloudinary.com/dwxc8s4mq/image/upload/v1707073978/photo2_nm5onl.jpg",
-      technologies: ["Tecnología 3", "Tecnología 4"],
-      description: "",
+      technologies: ["wordpress", "php", "sass", "mysql"],
+      description:
+        "Literature, essays, and poetry. Crafted from the ground up with PHP and Sass.",
     },
     {
       name: "BUC",
       link: "https://buc.cl/",
       image:
         "https://res.cloudinary.com/dwxc8s4mq/image/upload/v1707073977/photo3_kzqgfp.jpg",
-      technologies: ["Tecnología 3", "Tecnología 4"],
-      description: "",
+      technologies: ["wordpress", "php", "bootstrap", "mysql"],
+      description:
+        "My inaugural website: a custom-built Wordpress theme using Bootstrap tailored for a consulting firm.",
     },
+    {
+      name: "Pokedex",
+      link: "https://pokedex-puce-two.vercel.app/",
+      image:
+        "https://res.cloudinary.com/dwxc8s4mq/image/upload/v1714922737/pokedex_ed3kcy.jpg",
+      technologies: ["next", "react", "typescript", "tailwind"],
+      description:
+        "Performant Pokedex utilizing the PokeAPI and Approuter from Next.js.",
+    },
+    {
+      name: "Internet is great",
+      link: "https://internetisgreat.vercel.app/",
+      image:
+        "https://res.cloudinary.com/dwxc8s4mq/image/upload/v1714923479/Internet_is_greath_mknegt.jpg",
+      technologies: ["next", "react", "typescript", "tailwind", "aws"],
+      description: "Just a meme page, using AWS and Approuter from Next.js.",
+    },
+
+    //Ni rotations
+    //la applicacion de comentar temblores
   ];
   const minHeight = projects.length * 150 + 20 + "vh";
 

@@ -1,3 +1,4 @@
+//TecnologyIcon.tsx
 import React, { memo, useMemo } from "react";
 import { MotionButtonBase } from "@/components/ui/button";
 import { FloatPopover } from "@/components/ui/float-popover";
@@ -5,18 +6,29 @@ import { BootstrapIcon } from "@/components/icons/platform/Bootstrap";
 import { GraphQlIcon } from "@/components/icons/platform/GraphQl";
 import { IoLogoJavascript } from "react-icons/io5";
 import { DiMongodb } from "react-icons/di";
-import { SiMysql, SiTailwindcss, SiTypescript } from "react-icons/si";
-import { FaNodeJs, FaSass, FaWordpress } from "react-icons/fa";
+import { SiMysql, SiTailwindcss, SiTypescript, SiMedusa } from "react-icons/si";
+import {
+  FaNodeJs,
+  FaSass,
+  FaWordpress,
+  FaPhp,
+  FaReact,
+  FaAws,
+} from "react-icons/fa";
+import { BiLogoPostgresql } from "react-icons/bi";
+import { RiNextjsLine } from "react-icons/ri";
+import { DiRedis } from "react-icons/di";
+
 interface TechnologyInfo {
   name: string;
   Icon: JSX.Element;
   iconBg: string;
 }
 
-const technologySet = {
+export const technologySet = {
   react: {
     name: "React",
-    Icon: <i className="icon-[mingcute--react-line]" />,
+    Icon: <FaReact />,
     iconBg: "#61DAFB",
   },
   node: {
@@ -69,26 +81,44 @@ const technologySet = {
     Icon: <SiMysql />,
     iconBg: "#4479A1",
   },
+  php: {
+    name: "PHP",
+    Icon: <FaPhp />,
+    iconBg: "#777BB4",
+  },
+  medusa: {
+    name: "Medusa",
+    Icon: <SiMedusa />,
+    iconBg: "#6F2CAC",
+  },
+  postgresql: {
+    name: "PostgreSQL",
+    Icon: <BiLogoPostgresql />,
+    iconBg: "#336791",
+  },
+  next: {
+    name: "Next.js",
+    Icon: <RiNextjsLine className="text-black" />,
+    iconBg: "#FFFFFF",
+  },
+  redis: {
+    name: "Redis",
+    Icon: <DiRedis />,
+    iconBg: "#ff4438",
+  },
+  aws: {
+    name: "AWS",
+    Icon: <FaAws />,
+    iconBg: "#232f3e",
+  },
 };
-interface TechnologyIconProps {
-  type:
-    | "react"
-    | "typescript"
-    | "node"
-    | "js"
-    | "tailwind"
-    | "bootstrap"
-    | "sass"
-    | "graphql"
-    | "mongodb"
-    | "wordpress"
-    | "mysql";
-  className?: string; // Aquí se añade la prop className como opcional
-}
+
 type TechnologyType = keyof typeof technologySet;
 
-export const isSupportTechnology = (icon: string): icon is TechnologyType =>
-  Object.keys(technologySet).includes(icon);
+interface TechnologyIconProps {
+  type: TechnologyType;
+  className?: string;
+}
 
 export const TechnologyIcon: React.FC<TechnologyIconProps> = memo(
   ({ type }) => {
