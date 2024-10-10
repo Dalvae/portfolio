@@ -42,7 +42,8 @@ export const ProjectsContainer: React.FC = () => {
     {
       name: "Patricio Salinas personal site",
       link: "https://www.patriciosalinas.com/",
-      image: "https://www.patriciosalinas.com/og-image.png",
+      image:
+        "https://res.cloudinary.com/dwxc8s4mq/image/upload/v1728582899/dpcdeapxorgdqjpsed1x.jpg",
       technologies: ["astro", "typescript", "tailwind", "wordpress", "int"],
       description:
         "A high-performance frontend for Patricio Salinas, a photographer and visual thinker. This project utilizes WordPress as a headless CMS, internationalization support for multiple languages and image optimization techniques",
