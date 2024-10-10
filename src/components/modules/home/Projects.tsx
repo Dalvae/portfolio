@@ -40,6 +40,14 @@ export const ProjectsContainer: React.FC = () => {
   const isInView = useInView(isInViewRef, { once: false, amount: 0.6 });
   const projects: ProjectType[] = [
     {
+      name: "Patricio Salinas personal site",
+      link: "https://www.patriciosalinas.com/",
+      image: "https://www.patriciosalinas.com/og-image.png",
+      technologies: ["astro", "typescript", "tailwind", "wordpress", "int"],
+      description:
+        "A high-performance frontend for Patricio Salinas, a photographer and visual thinker. This project utilizes WordPress as a headless CMS, internationalization support for multiple languages and image optimization techniques",
+    },
+    {
       name: "Sublimahyca",
       link: "https://www.sublimahyca.cl/",
       image:

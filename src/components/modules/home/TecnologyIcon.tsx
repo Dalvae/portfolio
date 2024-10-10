@@ -6,7 +6,14 @@ import { BootstrapIcon } from "@/components/icons/platform/Bootstrap";
 import { GraphQlIcon } from "@/components/icons/platform/GraphQl";
 import { IoLogoJavascript } from "react-icons/io5";
 import { DiMongodb } from "react-icons/di";
-import { SiMysql, SiTailwindcss, SiTypescript, SiMedusa } from "react-icons/si";
+import {
+  SiMysql,
+  SiTailwindcss,
+  SiTypescript,
+  SiMedusa,
+  SiAstro,
+  SiMicrosofttranslator,
+} from "react-icons/si";
 import {
   FaNodeJs,
   FaSass,
@@ -26,6 +33,16 @@ interface TechnologyInfo {
 }
 
 export const technologySet = {
+  int: {
+    name: "i18n",
+    Icon: <SiMicrosofttranslator />,
+    iconBg: "#4CAF50",
+  },
+  astro: {
+    name: "Astro",
+    Icon: <SiAstro />,
+    iconBg: "#000000",
+  },
   react: {
     name: "React",
     Icon: <FaReact />,
