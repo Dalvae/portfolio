@@ -2,9 +2,10 @@ import Color from "colorjs.io";
 import type { FC } from "react";
 
 const hexToOklchString = (hex: string) => {
-  return new Color(hex).oklch;
+  // Forma correcta en versiones recientes
+  const color = new Color(hex);
+  return color.to("oklch").coords; // [L, C, H]
 };
-
 const accentColorLight = [
   // 浅葱
   "#33A6B8",

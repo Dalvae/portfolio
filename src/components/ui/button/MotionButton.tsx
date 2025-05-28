@@ -2,18 +2,28 @@
 
 import { forwardRef } from "react";
 import { m } from "framer-motion";
-import type { ForwardRefRenderFunction } from "react";
-import type { HTMLMotionProps } from "framer-motion";
+import type { ButtonHTMLAttributes } from "react";
 
-export const MotionButtonBase: ForwardRefRenderFunction<
+// Tipo que resuelve todos los conflictos
+type MotionButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
+  initial?: boolean | object;
+  whileHover?: object;
+  whileTap?: object;
+  whileFocus?: object;
+  // Sobreescribe los handlers conflictivos con any
+  onAnimationStart?: any;
+  onDragStart?: any;
+  onDragEnd?: any;
+  [key: string]: any; // Permite cualquier otra prop de motion
+};
+
+export const MotionButtonBase = forwardRef<
   HTMLButtonElement,
-  HTMLMotionProps<"button">
-> = (props, ref) => {
-  const { children, ...rest } = props;
-
+  MotionButtonProps
+>(({ children, initial = true, ...rest }, ref) => {
   return (
     <m.button
-      initial={true}
+      initial={initial}
       whileFocus={{ scale: 1.02 }}
       whileHover={{ scale: 1.02 }}
       whileTap={{ scale: 0.95 }}
@@ -23,6 +33,6 @@ export const MotionButtonBase: ForwardRefRenderFunction<
       {children}
     </m.button>
   );
-};
+});
 
-export default forwardRef(MotionButtonBase);
+MotionButtonBase.displayName = "MotionButtonBase";

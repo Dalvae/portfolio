@@ -25,7 +25,7 @@ const Screen = forwardRef<
       style={props.style}
       className={clsxm(
         "relative flex min-h-[900px] flex-col align-center",
-        props.className
+        props.className,
       )}
     >
       <span ref={inViewRef} />
@@ -39,6 +39,24 @@ export const ProjectsContainer: React.FC = () => {
   const isInViewRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(isInViewRef, { once: false, amount: 0.6 });
   const projects: ProjectType[] = [
+    {
+      name: "Nexon Store",
+      link: "https://nexon-storefront.vercel.app",
+      image:
+        "https://res.cloudinary.com/dwxc8s4mq/image/upload/v1748459523/portfolio/nexonproject_a4gdm0.png",
+      technologies: [
+        "int",
+        "react",
+        "next",
+        "typescript",
+        "tailwind",
+        "medusa",
+        "postgresql",
+        "redis",
+      ],
+      description:
+        "A full-stack ecommerce platform built with Medusa.js, offering multi-language support, region-specific pricing, and a high-performance storefront. Delivering a seamless shopping experience across global markets.",
+    },
     {
       name: "Patricio Salinas personal site",
       link: "https://www.patriciosalinas.com/",
