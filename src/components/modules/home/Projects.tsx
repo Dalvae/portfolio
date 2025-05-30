@@ -61,7 +61,7 @@ export const ProjectsContainer: React.FC = () => {
       name: "Patricio Salinas personal site",
       link: "https://www.patriciosalinas.com/",
       image:
-        "https://res.cloudinary.com/dwxc8s4mq/image/upload/v1728582899/dpcdeapxorgdqjpsed1x.jpg",
+        "https://res.cloudinary.com/dwxc8s4mq/image/upload/v1728582899/portfolio/dpcdeapxorgdqjpsed1x.jpg",
       technologies: ["astro", "typescript", "tailwind", "wordpress", "int"],
       description:
         "A high-performance frontend for Patricio Salinas, a photographer and visual thinker. This project utilizes WordPress as a headless CMS, internationalization support for multiple languages and image optimization techniques",
@@ -70,7 +70,7 @@ export const ProjectsContainer: React.FC = () => {
       name: "Sublimahyca",
       link: "https://www.sublimahyca.cl/",
       image:
-        "https://res.cloudinary.com/dwxc8s4mq/image/upload/v1707073977/photo1_sv4ekw.jpg",
+        "https://res.cloudinary.com/dwxc8s4mq/image/upload/v1707073977/portfolio/photo1_sv4ekw.jpg",
       technologies: [
         "react",
         "next",
@@ -87,7 +87,7 @@ export const ProjectsContainer: React.FC = () => {
       name: "Carcaj",
       link: "https://carcaj.cl/",
       image:
-        "https://res.cloudinary.com/dwxc8s4mq/image/upload/v1707073978/photo2_nm5onl.jpg",
+        "https://res.cloudinary.com/dwxc8s4mq/image/upload/v1707073978/portfolio/photo2_nm5onl.jpg",
       technologies: ["wordpress", "php", "sass", "mysql"],
       description:
         "Literature, essays, and poetry. Crafted from the ground up with PHP and Sass.",
@@ -96,7 +96,7 @@ export const ProjectsContainer: React.FC = () => {
       name: "BUC",
       link: "https://buc.cl/",
       image:
-        "https://res.cloudinary.com/dwxc8s4mq/image/upload/v1707073977/photo3_kzqgfp.jpg",
+        "https://res.cloudinary.com/dwxc8s4mq/image/upload/v1707073977/portfolio/photo3_kzqgfp.jpg",
       technologies: ["wordpress", "php", "bootstrap", "mysql"],
       description:
         "My inaugural website: a custom-built Wordpress theme using Bootstrap tailored for a consulting firm.",
@@ -105,7 +105,7 @@ export const ProjectsContainer: React.FC = () => {
       name: "Pokedex",
       link: "https://pokedex-puce-two.vercel.app/",
       image:
-        "https://res.cloudinary.com/dwxc8s4mq/image/upload/v1714922737/pokedex_ed3kcy.jpg",
+        "https://res.cloudinary.com/dwxc8s4mq/image/upload/v1714922737/portfolio/pokedex_ed3kcy.jpg",
       technologies: ["next", "react", "typescript", "tailwind"],
       description:
         "Performant Pokedex utilizing the PokeAPI and Approuter from Next.js.",
@@ -114,7 +114,7 @@ export const ProjectsContainer: React.FC = () => {
       name: "Internet is great",
       link: "https://internetisgreat.vercel.app/",
       image:
-        "https://res.cloudinary.com/dwxc8s4mq/image/upload/v1714923479/Internet_is_greath_mknegt.jpg",
+        "https://res.cloudinary.com/dwxc8s4mq/image/upload/v1714923479/portfolio/Internet_is_greath_mknegt.jpg",
       technologies: ["next", "react", "typescript", "tailwind", "aws"],
       description: "Just a meme page, using AWS and Approuter from Next.js.",
     },
