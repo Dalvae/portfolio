@@ -60,96 +60,35 @@ const isLargeIcon = className && (className.includes('w-16') || className.includ
 const containerSize = isLargeIcon ? 'w-16 h-16' : 'w-10 h-10';
 const iconSize = isLargeIcon ? 'w-10 h-10' : 'w-7 h-7';
 const textSize = isLargeIcon ? 'text-lg' : 'text-xs';
----
 
-{link ? (
-  <a href={link} target="_blank" rel="noopener noreferrer">
-    <div class="relative inline-flex flex-col items-center group mx-0.5">
-      <div
-        class={`
-          flex aspect-square items-center justify-center rounded-full text-white
-          transition-transform duration-200 ease-out
-          hover:scale-110
-          ${containerSize}
-        `}
-        style={{ backgroundColor: techInfo?.iconBg || '#9ca3af' }}
-      >
-        {IconComponent ? (
-          <div client:only="react">
-            <IconComponent 
-              class={iconSize}
-            />
-          </div>
-        ) : (
-          <span class={`font-bold p-1 text-center leading-tight break-all border-sky ${textSize}`}>
-            {techInfo?.iconIdentifier || iconInitial}
-          </span>
-        )}
-      </div>
-      
-      <div 
-        class="
-        border-1
-
-        border-neutral
-          absolute top-full mt-2
-          bg-background-tertiary text-label-primary text-xs font-medium py-1.5 px-2.5 rounded-md
-          dark:bg-grouped-tertiary dark:text-label-primary
-          whitespace-nowrap
-          opacity-0 group-hover:opacity-100
-          transition-opacity duration-150 ease-out
-          pointer-events-none
-          shadow-md
-          z-30
-          group-hover:delay-300
-             "
-      >
-        {techInfo?.name || 'Unknown'}
-      </div>
-    </div>
-  </a>
-) : (
+const content = (
   <div class="relative inline-flex flex-col items-center group mx-0.5">
     <div
-      class={`
-        flex aspect-square items-center justify-center rounded-full text-white
-        transition-transform duration-200 ease-out
-        hover:scale-110
-        ${containerSize}
-      `}
+      class:list={[
+        "flex aspect-square items-center justify-center rounded-full text-white transition-transform duration-200 ease-out hover:scale-110",
+        containerSize
+      ]}
       style={{ backgroundColor: techInfo?.iconBg || '#9ca3af' }}
     >
       {IconComponent ? (
-        <div client:only="react">
-          <IconComponent 
-            class={iconSize}
-          />
-        </div>
+        <IconComponent class={iconSize} />
       ) : (
-        <span class={`font-bold p-1 text-center leading-tight break-all border-sky ${textSize}`}>
+        <span class:list={["font-bold p-1 text-center leading-tight", textSize]}>
           {techInfo?.iconIdentifier || iconInitial}
         </span>
       )}
     </div>
-    
-    <div 
-      class="
-      border-1
-      border-neutral
-        absolute top-full mt-2
-        bg-background-tertiary text-label-primary text-xs font-medium py-1.5 px-2.5 rounded-md
-        dark:bg-grouped-tertiary dark:text-label-primary
-        whitespace-nowrap
-        opacity-0 group-hover:opacity-100
-        transition-opacity duration-150 ease-out
-        pointer-events-none
-    shadow-md
-    shadow-label-primary
-        z-30
-        group-hover:delay-300
-           "
-    >
+    <div class="absolute top-full mt-2 bg-background-tertiary text-label-primary text-xs font-medium py-1.5 px-2.5 rounded-md whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-150 ease-out pointer-events-none shadow-md z-30 group-hover:delay-300">
       {techInfo?.name || 'Unknown'}
     </div>
   </div>
+);
+---
+
+{link ? (
+  <a href={link} target="_blank" rel="noopener noreferrer">
+    {content}
+  </a>
+) : (
+  content
 )}

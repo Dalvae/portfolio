@@ -3,10 +3,12 @@ import "../styles/global.css";
 import Nav from '../components/Nav.astro';
 
 const lang = Astro.currentLocale || 'en'; 
+const avatarUrl = "https://res.cloudinary.com/dwxc8s4mq/image/upload/w_512,h_512,c_fill,q_auto,f_auto/v1748560366/portfolio/avatar_szpmal.webp";
 --- 
 <!doctype html>
 <html lang={lang} class="noise">
 	<head>
+		<link rel="preload" href={avatarUrl} as="image" />
 		<script is:inline>
 			const applyInitialTheme = () => {
 				let theme = 'light'; // Default to light

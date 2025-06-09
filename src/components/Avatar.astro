@@ -1,5 +1,6 @@
 ---
 // src/components/Avatar.astro
+const avatarUrl = "https://res.cloudinary.com/dwxc8s4mq/image/upload/w_512,h_512,c_fill,q_auto,f_auto/v1748560366/portfolio/avatar_szpmal.webp";
 ---
 
 <div class="relative flex justify-center items-center p-8">
@@ -13,10 +14,14 @@
 
   <!-- Imagen de perfil -->
   <img 
-    src="https://res.cloudinary.com/dwxc8s4mq/image/upload/v1748560366/portfolio/avatar_szpmal.webp"    
+    src={avatarUrl}
     alt="Diego Alvarez" 
     class="relative w-64 h-64 rounded-full 
            border-4 border-label-primary 
            shadow-lg object-cover z-20"
+    width="256"
+    height="256"
+    loading="eager"
+    fetchpriority="high"
   >
 </div>

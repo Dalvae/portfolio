@@ -1,9 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-// SOLUCIÓN: Importamos el nuevo componente de React, no el de Astro
 import TechnologyIcon from "./TechnologyIcon";
 
-// --- Interfaces (sin cambios) ---
+// --- Interfaces ---
 interface Project {
   name: string;
   image: string;
@@ -17,7 +16,6 @@ interface DiagonalCarouselProps {
 }
 
 // --- Mobile Card Component ---
-// A self-contained component for the mobile/tablet view
 const MobileProjectCard: React.FC<{ project: Project }> = ({ project }) => (
   <a
     href={project.link}
@@ -25,7 +23,14 @@ const MobileProjectCard: React.FC<{ project: Project }> = ({ project }) => (
     rel="noopener noreferrer"
     className="mobile-card"
   >
-    <img src={project.image} alt={project.name} className="mobile-card-image" />
+    <img
+      src={project.image}
+      alt={project.name}
+      className="mobile-card-image"
+      loading="lazy"
+      width="500"
+      height="450"
+    />
     <div className="mobile-card-overlay"></div>
     <div className="mobile-card-content">
       <div>
@@ -45,277 +50,7 @@ const MobileProjectCard: React.FC<{ project: Project }> = ({ project }) => (
   </a>
 );
 
-// --- Main Carousel Component ---
-const DiagonalCarousel: React.FC<DiagonalCarouselProps> = ({ projects }) => {
-  // State to determine viewport size, initialized to null for SSR
-  const [isMobile, setIsMobile] = useState<boolean | null>(null);
-
-  useEffect(() => {
-    // Use a wider breakpoint for the desktop view
-    const mediaQuery = window.matchMedia("(max-width: 1218px)");
-    const updateIsMobile = () => setIsMobile(mediaQuery.matches);
-
-    updateIsMobile(); // Set initial value
-    mediaQuery.addEventListener("change", updateIsMobile);
-
-    return () => mediaQuery.removeEventListener("change", updateIsMobile);
-  }, []);
-
-  // --- Desktop-specific state and config ---
-  const [selectedId, setSelectedId] = useState<number | null>(null);
-  const [hoveredId, setHoveredId] = useState<number | null>(null);
-  const [panOffset, setPanOffset] = useState(0);
-  const panIntervalRef = useRef<number | null>(null);
-  const panDirectionRef = useRef<"left" | "right" | "stop">("stop");
-
-  const cardTransition = { type: "tween", ease: "easeInOut", duration: 0.6 };
-  const detailsTransition = { type: "tween", ease: "easeInOut", duration: 0.4 };
-  const CONFIG = {
-    cardHeight: "85vh",
-    cardWidth: 320,
-    cardGap: 220,
-    clipPath: "polygon(30% 0, 100% 0, 70% 100%, 0 100%)",
-    expandedWidth: "90vw",
-    expandedHeight: "85vh",
-  };
-
-  // Effect for panning the carousel on mouse edge hover
-  useEffect(() => {
-    const panZoneSize = window.innerWidth * 0.1;
-    const panSpeed = 15; // pixels per frame
-
-    const loop = () => {
-      if (panDirectionRef.current === "stop") {
-        panIntervalRef.current = null;
-        return;
-      }
-
-      setPanOffset((current) => {
-        const totalCarouselWidth =
-          (projects.length - 1) * CONFIG.cardGap + CONFIG.cardWidth;
-        const screenWidth = window.innerWidth;
-        const maxPanRange = Math.max(
-          0,
-          (totalCarouselWidth - screenWidth) / 2 + 100,
-        );
-
-        let newOffset =
-          current + (panDirectionRef.current === "left" ? panSpeed : -panSpeed);
-        return Math.max(-maxPanRange, Math.min(maxPanRange, newOffset));
-      });
-
-      panIntervalRef.current = requestAnimationFrame(loop);
-    };
-
-    const startPanning = () => {
-      if (!panIntervalRef.current) {
-        loop();
-      }
-    };
-
-    const handleMouseMove = (e: MouseEvent) => {
-      if (selectedId !== null) {
-        panDirectionRef.current = "stop";
-        return;
-      }
-      const { clientX } = e;
-      const newDirection =
-        clientX < panZoneSize
-          ? "left"
-          : clientX > window.innerWidth - panZoneSize
-            ? "right"
-            : "stop";
-
-      if (newDirection !== panDirectionRef.current) {
-        panDirectionRef.current = newDirection;
-        if (newDirection !== "stop") {
-          startPanning();
-        }
-      }
-    };
-
-    const carouselContainer = document.getElementById(
-      "diagonal-carousel-container",
-    );
-    if (carouselContainer) {
-      carouselContainer.addEventListener("mousemove", handleMouseMove);
-      carouselContainer.addEventListener("mouseleave", () => {
-        panDirectionRef.current = "stop";
-      });
-    }
-
-    return () => {
-      if (carouselContainer) {
-        carouselContainer.removeEventListener("mousemove", handleMouseMove);
-        carouselContainer.removeEventListener("mouseleave", () => {
-          panDirectionRef.current = "stop";
-        });
-      }
-      if (panIntervalRef.current) {
-        cancelAnimationFrame(panIntervalRef.current);
-      }
-    };
-  }, [selectedId, projects.length, CONFIG.cardGap, CONFIG.cardWidth]);
-
-  // --- Render Logic ---
-
-  // 1. On initial render (SSR) or before useEffect runs, render a placeholder
-  if (isMobile === null) {
-    return <div className="w-full" style={{ minHeight: "100vh" }} />;
-  }
-
-  // 2. If mobile/tablet, render a vertical list of cards
-  if (isMobile) {
-    return (
-      <>
-        <style>{`
-          .mobile-vertical-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 2rem;
-            padding: 2rem 1rem;
-            width: 100%;
-          }
-          .mobile-card {
-            width: 90%;
-            max-width: 500px;
-            height: 75vh;
-            max-height: 450px;
-            border-radius: 0.5rem;
-            overflow: hidden;
-            position: relative;
-            display: block;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2), 0 6px 6px rgba(0,0,0,0.2);
-            transition: transform 0.3s ease;
-            background-color: var(--color-background-secondary);
-          }
-          .mobile-card:hover { transform: translateY(-5px); }
-          .mobile-card-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            position: absolute;
-            inset: 0;
-          }
-          .mobile-card-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to top, rgba(0,0,0,0.9) 20%, transparent 60%);
-          }
-          .mobile-card-content {
-            position: absolute;
-            inset: 0;
-            padding: 1.5rem;
-            color: white;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-          }
-          .mobile-card-title {
-            font-size: 1.75rem;
-            font-weight: bold;
-            margin-bottom: 0.5rem;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
-          }
-          .mobile-card-description {
-            font-size: 0.9rem;
-            color: rgba(255,255,255,0.85);
-            display: -webkit-box;
-            -webkit-line-clamp: 3;
-            -webkit-box-orient: vertical;  
-            overflow: hidden;
-            margin-bottom: 1rem;
-          }
-          .mobile-card-tech {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.75rem;
-          }
-        `}</style>
-        <div className="mobile-vertical-container">
-          {projects.map((project, index) => (
-            <MobileProjectCard key={index} project={project} />
-          ))}
-        </div>
-      </>
-    );
-  }
-
-  // 3. If desktop, render the original diagonal carousel
-  return (
-    <div
-      id="diagonal-carousel-container"
-      className="relative flex items-center justify-center w-full min-h-screen"
-      onClick={() => setSelectedId(null)}
-    >
-      <motion.div
-        className="relative flex items-center"
-        style={{ height: CONFIG.cardHeight }}
-      >
-        {projects.map((project, index) => {
-          const isSelected = selectedId === index;
-          const isHovered = hoveredId === index;
-
-          if (selectedId !== null && !isSelected) return null; // Simplificado: si hay selección, solo renderizamos la seleccionada
-
-          return (
-            <motion.div
-              key={index}
-              className="absolute cursor-pointer shadow-2xl"
-              style={{
-                width: isSelected ? CONFIG.expandedWidth : CONFIG.cardWidth,
-                height: isSelected ? CONFIG.expandedHeight : CONFIG.cardHeight,
-              }}
-              layoutId={`card-container-${index}`}
-              onClick={(e) => {
-                e.stopPropagation();
-                setSelectedId(isSelected ? null : index);
-              }}
-              onHoverStart={() => !isSelected && setHoveredId(index)}
-              onHoverEnd={() => setHoveredId(null)}
-              animate={{
-                x: isSelected
-                  ? -(parseFloat(CONFIG.expandedWidth) / 2) *
-                    (window.innerWidth / 100)
-                  : (index - (projects.length - 1) / 2) * CONFIG.cardGap -
-                    CONFIG.cardWidth / 2 +
-                    panOffset,
-                zIndex: isSelected
-                  ? 100
-                  : isHovered
-                    ? 99
-                    : projects.length -
-                      Math.abs(index - (projects.length - 1) / 2),
-                clipPath: isSelected
-                  ? "polygon(0 0, 100% 0, 100% 100%, 0 100%)"
-                  : CONFIG.clipPath,
-                scale: !isSelected && isHovered ? 1.1 : 1,
-              }}
-              transition={{
-                ...cardTransition,
-                x: { type: "tween", ease: "linear", duration: 0.05 },
-                scale: { type: "spring", stiffness: 400, damping: 25 },
-              }}
-            >
-              <div
-                className={`relative w-full h-full flex ${isSelected ? "flex-col md:flex-row" : ""} bg-background-secondary overflow-hidden`}
-              >
-                <ProjectContent
-                  project={project}
-                  isSelected={isSelected}
-                  isHovered={isHovered}
-                  transition={detailsTransition}
-                />
-              </div>
-            </motion.div>
-          );
-        })}
-      </motion.div>
-    </div>
-  );
-};
-
+// --- Desktop Project Content Component ---
 const ProjectContent = ({ project, isSelected, isHovered, transition }) => (
   <>
     <motion.div
@@ -328,6 +63,7 @@ const ProjectContent = ({ project, isSelected, isHovered, transition }) => (
         className="absolute inset-0 w-full h-full object-cover"
         animate={{ opacity: isSelected ? 0 : 1 }}
         transition={{ duration: 0.3, ease: "easeInOut" }}
+        loading="lazy"
       />
       <motion.img
         src={project.image}
@@ -336,6 +72,7 @@ const ProjectContent = ({ project, isSelected, isHovered, transition }) => (
         initial={{ opacity: 0 }}
         animate={{ opacity: isSelected ? 1 : 0 }}
         transition={{ duration: 0.3, ease: "easeInOut" }}
+        loading="lazy"
       />
       <motion.div
         className="absolute inset-0 flex items-end justify-center p-6 bg-gradient-to-t from-black/80 via-black/40 to-transparent pointer-events-none"
@@ -348,7 +85,6 @@ const ProjectContent = ({ project, isSelected, isHovered, transition }) => (
       </motion.div>
     </motion.div>
 
-    {/* SOLUCIÓN LAYOUT SHIFT: AnimatePresence sigue siendo la clave */}
     <AnimatePresence>
       {isSelected && (
         <motion.div
@@ -386,5 +122,222 @@ const ProjectContent = ({ project, isSelected, isHovered, transition }) => (
     </AnimatePresence>
   </>
 );
+
+// --- Main Carousel Component ---
+const DiagonalCarousel: React.FC<DiagonalCarouselProps> = ({ projects }) => {
+  const [selectedId, setSelectedId] = useState<number | null>(null);
+  const [hoveredId, setHoveredId] = useState<number | null>(null);
+  const [panOffset, setPanOffset] = useState(0);
+  const panIntervalRef = useRef<number | null>(null);
+  const panDirectionRef = useRef<"left" | "right" | "stop">("stop");
+
+  const cardTransition = { type: "tween", ease: "easeInOut", duration: 0.6 };
+  const detailsTransition = { type: "tween", ease: "easeInOut", duration: 0.4 };
+  const CONFIG = {
+    cardHeight: "85vh",
+    cardWidth: 320,
+    cardGap: 220,
+    clipPath: "polygon(30% 0, 100% 0, 70% 100%, 0 100%)",
+    expandedWidth: "90vw",
+    expandedHeight: "85vh",
+  };
+
+  useEffect(() => {
+    const panZoneSize = window.innerWidth * 0.1;
+    const panSpeed = 15;
+
+    const loop = () => {
+      if (panDirectionRef.current === "stop") {
+        panIntervalRef.current = null;
+        return;
+      }
+
+      setPanOffset((current) => {
+        const totalCarouselWidth = (projects.length - 1) * CONFIG.cardGap + CONFIG.cardWidth;
+        const screenWidth = window.innerWidth;
+        const maxPanRange = Math.max(0, (totalCarouselWidth - screenWidth) / 2 + 100);
+        let newOffset = current + (panDirectionRef.current === "left" ? panSpeed : -panSpeed);
+        return Math.max(-maxPanRange, Math.min(maxPanRange, newOffset));
+      });
+
+      panIntervalRef.current = requestAnimationFrame(loop);
+    };
+
+    const startPanning = () => {
+      if (!panIntervalRef.current) loop();
+    };
+
+    const handleMouseMove = (e: MouseEvent) => {
+      if (selectedId !== null) {
+        panDirectionRef.current = "stop";
+        return;
+      }
+      const { clientX } = e;
+      const newDirection = clientX < panZoneSize ? "left" : clientX > window.innerWidth - panZoneSize ? "right" : "stop";
+
+      if (newDirection !== panDirectionRef.current) {
+        panDirectionRef.current = newDirection;
+        if (newDirection !== "stop") startPanning();
+      }
+    };
+
+    const carouselContainer = document.getElementById("diagonal-carousel-container");
+    if (carouselContainer) {
+      carouselContainer.addEventListener("mousemove", handleMouseMove);
+      carouselContainer.addEventListener("mouseleave", () => {
+        panDirectionRef.current = "stop";
+      });
+    }
+
+    return () => {
+      if (carouselContainer) {
+        carouselContainer.removeEventListener("mousemove", handleMouseMove);
+        carouselContainer.removeEventListener("mouseleave", () => {
+          panDirectionRef.current = "stop";
+        });
+      }
+      if (panIntervalRef.current) cancelAnimationFrame(panIntervalRef.current);
+    };
+  }, [selectedId, projects.length, CONFIG.cardGap, CONFIG.cardWidth]);
+
+  return (
+    <>
+      <style>{`
+        .desktop-carousel { display: none; }
+        .mobile-vertical-container {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 2rem;
+          padding: 2rem 1rem;
+          width: 100%;
+        }
+        @media (min-width: 1219px) {
+          .desktop-carousel { display: flex; }
+          .mobile-vertical-container { display: none; }
+        }
+        .mobile-card {
+          width: 90%;
+          max-width: 500px;
+          height: 75vh;
+          max-height: 450px;
+          border-radius: 0.5rem;
+          overflow: hidden;
+          position: relative;
+          display: block;
+          box-shadow: 0 10px 20px rgba(0,0,0,0.2), 0 6px 6px rgba(0,0,0,0.2);
+          transition: transform 0.3s ease;
+          background-color: var(--color-background-secondary);
+        }
+        .mobile-card:hover { transform: translateY(-5px); }
+        .mobile-card-image {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          position: absolute;
+          inset: 0;
+        }
+        .mobile-card-overlay {
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(to top, rgba(0,0,0,0.9) 20%, transparent 60%);
+        }
+        .mobile-card-content {
+          position: absolute;
+          inset: 0;
+          padding: 1.5rem;
+          color: white;
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-end;
+        }
+        .mobile-card-title {
+          font-size: 1.75rem;
+          font-weight: bold;
+          margin-bottom: 0.5rem;
+          text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+        .mobile-card-description {
+          font-size: 0.9rem;
+          color: rgba(255,255,255,0.85);
+          display: -webkit-box;
+          -webkit-line-clamp: 3;
+          -webkit-box-orient: vertical;  
+          overflow: hidden;
+          margin-bottom: 1rem;
+        }
+        .mobile-card-tech {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 0.75rem;
+        }
+      `}</style>
+
+      <div className="mobile-vertical-container">
+        {projects.map((project, index) => (
+          <MobileProjectCard key={index} project={project} />
+        ))}
+      </div>
+
+      <div
+        id="diagonal-carousel-container"
+        className="desktop-carousel relative items-center justify-center w-full min-h-screen"
+        onClick={() => setSelectedId(null)}
+      >
+        <motion.div
+          className="relative flex items-center"
+          style={{ height: CONFIG.cardHeight }}
+        >
+          {projects.map((project, index) => {
+            const isSelected = selectedId === index;
+            const isHovered = hoveredId === index;
+
+            if (selectedId !== null && !isSelected) return null;
+
+            return (
+              <motion.div
+                key={index}
+                className="absolute cursor-pointer shadow-2xl"
+                style={{
+                  width: isSelected ? CONFIG.expandedWidth : CONFIG.cardWidth,
+                  height: isSelected ? CONFIG.expandedHeight : CONFIG.cardHeight,
+                }}
+                layoutId={`card-container-${index}`}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setSelectedId(isSelected ? null : index);
+                }}
+                onHoverStart={() => !isSelected && setHoveredId(index)}
+                onHoverEnd={() => setHoveredId(null)}
+                animate={{
+                  x: isSelected
+                    ? -(parseFloat(CONFIG.expandedWidth) / 2) * (window.innerWidth / 100)
+                    : (index - (projects.length - 1) / 2) * CONFIG.cardGap - CONFIG.cardWidth / 2 + panOffset,
+                  zIndex: isSelected ? 100 : isHovered ? 99 : projects.length - Math.abs(index - (projects.length - 1) / 2),
+                  clipPath: isSelected ? "polygon(0 0, 100% 0, 100% 100%, 0 100%)" : CONFIG.clipPath,
+                  scale: !isSelected && isHovered ? 1.1 : 1,
+                }}
+                transition={{
+                  ...cardTransition,
+                  x: { type: "tween", ease: "linear", duration: 0.05 },
+                  scale: { type: "spring", stiffness: 400, damping: 25 },
+                }}
+              >
+                <div className={`relative w-full h-full flex ${isSelected ? "flex-col md:flex-row" : ""} bg-background-secondary overflow-hidden`}>
+                  <ProjectContent
+                    project={project}
+                    isSelected={isSelected}
+                    isHovered={isHovered}
+                    transition={detailsTransition}
+                  />
+                </div>
+              </motion.div>
+            );
+          })}
+        </motion.div>
+      </div>
+    </>
+  );
+};
 
 export default DiagonalCarousel;
