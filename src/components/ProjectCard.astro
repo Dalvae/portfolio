@@ -1,0 +1,40 @@
+---
+// src/components/ProjectCard.astro
+import TechnologyIcon from './TechnologyIcon.astro';
+import type { Props as TechnologyIconProps } from './TechnologyIcon.astro';
+
+interface Props {
+  name: string;
+  image: string;
+  description: string;
+  technologies: Array<TechnologyIconProps['type']>;
+  link: string;
+}
+
+const { name, image, description, technologies, link } = Astro.props;
+---
+
+<!-- 
+  El efecto de "glow" se consigue con un borde (ring) que cambia de color y opacidad.
+-->
+<div class="bg-background-secondary  overflow-hidden flex flex-col h-full shadow-lg hover:shadow-2xl hover:ring-2 hover:ring-accent/50 transition-all duration-300">
+  <img src={image} alt={name} class="w-full h-56 object-cover" />
+  
+  <div class="p-6 flex flex-col flex-grow">
+    <h3 class="text-2xl font-bold mb-2 text-label-primary">{name}</h3>
+    <p class="text-label-secondary text-base mb-5 flex-grow">{description}</p>
+    
+    <div class="mb-6">
+      <h4 class="text-sm font-semibold mb-3 text-label-secondary uppercase tracking-wider">Technologies</h4>
+      <div class="flex flex-wrap gap-3">
+        {technologies.map(techKey => (
+          <TechnologyIcon type={techKey} />
+        ))}
+      </div>
+    </div>
+    
+    <a href={link} target="_blank" rel="noopener noreferrer" class="mt-auto w-full text-center bg-accent text-white px-5 py-3 rounded-lg font-bold hover:opacity-90 transition-opacity duration-300 transform hover:-translate-y-1">
+      View Project
+    </a>
+  </div>
+</div>

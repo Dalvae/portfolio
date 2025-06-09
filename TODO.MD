@@ -1,0 +1,5 @@
+- Agregar based on Castro- Chiloe un icono y mi horario
+  - Mis años de experiencias dinamicamente 
+    - Tal vez podria agregar un link a mis commit de github 
+-  El navbar no puede tener dropdown si estamos en mobil
+- Un poquito mas de texto 

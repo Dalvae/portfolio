@@ -1,0 +1,44 @@
+---
+import Layout from '../layouts/Layout.astro';
+import projectsData from '../data/projects-data.json';
+import TechnologyIcon from '../components/TechnologyIcon.astro'; 
+import type { Props as TechnologyIconProps } from '../components/TechnologyIcon.astro'; 
+import TechSlider from '../components/TechSlider.astro';
+import Avatar from '../components/Avatar.astro'
+import ProjectCard from '../components/ProjectCard.astro'
+import ProjectSection from '../components/ProjectSection.astro'
+---
+
+<Layout>
+  <div class="container mx-auto px-4 py-12 text-center">
+
+      <Avatar/> 
+  <!-- Imagen de perfil -->
+
+
+
+    <h1 class="text-5xl font-bold text-label-primary my-5">Diego Alvarez</h1>
+    <p class="text-2xl text-accent font-semibold mt-2">Software Developer</p>
+        <section id="social" class="my-16 text-center">
+      <div class="flex justify-center space-x-8">
+        <TechnologyIcon type="github" link="https://github.com/Dalvae/" className="w-10 h-10" />
+        <TechnologyIcon type="email" link="mailto:diego.alvarez.e@ug.uchile.cl" className="w-10 h-10" />
+        <TechnologyIcon type="linkedin" link="https://www.linkedin.com/in/diego-alvarez-espinoza/" className="w-10 h-10" />
+      </div>
+    </section>
+
+
+  </div>
+  <TechSlider/>
+<ProjectSection/>
+
+
+  <footer class="text-center py-10 mt-16 border-t border-separator-opaque">
+    <p class="text-label-secondary">&copy; {new Date().getFullYear()} Diego Alvarez. All rights reserved.</p>
+  </footer>
+</Layout>
+
+<style>
+  /* body styles are now in global.css and Layout.astro */
+  /* Additional global styles or overrides can go here if needed */
+</style>

@@ -1,0 +1,44 @@
+/* Eldritch theme - inspired by nvim eldritch colorscheme */
+.eldritch {
+  --color-accent: oklch(0.75 0.15 280);
+  --color-red: oklch(0.65 0.25 15);
+  --color-orange: oklch(0.75 0.2 45);
+  --color-yellow: oklch(0.85 0.18 85);
+  --color-green: oklch(0.7 0.18 140);
+  --color-mint: oklch(0.75 0.15 170);
+  --color-teal: oklch(0.7 0.18 185);
+  --color-cyan: oklch(0.75 0.18 195);
+  --color-blue: oklch(0.65 0.22 240);
+  --color-indigo: oklch(0.55 0.2 270);
+  --color-purple: oklch(0.7 0.22 290);
+  --color-pink: oklch(0.65 0.25 320);
+  --color-brown: oklch(0.6 0.15 40);
+
+  --color-grey: oklch(0.45 0.02 280);
+  --color-grey2: oklch(0.55 0.02 280);
+  --color-grey3: oklch(0.65 0.02 280);
+  --color-grey4: oklch(0.75 0.02 280);
+  --color-gray5: oklch(0.85 0.02 280);
+  --color-grey6: oklch(0.95 0.02 280);
+
+  --color-separator-opaque: oklch(0.35 0.05 280);
+  --color-separator-non-opaque: oklch(0.45 0.05 280 / 0.4);
+
+  --color-label-primary: oklch(0.95 0.02 280);
+  --color-label-secondary: oklch(0.75 0.02 280 / 0.8);
+  --color-label-tertiary: oklch(0.65 0.02 280 / 0.6);
+  --color-label-quarternary: oklch(0.55 0.02 280 / 0.4);
+
+  --color-background-primary: oklch(0.08 0.05 280);
+  --color-background-secondary: oklch(0.12 0.05 280);
+  --color-background-tertiary: oklch(0.16 0.05 280);
+
+  --color-grouped-primary: oklch(0.1 0.05 280);
+  --color-grouped-secondary: oklch(0.14 0.05 280);
+  --color-grouped-tertiary: oklch(0.18 0.05 280);
+
+  --color-fill-primary: oklch(0.45 0.05 280 / 0.3);
+  --color-fill-secondary: oklch(0.45 0.05 280 / 0.25);
+  --color-fill-tertiary: oklch(0.45 0.05 280 / 0.2);
+  --color-fill-quarternary: oklch(0.45 0.05 280 / 0.15);
+}

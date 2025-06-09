@@ -1,0 +1,44 @@
+/* Default (Light) Theme */
+:root {
+  --color-accent: oklch(0.55 0.2 270);
+  --color-red: oklch(0.627 0.257 27);
+  --color-orange: oklch(0.741 0.243 70);
+  --color-yellow: oklch(0.872 0.215 90);
+  --color-green: oklch(0.715 0.194 142);
+  --color-mint: oklch(0.776 0.193 180);
+  --color-teal: oklch(0.721 0.193 190);
+  --color-cyan: oklch(0.778 0.196 200);
+  --color-blue: oklch(0.624 0.234 240);
+  --color-indigo: oklch(0.536 0.196 270);
+  --color-purple: oklch(0.663 0.215 300);
+  --color-pink: oklch(0.627 0.257 330);
+  --color-brown: oklch(0.627 0.215 30);
+
+  --color-grey: oklch(0.627 0 0);
+  --color-grey2: oklch(0.741 0 0);
+  --color-grey3: oklch(0.823 0 0);
+  --color-grey4: oklch(0.858 0 0);
+  --color-gray5: oklch(0.901 0 0);
+  --color-grey6: oklch(0.949 0 0);
+
+  --color-separator-opaque: oklch(0.823 0 0);
+  --color-separator-non-opaque: oklch(0.627 0 0 / 0.36);
+
+  --color-label-primary: oklch(0 0 0);
+  --color-label-secondary: oklch(0.235 0 0 / 0.6);
+  --color-label-tertiary: oklch(0.235 0 0 / 0.3);
+  --color-label-quarternary: oklch(0.235 0 0 / 0.18);
+
+  --color-background-primary: oklch(1 0 0);
+  --color-background-secondary: oklch(0.949 0 0);
+  --color-background-tertiary: oklch(1 0 0);
+
+  --color-grouped-primary: oklch(0.2273 0.0038 286.09);
+  --color-grouped-secondary: oklch(1 0 0);
+  --color-grouped-tertiary: oklch(0.949 0 0);
+
+  --color-fill-primary: oklch(0.627 0 0 / 0.2);
+  --color-fill-secondary: oklch(0.627 0 0 / 0.16);
+  --color-fill-tertiary: oklch(0.627 0 0 / 0.12);
+  --color-fill-quarternary: oklch(0.627 0 0 / 0.08);
+}

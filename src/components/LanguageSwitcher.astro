@@ -1,0 +1,33 @@
+---
+// src/components/LanguageSwitcher.astro
+import { getRelativeLocaleUrl } from 'astro:i18n';
+
+const currentLocale = Astro.currentLocale; 
+const locales = Astro.locales; 
+
+// Get the canonical path (path without any locale prefix)
+const canonicalPath = Astro.url.pathname;
+---
+
+<div class="language-switcher flex items-center space-x-1">
+  {Array.isArray(locales) && locales.map((localeCode) => {
+    const isActive = localeCode === currentLocale;
+    const href = getRelativeLocaleUrl(localeCode, canonicalPath);
+
+    return (
+      <a
+        href={href}
+        class:list={[
+          "px-2 py-1 rounded-md text-xs font-medium border",
+          isActive 
+            ? "bg-accent text-white border-accent" 
+            : "text-label-secondary hover:bg-fill-secondary hover:text-label-primary border-transparent hover:border-color-separator-opaque",
+        ]}
+        aria-current={isActive ? "page" : undefined}
+        aria-label={isActive ? `Current language: ${localeCode.toUpperCase()}` : `Switch to ${localeCode.toUpperCase()}`}
+      >
+        {localeCode.toUpperCase()}
+      </a>
+    );
+  })}
+</div>

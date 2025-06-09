@@ -1,0 +1,107 @@
+---
+// src/components/TechSlider.astro
+import { Icon } from "astro-icon/components";
+const technologies = [
+  { name: "Java", icon: "skill-icons:java-light", darkIcon: "skill-icons:java-dark" },
+  { name: "Python", icon: "skill-icons:python-light", darkIcon: "skill-icons:python-dark" },
+  { name: "FastAPI", icon: "skill-icons:fastapi", darkIcon: "skill-icons:fastapi" },
+  { name: "TypeScript", icon: "skill-icons:typescript" },
+  { name: "Tailwind CSS", icon: "skill-icons:tailwindcss-light", darkIcon: "skill-icons:tailwindcss-dark" },
+  { name: "Redis", icon: "skill-icons:redis-light", darkIcon: "skill-icons:redis-dark" },
+  { name: "PostgreSQL", icon: "skill-icons:postgresql-light", darkIcon: "skill-icons:postgresql-dark" },
+  { name: "Lua", icon: "skill-icons:lua-light", darkIcon: "skill-icons:lua-dark" },
+  { name: "Docker", icon: "skill-icons:docker" },
+  { name: "Node.js", icon: "skill-icons:nodejs-light", darkIcon: "skill-icons:nodejs-dark" },
+  { name: "Next.js", icon: "skill-icons:nextjs-light", darkIcon: "skill-icons:nextjs-dark" },
+  { name: "React", icon: "skill-icons:react-light", darkIcon: "skill-icons:react-dark" },
+  { name: "PHP", icon: "skill-icons:php-light", darkIcon: "skill-icons:php-dark" },
+  { name: "NestJS", icon: "skill-icons:nestjs-light", darkIcon: "skill-icons:nestjs-dark" },
+];
+const duplicatedTechs = [...technologies, ...technologies];
+---
+
+<div class="scroller my-16 overflow-hidden" data-speed="slow">
+  <div class="scroller-inner flex w-max hover:[animation-play-state:paused]">
+    {duplicatedTechs.map((tech) => (
+      <div class="tech-item flex items-center justify-center mx-8 py-4">
+        {tech.darkIcon ? (
+          <>
+            <span data-light-icon>
+              <Icon name={tech.icon} class="h-8 w-auto mr-3" />
+            </span>
+            <span data-dark-icon>
+              <Icon name={tech.darkIcon} class="h-8 w-auto mr-3" />
+            </span>
+          </>
+        ) : (
+          <Icon name={tech.icon} class="h-8 w-auto mr-3" />
+        )}
+        <span class="font-medium text-lg text-label-primary">
+          {tech.name}
+        </span>
+      </div>
+    ))}
+  </div>
+</div>
+
+<style>
+  .scroller {
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent,
+      black 20%,
+      black 80%,
+      transparent
+    );
+    mask-image: linear-gradient(
+      to right,
+      transparent,
+      black 20%,
+      black 80%,
+      transparent
+    );
+  }
+  .scroller-inner {
+    animation: scroll-left 30s linear infinite;
+  }
+  @keyframes scroll-left {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+</style>
+
+<script>
+  function setIconTheme() {
+    const isDark = document.documentElement.classList.contains('dark');
+    const techItems = document.querySelectorAll('.scroller .tech-item');
+
+    techItems.forEach(item => {
+      const lightIconWrapper = item.querySelector('[data-light-icon]');
+      const darkIconWrapper = item.querySelector('[data-dark-icon]');
+
+      if (lightIconWrapper && darkIconWrapper) {
+        // Manually toggle the display style based on the theme
+        lightIconWrapper.style.display = isDark ? 'none' : 'inline-block';
+        darkIconWrapper.style.display = isDark ? 'inline-block' : 'none';
+      }
+    });
+  }
+
+  // Set initial theme for icons when the component loads
+  setIconTheme();
+
+  // Create an observer to watch for class changes on the <html> element
+  const observer = new MutationObserver(() => {
+    setIconTheme();
+  });
+
+  // Start observing the <html> tag for attribute changes
+  observer.observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ['class'] // Only react to changes in the 'class' attribute
+  });
+</script>

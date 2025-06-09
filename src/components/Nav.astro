@@ -1,0 +1,258 @@
+---
+import clsx from "clsx";
+import ThemeSwitcher from "./ThemeSwitcher.astro";
+import LanguageSwitcher from "./LanguageSwitcher.astro";
+
+// Definición de tipos
+interface IHeaderMenu {
+  path: string;
+  title: string;
+  icon?: string;
+  subMenu?: { path: string; title: string; icon?: string }[];
+}
+
+// Configuración del menú
+const staticHeaderMenuConfig: IHeaderMenu[] = [
+  {
+    path: "/",
+    title: "Home",
+    subMenu: [
+      { path: "/#projects", title: "Projects" },
+      { path: "/", title: "Home" },
+    ],
+  },
+  {
+    path: "/hobby",
+    title: "Hobby",
+    subMenu: [
+      { path: "/hobby/jungle", title: "Jungle" },
+      { path: "/hobby/soon", title: "Soon..." },
+    ],
+  },
+  {
+    path: "/blog",
+    title: "Blog",
+    subMenu: [],
+  },
+];
+
+// Obtener ruta actual
+const currentPath = Astro.url.pathname;
+---
+
+<header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" id="main-header">
+  <nav 
+    class="relative w-full flex items-center px-4 md:px-6 py-3 transition-all duration-300 h-12"
+    id="header-nav"
+  >
+    <!-- Spotlight overlay -->
+    <div 
+      id="nav-spotlight-overlay" 
+      class="pointer-events-none absolute inset-0 rounded-full opacity-0 transition-opacity duration-300" 
+      aria-hidden="true"
+    ></div>
+    
+    <!-- Contenedor para centrar el menú -->
+    <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+      <div class="flex font-medium text-label-primary space-x-0 md:space-x-1 pointer-events-auto">
+        {staticHeaderMenuConfig.map((section) => {
+          const isActive = currentPath === section.path || 
+                          currentPath.startsWith(`${section.path}/`);
+          
+          const activeSubItem = section.subMenu?.find(
+            item => currentPath === item.path || 
+                   currentPath.startsWith(`${item.path}/`)
+          );
+          
+          return (
+            <div class="relative group nav-item" id={`nav-item-${section.path.replace(/\//g, '-')}`}>
+              <a
+                href={section.path}
+                class={clsx(
+                  "relative block whitespace-nowrap px-2 md:px-4 py-2 rounded-full transition-all duration-200 overflow-hidden",
+                  isActive || activeSubItem
+                    ? "text-accent bg-accent/10" 
+                    : "hover:text-accent/80 hover:bg-accent/5"
+                )}
+              >
+                <span class="flex items-center">
+                  {(isActive || activeSubItem) && section.icon && (
+                    <span class="mr-2 transition-all duration-300">
+                      {activeSubItem?.icon || section.icon}
+                    </span>
+                  )}
+                  <span class="transition-all duration-300">
+                    {activeSubItem?.title || section.title}
+                  </span>
+                </span>
+                {(isActive || activeSubItem) && (
+                  <span class="absolute inset-x-2 -bottom-px h-px bg-gradient-to-r from-accent/0 via-accent/70 to-accent/0 rounded-full"></span>
+                )}
+              </a>
+              
+              {section.subMenu && section.subMenu.length > 0 && (
+                <div
+                  class="dropdown-menu absolute top-full inset-x-0 w-max mx-auto mt-2 bg-grouped-secondary dark:bg-grouped-secondary/95 backdrop-blur-sm rounded-xl shadow-xl border border-separator-opaque/50 z-50 min-w-[180px] overflow-hidden hidden"
+                >
+                  <div class="py-2">
+                    {section.subMenu.map((item) => (
+                      <a
+                        href={item.path}
+                        class={clsx(
+                          "block px-4 py-2 hover:bg-accent/10 transition-colors text-label-secondary",
+                          currentPath === item.path ? "text-accent bg-accent/5" : ""
+                        )}
+                      >
+                        {item.title}
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+          );
+        })}
+      </div>
+    </div>
+    
+    <!-- Contenedores laterales con posición absoluta -->
+    <div class="absolute left-4 md:left-6 top-1/2 transform -translate-y-1/2">
+      <LanguageSwitcher />
+    </div>
+    
+    <div class="absolute right-4 md:right-6 top-1/2 transform -translate-y-1/2">
+      <ThemeSwitcher />
+    </div>
+  </nav>
+</header>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    const nav = document.getElementById('header-nav');
+    const header = document.getElementById('main-header');
+    const spotlight = document.getElementById('nav-spotlight-overlay');
+    const navItems = document.querySelectorAll('.nav-item');
+    
+    if (!nav || !spotlight || !header) return;
+    
+    let isMenuOpen = false;
+    let menuCloseTimer;
+    
+    // Actualizar estado del header basado en scroll
+    const updateHeaderState = () => {
+      const scrolled = window.scrollY > 100;
+      
+      if (scrolled) {
+        header.classList.add('scrolled');
+        nav.classList.add('glass-nav');
+      } else {
+        header.classList.remove('scrolled');
+        nav.classList.remove('glass-nav');
+      }
+    };
+    
+    // Inicializar estado
+    updateHeaderState();
+    
+    // Detectar scroll
+    window.addEventListener('scroll', () => {
+      updateHeaderState();
+    });
+    
+    // Cerrar todos los dropdowns excepto el actual
+    const closeOtherDropdowns = (currentItem) => {
+      navItems.forEach(item => {
+        if (item !== currentItem) {
+          item.classList.remove('dropdown-open');
+        }
+      });
+    };
+    
+    // Detectar cuando se abre/cierra un menú
+    navItems.forEach(item => {
+      const dropdown = item.querySelector('.dropdown-menu');
+      if (!dropdown) return;
+      
+      item.addEventListener('mouseenter', () => {
+        clearTimeout(menuCloseTimer);
+        isMenuOpen = true;
+        closeOtherDropdowns(item);
+        item.classList.add('dropdown-open');
+        spotlight.style.opacity = '0';
+      });
+      
+      item.addEventListener('mouseleave', () => {
+        menuCloseTimer = setTimeout(() => {
+          item.classList.remove('dropdown-open');
+          if (!document.querySelector('.nav-item.dropdown-open')) {
+            isMenuOpen = false;
+          }
+        }, 200);
+      });
+    });
+    
+    // Efecto spotlight
+    nav.addEventListener('mouseenter', () => {
+      if (!isMenuOpen) {
+        spotlight.style.opacity = '1';
+      }
+    });
+    
+    nav.addEventListener('mouseleave', () => {
+      spotlight.style.opacity = '0';
+    });
+    
+    nav.addEventListener('mousemove', (e) => {
+      if (isMenuOpen || !nav.classList.contains('glass-nav')) return;
+      
+      const bounds = nav.getBoundingClientRect();
+      const mouseX = e.clientX - bounds.left;
+      const mouseY = e.clientY - bounds.top;
+      const radius = Math.min(bounds.width, bounds.height) * 0.8;
+      
+      const style = getComputedStyle(document.body);
+      const accentColor = style.getPropertyValue('--color-accent').trim();
+      const lchValues = accentColor.match(/oklch\((.*)\)/)?.[1];
+
+      if (lchValues) {
+        spotlight.style.background = `radial-gradient(${radius}px circle at ${mouseX}px ${mouseY}px, oklch(${lchValues} / 0.08) 0%, transparent 70%)`;
+      }
+    });
+  });
+</script>
+
+<style>
+  /* Estado con efecto glass y píldora */
+  .glass-nav {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  }
+  
+  .dark .glass-nav {
+    background: linear-gradient(to bottom, rgba(17, 24, 39, 0.7), rgba(31, 41, 55, 0.9)) !important;
+  }
+  
+  /* Dropdown abierto */
+  .nav-item.dropdown-open .dropdown-menu {
+    display: block !important;
+    animation: slideDown 0.2s ease-out;
+  }
+  
+  @keyframes slideDown {
+    from { 
+      opacity: 0; 
+      transform: translateY(-10px);
+    }
+    to { 
+      opacity: 1; 
+      transform: translateY(0);
+    }
+  }
+  
+  /* Asegurar que los dropdowns tengan posición estable */
+  .dropdown-menu {
+    transform-origin: top center;
+    will-change: transform, opacity;
+  }
+</style>

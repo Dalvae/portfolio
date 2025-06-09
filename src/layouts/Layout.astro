@@ -1,0 +1,35 @@
+---
+import "../styles/global.css";
+import Nav from '../components/Nav.astro';
+
+const lang = Astro.currentLocale || 'en'; 
+--- 
+<!doctype html>
+<html lang={lang} class="noise">
+	<head>
+		<script is:inline>
+			const applyInitialTheme = () => {
+				let theme = 'light'; // Default to light
+				if (typeof localStorage !== 'undefined') {
+					const storedTheme = localStorage.getItem('theme');
+					if (storedTheme === 'dark') {
+						theme = 'dark';
+					}
+
+					localStorage.setItem('theme', theme);
+				}
+				document.documentElement.classList.toggle('dark', theme === 'dark');
+			};
+			applyInitialTheme();
+		</script>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Diego Alvarez - Software Developer</title>
+	</head>
+	<body class="bg-background-primary text-label-primary">
+			<Nav />
+		<slot />
+	</body>
+</html>
