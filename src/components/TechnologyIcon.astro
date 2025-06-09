@@ -34,9 +34,9 @@ const iconMap = {
   'SiTypescript': SiTypescript,
   'IoLogoJavascript': IoLogoJavascript,
   'SiTailwindcss': SiTailwindcss,
-  'Bs': BsBootstrap,
+  'BsBootstrap': BsBootstrap,
   'FaSass': FaSass,
-  'Gr': GrGraphQl,
+  'GrGraphQl': GrGraphQl,
   'DiMongodb': DiMongodb,
   'FaWordpress': FaWordpress,
   'SiMysql': SiMysql,
@@ -60,8 +60,32 @@ const isLargeIcon = className && (className.includes('w-16') || className.includ
 const containerSize = isLargeIcon ? 'w-16 h-16' : 'w-10 h-10';
 const iconSize = isLargeIcon ? 'w-10 h-10' : 'w-7 h-7';
 const textSize = isLargeIcon ? 'text-lg' : 'text-xs';
+---
 
-const content = (
+{link ? (
+  <a href={link} target="_blank" rel="noopener noreferrer">
+    <div class="relative inline-flex flex-col items-center group mx-0.5">
+      <div
+        class:list={[
+          "flex aspect-square items-center justify-center rounded-full text-white transition-transform duration-200 ease-out hover:scale-110",
+          containerSize
+        ]}
+        style={{ backgroundColor: techInfo?.iconBg || '#9ca3af' }}
+      >
+        {IconComponent ? (
+          <IconComponent class={iconSize} />
+        ) : (
+          <span class:list={["font-bold p-1 text-center leading-tight", textSize]}>
+            {techInfo?.iconIdentifier || iconInitial}
+          </span>
+        )}
+      </div>
+      <div class="absolute top-full mt-2 bg-background-tertiary text-label-primary text-xs font-medium py-1.5 px-2.5 rounded-md whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-150 ease-out pointer-events-none shadow-md z-30 group-hover:delay-300">
+        {techInfo?.name || 'Unknown'}
+      </div>
+    </div>
+  </a>
+) : (
   <div class="relative inline-flex flex-col items-center group mx-0.5">
     <div
       class:list={[
@@ -82,13 +106,4 @@ const content = (
       {techInfo?.name || 'Unknown'}
     </div>
   </div>
-);
----
-
-{link ? (
-  <a href={link} target="_blank" rel="noopener noreferrer">
-    {content}
-  </a>
-) : (
-  content
 )}
