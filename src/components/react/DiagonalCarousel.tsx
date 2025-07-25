@@ -313,7 +313,7 @@ const DiagonalCarousel: React.FC<DiagonalCarouselProps> = ({ projects }) => {
                   x: isSelected
                     ? -(parseFloat(CONFIG.expandedWidth) / 2) * (window.innerWidth / 100)
                     : (index - (projects.length - 1) / 2) * CONFIG.cardGap - CONFIG.cardWidth / 2 + panOffset,
-                  zIndex: isSelected ? 100 : isHovered ? 99 : projects.length - Math.abs(index - (projects.length - 1) / 2),
+                  zIndex: isSelected ? 40 : isHovered ? 39 : projects.length - Math.abs(index - (projects.length - 1) / 2),
                   clipPath: isSelected ? "polygon(0 0, 100% 0, 100% 100%, 0 100%)" : CONFIG.clipPath,
                   scale: !isSelected && isHovered ? 1.1 : 1,
                 }}
