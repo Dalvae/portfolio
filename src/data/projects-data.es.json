@@ -1,5 +1,12 @@
 [
   {
+    "name": "MAA Steel Detailing",
+    "link": "https://maa-three.vercel.app/en",
+    "image": "https://res.cloudinary.com/dwxc8s4mq/image/upload/v1753403061/portfolio/MAA-steel-detailing_vecch7.webp",
+    "technologies": ["payload", "tailwind", "postgresql", "int", "react", "next"],
+    "description": "Headless CMS with Payload, 3 languages and perfect SEO."
+  },
+  {
     "name": "Nexon Store",
     "link": "https://nexon-storefront.vercel.app",
     "image": "https://res.cloudinary.com/dwxc8s4mq/image/upload/w_1200,h_800,c_limit,q_auto,f_auto/v1748459523/portfolio/nexonproject_a4gdm0.png",

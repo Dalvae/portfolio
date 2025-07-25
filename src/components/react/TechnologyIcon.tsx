@@ -12,6 +12,7 @@ import {
   SiTailwindcss,
   SiMysql,
   SiMedusa,
+  SiPayloadcms,
 } from "react-icons/si";
 import {
   FaReact,
@@ -62,6 +63,7 @@ const iconMap = {
   FaAws: FaAws,
   FaGithub: FaGithub,
   FaLinkedin: FaLinkedin,
+  SiPayloadcms: SiPayloadcms,
 };
 
 const TechnologyIcon: React.FC<Props> = ({ type, className, link }) => {

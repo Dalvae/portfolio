@@ -108,5 +108,10 @@
     "name": "LinkedIn",
     "iconIdentifier": "FaLinkedin",
     "iconBg": "#0A66C2"
+  },
+  "payload": {
+    "name": "Payload",
+    "iconIdentifier": "SiPayloadcms",
+    "iconBg": "#000000"
   }
 }
