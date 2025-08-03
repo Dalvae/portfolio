@@ -1,17 +1,88 @@
 ---
 // src/components/ProjectSection.astro
 import projectsData from '../data/projects-data.json';
-import DiagonalCarousel from './react/DiagonalCarousel.tsx';
+import TechnologyIcon from '../components/TechnologyIcon.astro';
 ---
 
-{/*
-  CRÍTICO: Quita 'overflow-hidden' o 'overflow-x-clip' de aquí.
-  Dejamos que el componente de React maneje sus propios límites.
-*/}
 <section id="projects" class="py-16 sm:py-24 container mx-auto">
   <div class="container mx-auto">
-      <h2 class="text-4xl font-semibold mb-10 sm:mb-24 text-label-primary text-center">My Projects</h2>
+    <h2 class="text-4xl font-semibold mb-10 sm:mb-16 text-label-primary text-center">My Projects</h2>
   </div>
-  
-  <DiagonalCarousel client:visible projects={projectsData} />
+
+  <!-- Dense 2-column timeline on large screens; full-width on small -->
+  <div class="relative">
+    <!-- central rail (double) -->
+    <div class="pointer-events-none absolute left-1/2 top-0 -translate-x-1/2 w-px h-full bg-separator-opaque/60"></div>
+    <div class="pointer-events-none absolute left-1/2 top-0 -translate-x-1/2 w-0.5 h-full bg-separator-opaque/25"></div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+      {projectsData.map((proj, idx) => {
+        const side = idx % 2 === 0 ? "left" : "right";
+        return (
+          <a href={proj.link} target="_blank" rel="noopener noreferrer" class="block">
+            <div class="relative">
+              <!-- connector to rail -->
+              <div class:list={[
+                "hidden lg:block absolute top-8 w-10 h-0.5 bg-separator-opaque/60",
+                side === "left" ? "right-[-10px]" : "left-[-10px]"
+              ]}></div>
+
+              <!-- Double-border sharp card -->
+              <div class="relative h-full">
+                <div class="absolute inset-0 translate-x-1 translate-y-1 border border-separator-opaque/60"></div>
+                <div class="relative bg-background-secondary border-2 border-separator-opaque transition-transform duration-300 hover:-translate-y-0.5 hover:translate-x-0.5 h-full flex flex-col min-h-[520px]">
+                  <!-- top rule -->
+                  <div class="h-0.5 bg-separator-opaque/40"></div>
+
+                  <!-- media -->
+                  <div class="relative h-64 overflow-hidden">
+                    <img
+                      src={proj.image}
+                      alt={proj.name}
+                      class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.02]"
+                      loading="lazy"
+                    />
+                  </div>
+
+                  <!-- body -->
+                  <div class="p-6 flex flex-col flex-1">
+                    <div class="flex items-start justify-between gap-4">
+                      <h3 class="text-2xl font-bold text-label-primary tracking-tight">
+                        {proj.name}
+                      </h3>
+                      <span class="text-xs font-semibold tracking-wider text-accent opacity-80 group-hover:opacity-100 transition-opacity">
+                        VIEW →
+                      </span>
+                    </div>
+
+                    <p class="mt-3 text-label-secondary leading-relaxed">
+                      {proj.description}
+                    </p>
+
+                    <!-- tech strip -->
+                    <div class="mt-auto">
+                      <div class="border-2 border-separator-opaque">
+                        <div class="border-t border-separator-opaque/60 bg-grouped-secondary px-3 py-2">
+                          <div class="not-group">
+                            <div class="flex flex-wrap items-center justify-center gap-2">
+                              {proj.technologies.map((t) => (
+                                <TechnologyIcon type={t} />
+                              ))}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- bottom rule -->
+                  <div class="h-0.5 bg-separator-opaque/40"></div>
+                </div>
+              </div>
+            </div>
+          </a>
+        );
+      })}
+    </div>
+  </div>
 </section>
