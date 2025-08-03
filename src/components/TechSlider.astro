@@ -20,7 +20,7 @@ const technologies = [
 const duplicatedTechs = [...technologies, ...technologies];
 ---
 
-<div class="scroller my-16 overflow-hidden" data-speed="slow">
+<div class="scroller my-16 overflow-hidden rounded-md" data-speed="slow">
   <div class="scroller-inner flex w-max hover:[animation-play-state:paused]">
     {duplicatedTechs.map((tech) => (
       <div class="tech-item flex items-center justify-center mx-8 py-4">
@@ -46,6 +46,7 @@ const duplicatedTechs = [...technologies, ...technologies];
 
 <style>
   .scroller {
+    position: relative;
     -webkit-mask-image: linear-gradient(
       to right,
       transparent,
@@ -60,6 +61,13 @@ const duplicatedTechs = [...technologies, ...technologies];
       black 80%,
       transparent
     );
+    /* Fun subtle gradient using accent along with transparent to blend with noise */
+    background-image:
+      radial-gradient(120px 60px at 10% 0%, color-mix(in oklch, var(--color-accent) 35%, transparent) 0%, transparent 70%),
+      radial-gradient(160px 80px at 90% 100%, color-mix(in oklch, var(--color-accent) 28%, transparent) 0%, transparent 75%);
+    background-repeat: no-repeat;
+    background-size: auto;
+    background-position: top left, bottom right;
   }
   .scroller-inner {
     animation: scroll-left 60s linear infinite;

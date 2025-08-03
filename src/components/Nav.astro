@@ -40,7 +40,7 @@ const staticHeaderMenuConfig: IHeaderMenu[] = [
 const currentPath = Astro.url.pathname;
 ---
 
-<header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" id="main-header">
+<header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" id="main-header" role="banner">
   <nav 
     class="relative w-full flex items-center px-4 md:px-6 py-3 transition-all duration-300 h-12"
     id="header-nav"
@@ -215,7 +215,8 @@ const currentPath = Astro.url.pathname;
       const lchValues = accentColor.match(/oklch\((.*)\)/)?.[1];
 
       if (lchValues) {
-        spotlight.style.background = `radial-gradient(${radius}px circle at ${mouseX}px ${mouseY}px, oklch(${lchValues} / 0.08) 0%, transparent 70%)`;
+        // Escape backticks in template literal for inline <script> context
+        spotlight.style.background = 'radial-gradient(' + radius + 'px circle at ' + mouseX + 'px ' + mouseY + 'px, oklch(' + lchValues + ' / 0.08) 0%, transparent 70%)';
       }
     });
   });

@@ -67,10 +67,12 @@ const payloadSvg = `<svg class="${iconSize}" viewBox="0 0 64 64" fill="none" xml
   <div class="relative inline-flex flex-col items-center group mx-0.5">
     <div
       class:list={[
-        "flex aspect-square items-center justify-center rounded-full text-white transition-transform duration-200 ease-out hover:scale-110",
+        "flex aspect-square items-center justify-center rounded-full text-white transition-transform duration-200 ease-out hover:scale-110 ring-1 ring-black/5",
         containerSize
       ]}
-      style={{ backgroundColor: techInfo?.iconBg || '#9ca3af' }}
+      style={{
+        background: `conic-gradient(from 220deg at 50% 50%, color-mix(in oklch, var(--color-accent) 22%, ${techInfo?.iconBg || '#9ca3af'}) 0 25%, ${techInfo?.iconBg || '#9ca3af'} 25% 100%)`
+      }}
     >
       {type === 'payload' ? (
         <Fragment set:html={payloadSvg} />

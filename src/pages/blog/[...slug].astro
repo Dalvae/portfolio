@@ -1,0 +1,96 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog', ({ data }) => {
+    return import.meta.env.PROD ? data.draft !== true : true;
+  });
+
+  const sortedPosts = posts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+
+  return sortedPosts.map((post, index) => {
+    const prevPost = index > 0 ? sortedPosts[index - 1] : null;
+    const nextPost = index < sortedPosts.length - 1 ? sortedPosts[index + 1] : null;
+
+    return {
+      params: { slug: post.slug },
+      props: {
+        post,
+        prevPost: prevPost ? { slug: prevPost.slug, title: prevPost.data.title } : null,
+        nextPost: nextPost ? { slug: nextPost.slug, title: nextPost.data.title } : null,
+      },
+    };
+  });
+}
+
+const { post, prevPost, nextPost } = Astro.props;
+const { Content } = await post.render();
+const { title, date, tags, author, description } = post.data;
+---
+
+<Layout>
+  <div class="container mx-auto px-4 py-16">
+    <article class="max-w-4xl mx-auto">
+      <header class="mb-8">
+        <h1 class="text-4xl md:text-5xl font-extrabold text-label-primary leading-tight">
+          {title}
+        </h1>
+        <p class="mt-4 text-lg text-label-secondary">{description}</p>
+        <div class="mt-6 flex items-center gap-4 text-sm text-label-secondary">
+          <span>By {author}</span>
+          <span class="text-label-tertiary">•</span>
+          <time datetime={date.toISOString()}>
+            {new Date(date).toLocaleDateString('en-US', {
+              year: 'numeric',
+              month: 'long',
+              day: 'numeric',
+            })}
+          </time>
+        </div>
+        {tags && tags.length > 0 && (
+          <div class="mt-4 flex flex-wrap gap-2">
+            {tags.map((t: string) => (
+              <span class="text-xs px-2 py-1 rounded-full border border-accent/60 bg-accent/10 text-accent">
+                {t}
+              </span>
+            ))}
+          </div>
+        )}
+      </header>
+      <div
+        class="prose prose-lg lg:prose-xl dark:prose-invert max-w-none 
+               prose-headings:font-bold prose-headings:text-label-primary 
+               prose-p:text-label-secondary prose-a:text-accent 
+               prose-strong:text-label-primary"
+      >
+        <Content />
+      </div>
+    </article>
+
+    <nav class="max-w-4xl mx-auto mt-16 pt-8 border-t border-separator-opaque flex justify-between">
+      {prevPost ? (
+        <a href={`/blog/${prevPost.slug}`} class="group flex items-center gap-3 text-label-secondary hover:text-accent transition-colors">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" />
+          </svg>
+          <div class="text-left">
+            <span class="block text-sm">Previous</span>
+            <span class="block font-semibold text-label-primary group-hover:text-accent transition-colors">{prevPost.title}</span>
+          </div>
+        </a>
+      ) : <div />}
+      {nextPost ? (
+        <a href={`/blog/${nextPost.slug}`} class="group flex items-center gap-3 text-label-secondary hover:text-accent transition-colors">
+          <div class="text-right">
+            <span class="block text-sm">Next</span>
+            <span class="block font-semibold text-label-primary group-hover:text-accent transition-colors">{nextPost.title}</span>
+          </div>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+          </svg>
+        </a>
+      ) : <div />}
+    </nav>
+  </div>
+</Layout>

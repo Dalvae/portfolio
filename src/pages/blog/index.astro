@@ -1,0 +1,56 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+
+const posts = await getCollection('blog');
+const sorted = posts
+  .map((p) => ({
+    ...p,
+    href: `/blog/${p.slug}`,
+  }))
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+---
+
+<Layout>
+  <section class="container mx-auto px-4 py-12">
+    <header class="mb-8 text-center">
+      <h1 class="text-4xl font-bold text-label-primary">Blog</h1>
+      <p class="mt-2 text-label-secondary">Articles, notes and thoughts.</p>
+    </header>
+
+    {sorted.length === 0 ? (
+      <p class="text-center text-label-secondary">No posts yet. Coming soon.</p>
+    ) : (
+      <ul class="space-y-6">
+        {sorted.map(({ data, href }) => (
+          <li class="group border-2 border-separator-opaque bg-background-secondary hover:-translate-y-0.5 transition-transform">
+            <a href={href} class="block p-5">
+              <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-2">
+                <h2 class="text-2xl font-semibold text-label-primary group-hover:text-accent">
+                  {data.title}
+                </h2>
+                <time class="text-sm text-label-tertiary" datetime={data.date.toISOString()}>
+                  {new Date(data.date).toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
+                  })}
+                </time>
+              </div>
+              {data.description && (
+                <p class="mt-2 text-label-secondary">{data.description}</p>
+              )}
+              {data.tags && data.tags.length > 0 && (
+                <div class="mt-3 flex flex-wrap gap-2">
+                  {data.tags.map((t) => (
+                    <span class="text-xs px-2 py-1 rounded-full border border-accent/60 bg-accent/10 text-accent">{t}</span>
+                  ))}
+                </div>
+              )}
+            </a>
+          </li>
+        ))}
+      </ul>
+    )}
+  </section>
+</Layout>
