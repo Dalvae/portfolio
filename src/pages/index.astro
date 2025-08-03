@@ -18,12 +18,21 @@ import ProjectSection from '../components/ProjectSection.astro'
 
 
     <h1 class="text-5xl font-bold text-label-primary my-5">Diego Alvarez</h1>
-    <p class="text-2xl text-accent font-semibold mt-2">Software Developer</p>
+    <p class="text-2xl text-accent font-semibold mt-2">Full Stack Developer</p>
         <section id="social" class="my-16 text-center">
       <div class="flex justify-center space-x-8">
         <TechnologyIcon type="github" link="https://github.com/Dalvae/" className="w-10 h-10" />
         <TechnologyIcon type="email" link="mailto:diego.alvarez.e@ug.uchile.cl" className="w-10 h-10" />
         <TechnologyIcon type="linkedin" link="https://www.linkedin.com/in/diego-alvarez-espinoza/" className="w-10 h-10" />
+        <!-- Creative Upwork icon: using a styled "U" badge matching your icon system -->
+        <a href="https://www.upwork.com/freelancers/~01911ef1e05ea67391?mp_source=share" target="_blank" rel="noopener noreferrer" class="relative inline-flex flex-col items-center group mx-0.5">
+          <div class="flex aspect-square items-center justify-center rounded-full text-white transition-transform duration-200 ease-out hover:scale-110 w-10 h-10" style="background-color:#14a800">
+            <span class="font-extrabold text-base leading-none">U</span>
+          </div>
+          <div class="absolute top-full mt-2 bg-background-tertiary text-label-primary text-xs font-medium py-1.5 px-2.5 rounded-md whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-150 ease-out pointer-events-none shadow-md z-30 group-hover:delay-300">
+            Upwork
+          </div>
+        </a>
       </div>
     </section>
 
