@@ -10,17 +10,18 @@ import ProjectSection from '../components/ProjectSection.astro'
 ---
 
 <Layout>
-  <div class="container mx-auto px-4 py-12 text-center">
+  <!-- Make hero section compact to fit first viewport with carousel -->
+  <div class="container mx-auto px-4 pt-8 pb-6 text-center">
 
       <Avatar/> 
   <!-- Imagen de perfil -->
 
+    <h1 class="text-4xl sm:text-5xl font-bold text-label-primary mt-3 mb-2">Diego Alvarez</h1>
+    <p class="text-xl sm:text-2xl text-accent font-semibold mt-0.5">Full Stack Developer</p>
 
-
-    <h1 class="text-5xl font-bold text-label-primary my-5">Diego Alvarez</h1>
-    <p class="text-2xl text-accent font-semibold mt-2">Full Stack Developer</p>
-        <section id="social" class="my-16 text-center">
-      <div class="flex justify-center space-x-8">
+    <!-- Tighter social spacing -->
+    <section id="social" class="mt-6 mb-8 text-center">
+      <div class="flex justify-center gap-5 sm:gap-8">
         <TechnologyIcon type="github" link="https://github.com/Dalvae/" className="w-10 h-10" />
         <TechnologyIcon type="email" link="mailto:diego.alvarez.e@ug.uchile.cl" className="w-10 h-10" />
         <TechnologyIcon type="linkedin" link="https://www.linkedin.com/in/diego-alvarez-espinoza/" className="w-10 h-10" />
@@ -35,11 +36,16 @@ import ProjectSection from '../components/ProjectSection.astro'
         </a>
       </div>
     </section>
-
-
   </div>
-  <TechSlider/>
-<ProjectSection/>
+
+  <!-- Reduce gaps around sliders/sections to keep first screen dense -->
+  <div class="mt-2 sticky bottom-0 left-0 right-0 z-40 bg-background-primary/80 backdrop-blur supports-[backdrop-filter]:bg-background-primary/60">
+    <TechSlider/>
+  </div>
+
+  <div class="mt-6">
+    <ProjectSection/>
+  </div>
 
 
   <footer class="text-center py-10 mt-16 border-t border-separator-opaque">
