@@ -113,5 +113,10 @@
     "name": "Payload",
     "iconIdentifier": "SiPayloadcms",
     "iconBg": "#000000"
+  },
+  "upwork": {
+    "name": "Upwork",
+    "iconIdentifier": "FaUpwork",
+    "iconBg": "#4CAF50"
   }
 }

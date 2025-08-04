@@ -13,7 +13,7 @@ import {
   SiMysql,
   SiMedusa,
   SiPayloadcms,
-} from "react-icons/si";
+} from "react-icons/si"
 import {
   FaReact,
   FaNodeJs,
@@ -23,14 +23,15 @@ import {
   FaAws,
   FaGithub,
   FaLinkedin,
-} from "react-icons/fa";
-import { MdTranslate, MdEmail } from "react-icons/md";
-import { IoLogoJavascript } from "react-icons/io5";
-import { DiMongodb, DiRedis } from "react-icons/di";
-import { BiLogoPostgresql } from "react-icons/bi";
-import { RiNextjsLine } from "react-icons/ri";
-import { BsBootstrap } from "react-icons/bs";
-import { GrGraphQl } from "react-icons/gr";
+  FaUpwork,
+} from "react-icons/fa6"
+import { MdTranslate, MdEmail } from "react-icons/md"
+import { IoLogoJavascript } from "react-icons/io5"
+import { DiMongodb, DiRedis } from "react-icons/di"
+import { BiLogoPostgresql } from "react-icons/bi"
+import { RiNextjsLine } from "react-icons/ri"
+import { BsBootstrap } from "react-icons/bs"
+import { GrGraphQl } from "react-icons/gr"
 
 // La interfaz de Props es la misma
 export interface Props {
@@ -64,6 +65,7 @@ const iconMap = {
   FaGithub: FaGithub,
   FaLinkedin: FaLinkedin,
   SiPayloadcms: SiPayloadcms,
+  FaUpwork: FaUpwork,
 };
 
 const TechnologyIcon: React.FC<Props> = ({ type, className, link }) => {
