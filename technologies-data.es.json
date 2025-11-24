@@ -1,0 +1,117 @@
+{
+  "int": {
+    "name": "i18n",
+    "iconIdentifier": "MdTranslate",
+    "iconBg": "#4CAF50"
+  },
+  "bootstrap": {
+    "name": "Bootstrap",
+    "iconIdentifier": "Bs",
+    "iconBg": "#7952B3"
+  },
+  "graphql": {
+    "name": "GraphQL",
+    "iconIdentifier": "Gr",
+    "iconBg": "#E10098"
+  },
+  "astro": {
+    "name": "Astro",
+    "iconIdentifier": "SiAstro",
+    "iconBg": "#000000"
+  },
+  "react": {
+    "name": "React",
+    "iconIdentifier": "FaReact",
+    "iconBg": "#61DAFB"
+  },
+  "node": {
+    "name": "Node.js",
+    "iconIdentifier": "FaNodeJs",
+    "iconBg": "#339933"
+  },
+  "typescript": {
+    "name": "TypeScript",
+    "iconIdentifier": "SiTypescript",
+    "iconBg": "#3178C6"
+  },
+  "js": {
+    "name": "JavaScript",
+    "iconIdentifier": "IoLogoJavascript",
+    "iconBg": "#F7DF1E"
+  },
+  "tailwind": {
+    "name": "Tailwind CSS",
+    "iconIdentifier": "SiTailwindcss",
+    "iconBg": "#38B2AC"
+  },
+  "sass": {
+    "name": "Sass",
+    "iconIdentifier": "FaSass",
+    "iconBg": "#CC6699"
+  },
+  "mongodb": {
+    "name": "MongoDB",
+    "iconIdentifier": "DiMongodb",
+    "iconBg": "#47A248"
+  },
+  "wordpress": {
+    "name": "WordPress",
+    "iconIdentifier": "FaWordpress",
+    "iconBg": "#21759B"
+  },
+  "mysql": {
+    "name": "MySQL",
+    "iconIdentifier": "SiMysql",
+    "iconBg": "#4479A1"
+  },
+  "php": {
+    "name": "PHP",
+    "iconIdentifier": "FaPhp",
+    "iconBg": "#777BB4"
+  },
+  "medusa": {
+    "name": "Medusa",
+    "iconIdentifier": "SiMedusa",
+    "iconBg": "#6F2CAC"
+  },
+  "postgresql": {
+    "name": "PostgreSQL",
+    "iconIdentifier": "BiLogoPostgresql",
+    "iconBg": "#336791"
+  },
+  "next": {
+    "name": "Next.js",
+    "iconIdentifier": "RiNextjsLine",
+    "iconBg": "#000000"
+  },
+  "redis": {
+    "name": "Redis",
+    "iconIdentifier": "DiRedis",
+    "iconBg": "#ff4438"
+  },
+  "aws": {
+    "name": "AWS",
+    "iconIdentifier": "FaAws",
+    "iconBg": "#232f3e"
+  },
+  "github": {
+    "name": "GitHub",
+    "iconIdentifier": "FaGithub",
+    "iconBg": "#181717"
+  },
+  "email": {
+    "name": "Email",
+    "iconIdentifier": "MdEmail",
+    "iconBg": "#EA4335"
+  },
+  "linkedin": {
+    "name": "LinkedIn",
+    "iconIdentifier": "FaLinkedin",
+    "iconBg": "#0A66C2"
+  },
+  "payload": {
+    "name": "Payload",
+    "iconIdentifier": "SiPayloadcms",
+    "iconBg": "#000000"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "name": "portfolio",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "dependencies": {
+    "eslint": "^9.39.1",
+    "nuxt": "^4.2.1",
+    "vite": "^7.2.4",
+    "vue": "^3.5.25",
+    "vue-router": "^4.6.3"
+  },
+  "devDependencies": {
+    "@nuxt/content": "3.8.2",
+    "@nuxt/devtools": "3.1.0",
+    "@nuxt/eslint": "1.10.0",
+    "@nuxt/fonts": "0.12.1",
+    "@nuxt/hints": "1.0.0-alpha.2",
+    "@nuxt/icon": "2.1.0",
+    "@nuxt/image": "2.0.0",
+    "@nuxtjs/i18n": "10.2.1",
+    "@nuxtjs/tailwindcss": "6.14.0",
+    "nuxt-seo-utils": "7.0.18",
+    "nuxt-vitalizer": "2.0.0"
+  }
+}
