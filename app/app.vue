@@ -1,6 +1,10 @@
+<script setup lang="ts">
+// Global Head configuration
+// Title template disabled - each page sets its own full title
+</script>
+
 <template>
-  <div>
-    <NuxtRouteAnnouncer />
-    <NuxtWelcome />
-  </div>
+  <NuxtLayout>
+    <NuxtPage />
+  </NuxtLayout>
 </template>

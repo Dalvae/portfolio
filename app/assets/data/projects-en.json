@@ -1,7 +1,14 @@
 [
   {
+    "name": "SK Engenharia",
+    "link": "https://www.skengenharia.com/en",
+    "image": "https://via.placeholder.com/400x300/18181b/ffffff?text=SK+Engenharia",
+    "technologies": ["payload", "tailwind", "postgresql", "int", "react", "next"],
+    "description": "Headless CMS with Payload, multi-language support and optimized SEO."
+  },
+  {
     "name": "MAA Steel Detailing",
-    "link": "https://maa-three.vercel.app/en",
+    "link": "https://masd.pt/en",
     "image": "https://res.cloudinary.com/dwxc8s4mq/image/upload/v1753403061/portfolio/MAA-steel-detailing_vecch7.webp",
     "technologies": ["payload", "tailwind", "postgresql", "int", "react", "next"],
     "description": "Headless CMS with Payload, 3 languages and perfect SEO."

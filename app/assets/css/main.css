@@ -1,0 +1,30 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: 'Manrope', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace; /* O la mono del sistema */
+
+  --color-void: #050505;
+  --color-surface: #0a0a0a;
+  --color-border: #27272a;
+  --color-subtle: #52525b;
+}
+
+body {
+  background-color: var(--color-void);
+  color: #e4e4e7;
+  font-family: var(--font-display);
+  overflow-x: hidden;
+}
+
+/* Scrollbar muy fina y sutil */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #3f3f46; border-radius: 10px; }
+
+/* Gradiente sutil para textos */
+.text-gradient {
+  background: linear-gradient(to right, #ffffff, #a1a1aa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

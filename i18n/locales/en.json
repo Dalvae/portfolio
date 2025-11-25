@@ -1,0 +1,59 @@
+{
+  "seo": {
+    "title": "Full Stack Developer",
+    "description": "Full Stack Developer from San Pedro de Atacama. Specialist in React, Nuxt and modern architectures."
+  },
+  "role": "Full Stack Developer",
+  "role_title": "Full Stack Developer & Software Architect",
+  "location": "San Pedro de Atacama, Chile",
+  "intro": "I build precise and accessible digital experiences.",
+  "specialist_prefix": "Specialist in",
+  "specialist_suffix": "and high-performance systems.",
+  "scroll_hint": "Scroll to see my recent work.",
+  "sections": {
+    "projects": "Projects",
+    "stack": "Stack",
+    "bio": "Bio"
+  },
+  "view_all_projects": "View Full Project Archive",
+  "stack_categories": {
+    "frontend": "Frontend",
+    "backend": "Backend",
+    "database": "Database",
+    "tools": "Tools & CMS"
+  },
+  "aria": {
+    "tech_used": "Technologies used"
+  },
+  "bio": {
+    "para1_1": "Full-stack developer with",
+    "para1_experience": "3+ years of experience",
+    "para1_2": ", currently living in San Pedro de Atacama, Chile. I started programming",
+    "para1_lua": "bots in Lua",
+    "para1_3": ", then moved to",
+    "para1_wordpress": "WordPress",
+    "para1_4": "with pure PHP, then to",
+    "para1_react": "React",
+    "para1_5": "and now I'm transitioning to backend with",
+    "para1_java": "Java",
+    "para1_6": ", which I've really enjoyed.",
+    "para2_1": "I studied",
+    "para2_degree": "Sociology",
+    "para2_2": "at Universidad de Chile, which gives me a unique perspective on user behavior and product design.",
+    "para3_1": "I speak",
+    "para3_spanish": "Spanish",
+    "para3_english": "English",
+    "para3_french": "French",
+    "para3_and": "and"
+  },
+  "availability": {
+    "title": "Availability",
+    "hours": "30 hrs/week",
+    "rate": "$18 USD/hr",
+    "timezone": "GMT-4"
+  },
+  "footer": {
+    "copyright": "© {year} Diego Alvarez. San Pedro de Atacama.",
+    "built_with": "Built with Nuxt & Tailwind 4."
+  }
+}

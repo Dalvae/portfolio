@@ -1,0 +1,82 @@
+[
+  {
+    "name": "SK Engenharia",
+    "link": "https://www.skengenharia.com/en",
+    "image": "https://via.placeholder.com/400x300/18181b/ffffff?text=SK+Engenharia",
+    "technologies": ["payload", "tailwind", "postgresql", "int", "react", "next"],
+    "description": "CMS headless con Payload, soporte multi-idioma y SEO optimizado."
+  },
+  {
+    "name": "MAA Steel Detailing",
+    "link": "https://masd.pt/en",
+    "image": "https://res.cloudinary.com/dwxc8s4mq/image/upload/v1753403061/portfolio/MAA-steel-detailing_vecch7.webp",
+    "technologies": ["payload", "tailwind", "postgresql", "int", "react", "next"],
+    "description": "CMS headless con Payload, 3 idiomas y SEO perfecto."
+  },
+  {
+    "name": "Nexon Store",
+    "link": "https://nexon-storefront.vercel.app",
+    "image": "https://res.cloudinary.com/dwxc8s4mq/image/upload/w_1200,h_800,c_limit,q_auto,f_auto/v1748459523/portfolio/nexonproject_a4gdm0.png",
+    "technologies": [
+      "int",
+      "react",
+      "next",
+      "typescript",
+      "tailwind",
+      "medusa",
+      "postgresql",
+      "redis"
+    ],
+    "description": "Plataforma ecommerce full-stack construida con Medusa.js, con soporte multi-idioma, precios por región y storefront de alto rendimiento."
+  },
+  {
+    "name": "Patricio Salinas",
+    "link": "https://www.patriciosalinas.com/",
+    "image": "https://res.cloudinary.com/dwxc8s4mq/image/upload/w_1200,h_800,c_limit,q_auto,f_auto/v1728582899/portfolio/dpcdeapxorgdqjpsed1x.jpg",
+    "technologies": ["astro", "typescript", "tailwind", "wordpress", "int"],
+    "description": "Frontend de alto rendimiento para un fotógrafo. WordPress headless, internacionalización y optimización de imágenes."
+  },
+  {
+    "name": "Sublimahyca",
+    "link": "https://www.sublimahyca.cl/",
+    "image": "https://res.cloudinary.com/dwxc8s4mq/image/upload/w_1200,h_800,c_limit,q_auto,f_auto/v1707073977/portfolio/photo1_sv4ekw.jpg",
+    "technologies": [
+      "react",
+      "next",
+      "typescript",
+      "tailwind",
+      "medusa",
+      "postgresql",
+      "redis"
+    ],
+    "description": "Plataforma ecommerce de alto rendimiento construida con Medusa, con integración perfecta."
+  },
+  {
+    "name": "Carcaj",
+    "link": "https://carcaj.cl/",
+    "image": "https://res.cloudinary.com/dwxc8s4mq/image/upload/w_1200,h_800,c_limit,q_auto,f_auto/v1707073978/portfolio/photo2_nm5onl.jpg",
+    "technologies": ["wordpress", "php", "sass", "mysql"],
+    "description": "Literatura, ensayos y poesía. Construido desde cero con PHP y Sass."
+  },
+  {
+    "name": "BUC",
+    "link": "https://buc.cl/",
+    "image": "https://res.cloudinary.com/dwxc8s4mq/image/upload/w_1200,h_800,c_limit,q_auto,f_auto/v1707073977/portfolio/photo3_kzqgfp.jpg",
+    "technologies": ["wordpress", "php", "bootstrap", "mysql"],
+    "description": "Mi primer sitio web: tema WordPress personalizado con Bootstrap para una consultora."
+  },
+  {
+    "name": "Pokedex",
+    "link": "https://pokedex-puce-two.vercel.app/",
+    "image": "https://res.cloudinary.com/dwxc8s4mq/image/upload/w_1200,h_800,c_limit,q_auto,f_auto/v1714922737/portfolio/pokedex_ed3kcy.jpg",
+    "technologies": ["next", "react", "typescript", "tailwind"],
+    "description": "Pokedex performante usando PokeAPI y App Router de Next.js."
+  },
+  {
+    "name": "Internet is great",
+    "link": "https://internetisgreat.vercel.app/",
+    "image": "https://res.cloudinary.com/dwxc8s4mq/image/upload/w_1200,h_800,c_limit,q_auto,f_auto/v1714923479/portfolio/Internet_is_greath_mknegt.jpg",
+    "technologies": ["next", "react", "typescript", "tailwind", "aws"],
+    "description": "Solo una página de memes, usando AWS y App Router de Next.js."
+  }
+]

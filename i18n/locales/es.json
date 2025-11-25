@@ -1,0 +1,59 @@
+{
+  "seo": {
+    "title": "Desarrollador Full Stack",
+    "description": "Desarrollador Full Stack de San Pedro de Atacama. Especialista en React, Nuxt y arquitecturas modernas."
+  },
+  "role": "Desarrollador Full Stack",
+  "role_title": "Full Stack Developer & Arquitecto de Software",
+  "location": "San Pedro de Atacama, Chile",
+  "intro": "Construyo experiencias digitales precisas y accesibles.",
+  "specialist_prefix": "Especialista en",
+  "specialist_suffix": "y sistemas de alto rendimiento.",
+  "scroll_hint": "Desliza para ver mis trabajos recientes.",
+  "sections": {
+    "projects": "Proyectos",
+    "stack": "Stack",
+    "bio": "Bio"
+  },
+  "view_all_projects": "Ver Archivo Completo de Proyectos",
+  "stack_categories": {
+    "frontend": "Frontend",
+    "backend": "Backend",
+    "database": "Database",
+    "tools": "Tools & CMS"
+  },
+  "aria": {
+    "tech_used": "Tecnologías usadas"
+  },
+  "bio": {
+    "para1_1": "Desarrollador full-stack con",
+    "para1_experience": "3+ años de experiencia",
+    "para1_2": ", actualmente viviendo en San Pedro de Atacama, Chile. Empecé programando",
+    "para1_lua": "bots en Lua",
+    "para1_3": ", luego pasé a",
+    "para1_wordpress": "WordPress",
+    "para1_4": "con PHP puro, después a",
+    "para1_react": "React",
+    "para1_5": "y ahora estoy transicionando al backend con",
+    "para1_java": "Java",
+    "para1_6": ", que me ha gustado mucho.",
+    "para2_1": "Estudié",
+    "para2_degree": "Sociología",
+    "para2_2": "en la Universidad de Chile, lo que me da una perspectiva única sobre el comportamiento del usuario y el diseño de productos.",
+    "para3_1": "Hablo",
+    "para3_spanish": "Español",
+    "para3_english": "Inglés",
+    "para3_french": "Francés",
+    "para3_and": "y"
+  },
+  "availability": {
+    "title": "Disponibilidad",
+    "hours": "30 hrs/semana",
+    "rate": "$18 USD/hr",
+    "timezone": "GMT-4"
+  },
+  "footer": {
+    "copyright": "© {year} Diego Alvarez. San Pedro de Atacama.",
+    "built_with": "Construido con Nuxt & Tailwind 4."
+  }
+}
