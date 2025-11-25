@@ -64,11 +64,10 @@ export default defineNuxtConfig({
   // Site metadata for SEO
   site: {
     url: "https://diegoalvarez.dev",
-    name: "Diego Alvarez",
+    name: "Dalvae",
     description:
       "Full Stack Developer from San Pedro de Atacama. Specialist in React, Nuxt and Modern Architectures.",
     defaultLocale: "en",
-    titleSeparator: "|",
   },
 
   fonts: {
@@ -123,6 +122,7 @@ export default defineNuxtConfig({
         { name: "color-scheme", content: "dark" },
       ],
       link: [
+        { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
         { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
         { rel: "canonical", href: "https://diegoalvarez.dev" },
       ],

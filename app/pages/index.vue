@@ -11,14 +11,15 @@ const ogImage = "https://res.cloudinary.com/dwxc8s4mq/image/upload/w_1200,h_630,
 
 // SEO - Complete meta tags
 useHead({
-  title: t("seo.title"),
+  title: "Dalvae",
+  titleTemplate: "",
   htmlAttrs: {
     lang: locale.value === "es" ? "es-CL" : "en-US",
   },
   meta: [
     { name: "description", content: t("seo.description") },
     // Open Graph
-    { property: "og:title", content: t("seo.title") },
+    { property: "og:title", content: "Dalvae - Full Stack Developer" },
     { property: "og:description", content: t("seo.description") },
     { property: "og:url", content: locale.value === "es" ? `${siteUrl}/es` : siteUrl },
     { property: "og:image", content: ogImage },
@@ -26,7 +27,7 @@ useHead({
     { property: "og:image:height", content: "630" },
     { property: "og:image:alt", content: "Diego Alvarez - Full Stack Developer" },
     // Twitter
-    { name: "twitter:title", content: t("seo.title") },
+    { name: "twitter:title", content: "Dalvae - Full Stack Developer" },
     { name: "twitter:description", content: t("seo.description") },
     { name: "twitter:image", content: ogImage },
   ],
