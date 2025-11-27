@@ -48,8 +48,7 @@
   },
   "availability": {
     "title": "Availability",
-    "hours": "30 hrs/week",
-    "rate": "$18 USD/hr",
+    "hours": "40 hrs/week",
     "timezone": "GMT-4"
   },
   "footer": {

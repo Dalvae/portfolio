@@ -557,8 +557,6 @@ onMounted(() => {
                   <span class="text-zinc-300">{{ t("availability.hours") }}</span>
                 </div>
                 <div class="text-zinc-500">•</div>
-                <div class="text-zinc-300">{{ t("availability.rate") }}</div>
-                <div class="text-zinc-500">•</div>
                 <div class="text-zinc-300">{{ t("availability.timezone") }}</div>
               </div>
             </div>
