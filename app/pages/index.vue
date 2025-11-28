@@ -32,6 +32,8 @@ useHead({
     { name: "twitter:image", content: ogImage },
   ],
   link: [
+    // Favicon
+    { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
     // Canonical and hreflang for i18n SEO
     { rel: "canonical", href: locale.value === "es" ? `${siteUrl}/es` : siteUrl },
     { rel: "alternate", hreflang: "en", href: siteUrl },
