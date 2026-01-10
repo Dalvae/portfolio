@@ -1,22 +1,67 @@
 [
   {
+    "name": "Northern Chile Tours",
+    "link": "https://www.northernchile.com/",
+    "imageDesktop": "https://res.cloudinary.com/dwxc8s4mq/image/upload/v1768072810/portfolio/northern-chile-desktop.webp",
+    "imageMobile": "https://res.cloudinary.com/dwxc8s4mq/image/upload/v1768072811/portfolio/northern-chile-mobile.webp",
+    "technologies": ["java", "springboot", "vue", "nuxt", "postgresql", "int"],
+    "github": "https://github.com/Dalvae/northernchile",
+    "description": "SaaS for tour management with Java Spring Boot, Google OAuth authentication and enterprise-ready stack."
+  },
+  {
+    "name": "Conexia Dashboard",
+    "link": "",
+    "imageDesktop": "/placeholder-desktop.svg",
+    "imageMobile": "/placeholder-mobile.svg",
+    "technologies": ["react", "typescript", "supabase", "tailwind"],
+    "isPrivate": true,
+    "description": "Dual dashboard (Admin & Client) multi-tenant for managing n8n chatbots, analytics and conversation history."
+  },
+  {
+    "name": "LeDressing Chatbot",
+    "link": "https://ledressingtahiti.com/",
+    "imageDesktop": "https://res.cloudinary.com/dwxc8s4mq/image/upload/v1768072787/portfolio/ledressing-desktop.webp",
+    "imageMobile": "https://res.cloudinary.com/dwxc8s4mq/image/upload/v1768072791/portfolio/ledressing-mobile.webp",
+    "technologies": ["typescript", "node", "n8n", "postgresql"],
+    "github": "https://github.com/Dalvae/ledressing-chatbot",
+    "isPrivate": true,
+    "description": "Hybrid RAG chatbot developed with n8n and Node.js for automation and inventory scrapping."
+  },
+  {
+    "name": "Acquireconvert",
+    "link": "https://acquireconvert.com/",
+    "imageDesktop": "https://res.cloudinary.com/dwxc8s4mq/image/upload/v1768072772/portfolio/acquireconvert-desktop.webp",
+    "imageMobile": "https://res.cloudinary.com/dwxc8s4mq/image/upload/v1768072773/portfolio/acquireconvert-mobile.webp",
+    "technologies": ["payload", "astro", "typescript"],
+    "github": "https://github.com/Dalvae/acquireconvert",
+    "isPrivate": true,
+    "description": "WordPress to Payload CMS migration with Astro. Perfect PageSpeed score."
+  },
+  {
     "name": "SK Engenharia",
     "link": "https://www.skengenharia.com/en",
-    "image": "https://via.placeholder.com/400x300/18181b/ffffff?text=SK+Engenharia",
-    "technologies": ["payload", "tailwind", "postgresql", "int", "react", "next"],
-    "description": "Headless CMS with Payload, multi-language support and optimized SEO."
+    "imageDesktop": "https://res.cloudinary.com/dwxc8s4mq/image/upload/v1768072821/portfolio/sk-engenharia-desktop.webp",
+    "imageMobile": "https://res.cloudinary.com/dwxc8s4mq/image/upload/v1768072823/portfolio/sk-engenharia-mobile.webp",
+    "technologies": ["payload", "tailwind", "postgresql", "int", "react", "next", "docker"],
+    "github": "https://github.com/Dalvae/sk-engenharia",
+    "isPrivate": true,
+    "description": "Corporate site with Payload CMS, blog, layout builder, multi-language and Docker deployment."
   },
   {
     "name": "MAA Steel Detailing",
     "link": "https://masd.pt/en",
-    "image": "https://res.cloudinary.com/dwxc8s4mq/image/upload/v1753403061/portfolio/MAA-steel-detailing_vecch7.webp",
+    "imageDesktop": "https://res.cloudinary.com/dwxc8s4mq/image/upload/v1768072799/portfolio/maa-steel-desktop.webp",
+    "imageMobile": "https://res.cloudinary.com/dwxc8s4mq/image/upload/v1768072801/portfolio/maa-steel-mobile.webp",
     "technologies": ["payload", "tailwind", "postgresql", "int", "react", "next"],
+    "github": "https://github.com/Dalvae/maa",
+    "isPrivate": true,
     "description": "Headless CMS with Payload, 3 languages and perfect SEO."
   },
   {
     "name": "Nexon Store",
-    "link": "https://nexon-storefront.vercel.app",
-    "image": "https://res.cloudinary.com/dwxc8s4mq/image/upload/w_1200,h_800,c_limit,q_auto,f_auto/v1748459523/portfolio/nexonproject_a4gdm0.png",
+    "link": "https://nexonfarm-hu.exera.dev/",
+    "imageDesktop": "https://res.cloudinary.com/dwxc8s4mq/image/upload/v1768072805/portfolio/nexon-store-desktop.webp",
+    "imageMobile": "https://res.cloudinary.com/dwxc8s4mq/image/upload/v1768072807/portfolio/nexon-store-mobile.webp",
     "technologies": [
       "int",
       "react",
@@ -27,19 +72,23 @@
       "postgresql",
       "redis"
     ],
-    "description": "A full-stack ecommerce platform built with Medusa.js, offering multi-language support, region-specific pricing, and a high-performance storefront. Delivering a seamless shopping experience across global markets."
+    "github": "https://github.com/Dalvae/medusa-nexon-store",
+    "description": "Full-stack ecommerce platform built with Medusa.js, offering multi-language support, region-specific pricing and high-performance storefront."
   },
   {
     "name": "Patricio Salinas personal site",
     "link": "https://www.patriciosalinas.com/",
-    "image": "https://res.cloudinary.com/dwxc8s4mq/image/upload/w_1200,h_800,c_limit,q_auto,f_auto/v1728582899/portfolio/dpcdeapxorgdqjpsed1x.jpg",
+    "imageDesktop": "https://res.cloudinary.com/dwxc8s4mq/image/upload/v1768072815/portfolio/patricio-salinas-desktop.webp",
+    "imageMobile": "https://res.cloudinary.com/dwxc8s4mq/image/upload/v1768072817/portfolio/patricio-salinas-mobile.webp",
     "technologies": ["astro", "typescript", "tailwind", "wordpress", "int"],
+    "github": "https://github.com/Dalvae/patriciosalinas",
     "description": "A high-performance frontend for Patricio Salinas, a photographer and visual thinker. This project utilizes WordPress as a headless CMS, internationalization support for multiple languages and image optimization techniques"
   },
   {
     "name": "Sublimahyca",
     "link": "https://www.sublimahyca.cl/",
-    "image": "https://res.cloudinary.com/dwxc8s4mq/image/upload/w_1200,h_800,c_limit,q_auto,f_auto/v1707073977/portfolio/photo1_sv4ekw.jpg",
+    "imageDesktop": "https://res.cloudinary.com/dwxc8s4mq/image/upload/w_1200,h_800,c_limit,q_auto,f_auto/v1707073977/portfolio/photo1_sv4ekw.jpg",
+    "imageMobile": "https://res.cloudinary.com/dwxc8s4mq/image/upload/w_400,h_800,c_fill,q_auto,f_auto/v1707073977/portfolio/photo1_sv4ekw.jpg",
     "technologies": [
       "react",
       "next",
@@ -49,34 +98,43 @@
       "postgresql",
       "redis"
     ],
+    "github": "https://github.com/Dalvae/sublistorefront",
     "description": "High-performing ecommerce platform meticulously crafted using the Medusa framework, featuring seamless integration capabilities."
   },
   {
     "name": "Carcaj",
     "link": "https://carcaj.cl/",
-    "image": "https://res.cloudinary.com/dwxc8s4mq/image/upload/w_1200,h_800,c_limit,q_auto,f_auto/v1707073978/portfolio/photo2_nm5onl.jpg",
+    "imageDesktop": "https://res.cloudinary.com/dwxc8s4mq/image/upload/v1768072778/portfolio/carcaj-desktop.webp",
+    "imageMobile": "https://res.cloudinary.com/dwxc8s4mq/image/upload/v1768072779/portfolio/carcaj-mobile.webp",
     "technologies": ["wordpress", "php", "sass", "mysql"],
+    "github": "https://github.com/Dalvae/carcaj",
     "description": "Literature, essays, and poetry. Crafted from the ground up with PHP and Sass."
   },
   {
     "name": "BUC",
     "link": "https://buc.cl/",
-    "image": "https://res.cloudinary.com/dwxc8s4mq/image/upload/w_1200,h_800,c_limit,q_auto,f_auto/v1707073977/portfolio/photo3_kzqgfp.jpg",
+    "imageDesktop": "https://res.cloudinary.com/dwxc8s4mq/image/upload/v1768072774/portfolio/buc-desktop.webp",
+    "imageMobile": "https://res.cloudinary.com/dwxc8s4mq/image/upload/v1768072775/portfolio/buc-mobile.webp",
     "technologies": ["wordpress", "php", "bootstrap", "mysql"],
+    "github": "https://github.com/Dalvae/buc",
     "description": "My inaugural website: a custom-built Wordpress theme using Bootstrap tailored for a consulting firm."
   },
   {
     "name": "Pokedex",
     "link": "https://pokedex-puce-two.vercel.app/",
-    "image": "https://res.cloudinary.com/dwxc8s4mq/image/upload/w_1200,h_800,c_limit,q_auto,f_auto/v1714922737/portfolio/pokedex_ed3kcy.jpg",
+    "imageDesktop": "https://res.cloudinary.com/dwxc8s4mq/image/upload/v1768072818/portfolio/pokedex-desktop.webp",
+    "imageMobile": "https://res.cloudinary.com/dwxc8s4mq/image/upload/v1768072819/portfolio/pokedex-mobile.webp",
     "technologies": ["next", "react", "typescript", "tailwind"],
+    "github": "https://github.com/Dalvae/pokedex",
     "description": "Performant Pokedex utilizing the PokeAPI and Approuter from Next.js."
   },
   {
     "name": "Internet is great",
     "link": "https://internetisgreat.vercel.app/",
-    "image": "https://res.cloudinary.com/dwxc8s4mq/image/upload/w_1200,h_800,c_limit,q_auto,f_auto/v1714923479/portfolio/Internet_is_greath_mknegt.jpg",
+    "imageDesktop": "https://res.cloudinary.com/dwxc8s4mq/image/upload/v1768072780/portfolio/internet-is-great-desktop.webp",
+    "imageMobile": "https://res.cloudinary.com/dwxc8s4mq/image/upload/v1768072782/portfolio/internet-is-great-mobile.webp",
     "technologies": ["next", "react", "typescript", "tailwind", "aws"],
+    "github": "https://github.com/Dalvae/internetisgreat",
     "description": "Just a meme page, using AWS and Approuter from Next.js."
   }
 ]

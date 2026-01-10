@@ -16,6 +16,8 @@
     "bio": "Bio"
   },
   "view_all_projects": "View Full Project Archive",
+  "view_code": "View Code",
+  "private": "Private",
   "stack_categories": {
     "frontend": "Frontend",
     "backend": "Backend",
@@ -48,8 +50,7 @@
   },
   "availability": {
     "title": "Availability",
-    "hours": "40 hrs/week",
-    "timezone": "GMT-4"
+    "hours": "40 hrs/week"
   },
   "footer": {
     "copyright": "© {year} Diego Alvarez. San Pedro de Atacama.",

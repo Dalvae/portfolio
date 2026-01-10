@@ -1,18 +1,19 @@
 <template>
   <div class="min-h-screen w-full bg-[#0f0f11] text-zinc-200 font-sans selection:bg-purple-500/30 selection:text-purple-200">
     <!-- Interactive Grid Background -->
-    <div class="fixed inset-0 z-0 overflow-hidden">
-      <InteractiveGridPattern 
-        :width="25" 
-        :height="25" 
-        :skew-angle="-12"
-        class="opacity-50"
-      />
+    <div class="fixed inset-0 z-0 overflow-visible">
+      <div class="absolute -inset-[20%]">
+        <InteractiveGridPattern 
+          :width="25" 
+          :height="25" 
+          :skew-angle="-12"
+          class="opacity-50 w-full h-full"
+        />
+      </div>
     </div>
 
     <!-- Efecto Ruido Global -->
-    <div class="fixed inset-0 z-50 pointer-events-none opacity-[0.03] mix-blend-overlay" 
-         style="background-image: url('/noise.png');"></div>
+    <div class="fixed inset-0 z-50 pointer-events-none opacity-[0.03] mix-blend-overlay bg-noise"></div>
     
     <!-- Mancha de luz ambiental (Glow) -->
     <div class="fixed top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-purple-900/20 blur-[120px] rounded-full pointer-events-none z-0"></div>

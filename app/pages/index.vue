@@ -89,8 +89,7 @@ useSchemaOrg([
 
 // Load projects based on locale
 const projects = computed(() => {
-  const data = locale.value === "es" ? projectsEs : projectsEn;
-  return data.slice(0, 5);
+  return locale.value === "es" ? projectsEs : projectsEn;
 });
 const socialLinks = [
   {
@@ -116,92 +115,12 @@ const socialLinks = [
 ];
 
 // Navegación
-const activeSection = ref("projects");
+const activeSection = ref("stack");
 const sections = computed(() => [
-  { id: "projects", label: t("sections.projects") },
   { id: "stack", label: t("sections.stack") },
+  { id: "projects", label: t("sections.projects") },
   { id: "bio", label: t("sections.bio") },
 ]);
-
-// Stack tecnológico
-const techStack = {
-  frontend: [
-    { name: "React", icon: "logos:react" },
-    { name: "Next.js", icon: "logos:nextjs-icon" },
-    { name: "Vue", icon: "logos:vue" },
-    { name: "Nuxt", icon: "logos:nuxt-icon" },
-    { name: "Astro", icon: "logos:astro-icon" },
-    { name: "TypeScript", icon: "logos:typescript-icon" },
-    { name: "Tailwind", icon: "logos:tailwindcss-icon" },
-  ],
-  backend: [
-    { name: "Node.js", icon: "logos:nodejs-icon" },
-    { name: "Python", icon: "logos:python" },
-    { name: "FastAPI", icon: "logos:fastapi-icon" },
-    { name: "Java", icon: "logos:java" },
-    { name: "Spring", icon: "logos:spring-icon" },
-    { name: "PHP", icon: "logos:php" },
-  ],
-  database: [
-    { name: "PostgreSQL", icon: "logos:postgresql" },
-    { name: "MongoDB", icon: "logos:mongodb-icon" },
-    { name: "Redis", icon: "logos:redis" },
-    { name: "Supabase", icon: "logos:supabase-icon" },
-  ],
-  tools: [
-    { name: "Docker", icon: "logos:docker-icon" },
-    { name: "AWS", icon: "logos:aws" },
-    { name: "Vercel", icon: "logos:vercel-icon" },
-    { name: "Git", icon: "logos:git-icon" },
-  ],
-  cms: [
-    { name: "WordPress", icon: "logos:wordpress-icon" },
-    { name: "Payload", icon: "simple-icons:payloadcms" },
-    { name: "Medusa", icon: "simple-icons:medusa" },
-  ],
-};
-
-// Mapa de tecnologías a iconos
-const techIcons: Record<string, string> = {
-  react: "logos:react",
-  next: "logos:nextjs-icon",
-  nextjs: "logos:nextjs-icon",
-  vue: "logos:vue",
-  nuxt: "logos:nuxt-icon",
-  typescript: "logos:typescript-icon",
-  javascript: "logos:javascript",
-  tailwind: "logos:tailwindcss-icon",
-  node: "logos:nodejs-icon",
-  nodejs: "logos:nodejs-icon",
-  postgresql: "logos:postgresql",
-  postgres: "logos:postgresql",
-  mongodb: "logos:mongodb-icon",
-  prisma: "logos:prisma",
-  graphql: "logos:graphql",
-  docker: "logos:docker-icon",
-  aws: "logos:aws",
-  vercel: "logos:vercel-icon",
-  firebase: "logos:firebase",
-  supabase: "logos:supabase-icon",
-  astro: "logos:astro-icon",
-  svelte: "logos:svelte-icon",
-  python: "logos:python",
-  rust: "logos:rust",
-  go: "logos:go",
-  php: "logos:php",
-  laravel: "logos:laravel",
-  wordpress: "logos:wordpress-icon",
-  medusa: "simple-icons:medusa",
-  payload: "simple-icons:payloadcms",
-  stripe: "logos:stripe",
-  redis: "logos:redis",
-  int: "simple-icons:i18next",
-};
-
-const getTechIcon = (tech: string) => {
-  const key = tech.toLowerCase().trim();
-  return techIcons[key] || "ph:code";
-};
 
 const scrollToSection = (sectionId: string) => {
   activeSection.value = sectionId;
@@ -212,14 +131,29 @@ const scrollToSection = (sectionId: string) => {
 };
 
 const time = ref("");
+const timezoneOffset = ref("");
+
+const updateTime = () => {
+  const now = new Date();
+  const localeStr = locale.value === "es" ? "es-CL" : "en-US";
+  
+  time.value = now.toLocaleTimeString(localeStr, {
+    timeZone: "America/Santiago",
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+
+  // Get dynamic offset (GMT-3, GMT-4, etc)
+  const parts = new Intl.DateTimeFormat("en-US", {
+    timeZone: "America/Santiago",
+    timeZoneName: "shortOffset",
+  }).formatToParts(now);
+  timezoneOffset.value = parts.find((p) => p.type === "timeZoneName")?.value || "";
+};
+
 onMounted(() => {
-  setInterval(() => {
-    time.value = new Date().toLocaleTimeString(locale.value === "es" ? "es-CL" : "en-US", {
-      timeZone: "America/Santiago",
-      hour: "2-digit",
-      minute: "2-digit",
-    });
-  }, 1000);
+  updateTime();
+  setInterval(updateTime, 1000);
 
   // Observer para detectar sección activa
   const observerOptions = {
@@ -265,7 +199,8 @@ onMounted(() => {
             >
               Diego Alvarez
             </h1>
-            <p class="text-sm font-mono text-zinc-400 mt-2 text-center">
+            <p class="text-sm font-mono text-zinc-400 mt-2 text-center flex items-center justify-center gap-1.5">
+              <Icon name="ph:map-pin" class="w-4 h-4" />
               {{ t("location") }}
             </p>
             <p
@@ -331,21 +266,21 @@ onMounted(() => {
           </nav>
         </div>
 
-        <div class="mt-8 lg:mt-0">
-          <div class="flex gap-4 my-4">
-            <NuxtLink
-              v-for="social in socialLinks"
-              :key="social.name"
-              :to="social.url"
-              target="_blank"
-              class="text-zinc-400 hover:text-white transition-colors"
-              :aria-label="social.name"
-            >
-              <Icon :name="social.icon" size="24" />
-            </NuxtLink>
+          <div class="mt-8 lg:mt-0">
+            <div class="flex gap-4 my-4">
+              <NuxtLink
+                v-for="social in socialLinks"
+                :key="social.name"
+                :to="social.url"
+                target="_blank"
+                class="text-zinc-400 hover:text-white transition-colors"
+                :aria-label="social.name"
+              >
+                <Icon :name="social.icon" size="24" />
+              </NuxtLink>
+            </div>
+            <div class="font-mono text-xs text-zinc-500">{{ time }} • {{ timezoneOffset }}</div>
           </div>
-          <div class="font-mono text-xs text-zinc-500">{{ time }} • {{ t("availability.timezone") }}</div>
-        </div>
       </header>
 
       <main class="pt-12 lg:w-1/2 lg:py-12">
@@ -353,56 +288,20 @@ onMounted(() => {
           {{ t("scroll_hint") }}
         </div>
 
+        <!-- STACK -->
+        <StackSection />
+
         <!-- PROJECTS -->
         <section id="projects" class="mb-24">
           <h2 class="text-sm font-bold uppercase tracking-widest text-zinc-500 mb-8 lg:hidden">
             {{ t("sections.projects") }}
           </h2>
           <div class="space-y-16">
-            <article
+            <ProjectCard
               v-for="project in projects"
               :key="project.name"
-              class="group"
-            >
-              <NuxtLink :to="project.link" target="_blank" class="block">
-                <div class="relative overflow-hidden rounded-lg mb-4">
-                  <NuxtImg
-                    :src="project.image"
-                    :alt="project.name"
-                    class="w-full aspect-video object-cover transition-transform duration-300 group-hover:scale-105"
-                  />
-                  <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                </div>
-                
-                <div class="flex items-start justify-between gap-4">
-                  <div>
-                    <h3 class="text-lg font-medium text-zinc-200 group-hover:text-teal-300 transition-colors flex items-center gap-2">
-                      {{ project.name }}
-                      <Icon
-                        name="ph:arrow-up-right"
-                        class="h-4 w-4 opacity-0 -translate-y-1 translate-x-0 group-hover:opacity-100 group-hover:-translate-y-0 group-hover:translate-x-0 transition-all"
-                      />
-                    </h3>
-                    <p class="mt-2 text-sm text-zinc-300 group-hover:text-zinc-200 transition-colors line-clamp-2">
-                      {{ project.description }}
-                    </p>
-                  </div>
-                </div>
-
-                <ul class="mt-4 flex flex-wrap gap-3" :aria-label="t('aria.tech_used')">
-                  <li
-                    v-for="tech in project.technologies.slice(0, 5)"
-                    :key="tech"
-                    class="relative group/tech"
-                  >
-                    <Icon :name="getTechIcon(tech)" class="w-5 h-5 opacity-80 group-hover:opacity-100 transition-opacity" />
-                    <span class="absolute -top-8 left-1/2 -translate-x-1/2 px-2 py-1 text-xs bg-zinc-800 text-white rounded opacity-0 group-hover/tech:opacity-100 transition-opacity whitespace-nowrap pointer-events-none z-10">
-                      {{ tech }}
-                    </span>
-                  </li>
-                </ul>
-              </NuxtLink>
-            </article>
+              :project="project"
+            />
           </div>
 
           <div class="mt-12">
@@ -421,99 +320,6 @@ onMounted(() => {
                 class="ml-1 h-4 w-4 transition-transform group-hover:translate-x-2"
               />
             </NuxtLink>
-          </div>
-        </section>
-
-        <!-- STACK -->
-        <section id="stack" class="mb-24">
-          <h2 class="text-sm font-bold uppercase tracking-widest text-zinc-500 mb-8">
-            {{ t("sections.stack") }}
-          </h2>
-          
-          <div class="relative rounded-2xl border border-zinc-800 overflow-hidden">
-            <!-- Flickering Grid Background -->
-            <FlickeringGrid 
-              class="absolute inset-0" 
-              :square-size="4" 
-              :grid-gap="6" 
-              :flicker-chance="0.3" 
-              color="#14b8a6" 
-              :max-opacity="0.15"
-            />
-            
-            <div class="relative z-10 p-6 space-y-8">
-              <!-- Frontend -->
-              <div>
-                <h3 class="text-xs text-zinc-400 uppercase tracking-wider mb-4 flex items-center gap-2">
-                  <span class="w-6 h-[1px] bg-zinc-600"></span>
-                  {{ t("stack_categories.frontend") }}
-                </h3>
-                <div class="flex flex-wrap gap-3">
-                  <div 
-                    v-for="tech in techStack.frontend" 
-                    :key="tech.name"
-                    class="flex items-center gap-2 px-4 py-2 rounded-full bg-zinc-900/80 backdrop-blur-sm border border-zinc-700/50 hover:border-teal-500/50 hover:bg-zinc-800/80 transition-all group cursor-default"
-                  >
-                    <Icon :name="tech.icon" class="w-5 h-5" />
-                    <span class="text-sm text-zinc-300 group-hover:text-white transition-colors">{{ tech.name }}</span>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Backend -->
-              <div>
-                <h3 class="text-xs text-zinc-400 uppercase tracking-wider mb-4 flex items-center gap-2">
-                  <span class="w-6 h-[1px] bg-zinc-600"></span>
-                  {{ t("stack_categories.backend") }}
-                </h3>
-                <div class="flex flex-wrap gap-3">
-                  <div 
-                    v-for="tech in techStack.backend" 
-                    :key="tech.name"
-                    class="flex items-center gap-2 px-4 py-2 rounded-full bg-zinc-900/80 backdrop-blur-sm border border-zinc-700/50 hover:border-teal-500/50 hover:bg-zinc-800/80 transition-all group cursor-default"
-                  >
-                    <Icon :name="tech.icon" class="w-5 h-5" />
-                    <span class="text-sm text-zinc-300 group-hover:text-white transition-colors">{{ tech.name }}</span>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Database -->
-              <div>
-                <h3 class="text-xs text-zinc-400 uppercase tracking-wider mb-4 flex items-center gap-2">
-                  <span class="w-6 h-[1px] bg-zinc-600"></span>
-                  {{ t("stack_categories.database") }}
-                </h3>
-                <div class="flex flex-wrap gap-3">
-                  <div 
-                    v-for="tech in techStack.database" 
-                    :key="tech.name"
-                    class="flex items-center gap-2 px-4 py-2 rounded-full bg-zinc-900/80 backdrop-blur-sm border border-zinc-700/50 hover:border-teal-500/50 hover:bg-zinc-800/80 transition-all group cursor-default"
-                  >
-                    <Icon :name="tech.icon" class="w-5 h-5" />
-                    <span class="text-sm text-zinc-300 group-hover:text-white transition-colors">{{ tech.name }}</span>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Tools & CMS -->
-              <div>
-                <h3 class="text-xs text-zinc-400 uppercase tracking-wider mb-4 flex items-center gap-2">
-                  <span class="w-6 h-[1px] bg-zinc-600"></span>
-                  {{ t("stack_categories.tools") }}
-                </h3>
-                <div class="flex flex-wrap gap-3">
-                  <div 
-                    v-for="tech in [...techStack.tools, ...techStack.cms]" 
-                    :key="tech.name"
-                    class="flex items-center gap-2 px-4 py-2 rounded-full bg-zinc-900/80 backdrop-blur-sm border border-zinc-700/50 hover:border-teal-500/50 hover:bg-zinc-800/80 transition-all group cursor-default"
-                  >
-                    <Icon :name="tech.icon" class="w-5 h-5" />
-                    <span class="text-sm text-zinc-300 group-hover:text-white transition-colors">{{ tech.name }}</span>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
         </section>
 
@@ -559,7 +365,7 @@ onMounted(() => {
                   <span class="text-zinc-300">{{ t("availability.hours") }}</span>
                 </div>
                 <div class="text-zinc-500">•</div>
-                <div class="text-zinc-300">{{ t("availability.timezone") }}</div>
+                <div class="text-zinc-300">{{ timezoneOffset }}</div>
               </div>
             </div>
           </div>
