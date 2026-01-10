@@ -136,53 +136,100 @@ Soy desarrollador full-stack con 3+ años de experiencia, originario de San Pedr
 
 ## 💼 Proyectos Destacados
 
-### 1. Northern Chile Tours (En desarrollo activo)
+### 1. Northern Chile Tours (SaaS)
 
 **Tech Stack:** Java, Vue/Nuxt, PostgreSQL  
 **GitHub:** https://github.com/Dalvae/northernchile  
-**Descripción:** SaaS para gestión de tours con autenticación OAuth con Google, gestión de usuarios, y stack enterprise-ready. Actualmente en desarrollo activo.
+**URL:** https://www.northernchile.com/  
+**Fecha:** Diciembre 2025 - Enero 2026
+**Descripción:** SaaS para gestión de tours con autenticación OAuth con Google, gestión de usuarios, y stack enterprise-ready.
 
 ### 2. Carcaj Magazine
 
 **Tech Stack:** WordPress (PHP puro), Vite, Alpine.js, Tailwind CSS  
 **URL:** https://carcaj.cl  
 **GitHub:** https://github.com/Dalvae/carcaj  
+**Fecha:** Septiembre 2025
 **Descripción:** Tema WordPress personalizado completamente desde cero. Código muy limpio, super optimizado. Mi proyecto del que más orgulloso estoy por su arquitectura y performance.
 
 ### 3. Patricio Salinas (Multilingual Site)
 
 **Tech Stack:** WordPress headless, Astro, Polylang  
 **URL:** https://www.patriciosalinas.com/en/  
+**GitHub:** https://github.com/Dalvae/patriciosalinas
+**Fecha:** Agosto 2024
 **Descripción:** WordPress como CMS headless con frontend en Astro generando sitio completamente estático. Implementación multiidioma con Polylang.
 
 ### 4. Nexon Farm E-commerce
 
 **Tech Stack:** Medusa.js, Next.js  
 **URL:** https://nexonfarm-hu.exera.dev/hu/en  
+**GitHub:** https://github.com/Dalvae/nexon-storefront
+**Fecha:** 2024
 **Descripción:** Plataforma e-commerce construida con Medusa.js, demostrando experiencia con soluciones modernas de comercio electrónico.
 
 ### 5. MAA (Payload CMS Project)
 
 **Tech Stack:** Payload CMS, React  
 **URL:** https://maa-three.vercel.app/  
-**Fecha:** Completado la semana pasada (proyecto reciente)  
+**GitHub:** https://github.com/Dalvae/maa
+**Fecha:** Julio 2025
 **Descripción:** Proyecto completo usando Payload CMS para un cliente.
 
-### 6. Sublibackend
+### 6. Sublimahyca (E-commerce Full Stack)
 
-**Tech Stack:** Medusa.js backend  
+**Tech Stack:** Medusa.js (backend), React/Vue (frontend)  
 **GitHub:** https://github.com/Dalvae/sublibackend/  
-**URL (anterior):** sublimahyca.cl  
-**Descripción:** Backend de e-commerce con Medusa.js, demostrando capacidades multi-tenant.
+**URL:** sublimahyca.cl (sitio anterior)  
+**Fecha:** 2024
+**Descripción:** E-commerce completo con backend Medusa.js y frontend React/Vue. Demostración de capacidades multi-tenant en e-commerce.
+
+### 7. Acquireconvert (CMS Migration Project)
+
+**Tech Stack:** Payload CMS, Astro (astropayload-starter)  
+**GitHub:** https://github.com/Dalvae/acquireconvert  
+**GitHub (starter):** https://github.com/Dalvae/astropayload-starter  
+**URL:** https://acquireconvert.com/  
+**Fecha:** 2025
+**Descripción:** CMS completo migrado desde WordPress a Payload CMS. Sitio en producción con perfect score en PageSpeed. Incluye starter customizado con Astro para optimización de performance.
+
+### 8. LeDressing Chatbot (Hybrid RAG)
+
+**Tech Stack:** TypeScript, RAG system, Generative UI  
+**GitHub:** https://github.com/Dalvae/ledressing-chatbot  
+**URL:** https://ledressingtahiti.com/  
+**Fecha:** Noviembre 2025
+**Descripción:** Chatbot avanzado con arquitectura híbrida RAG (Retrieval-Augmented Generation) y generative UI para LeDressing Tahiti.
+
+### 9. Conexia Chatbot Platform
+
+**Tech Stack:** Generative UI, Dashboard  
+**Fecha:** 2025
+**Descripción:** Interfaz de ventana unificada para todos los chatbots de Conexia, implementada con GenUI e incluye dashboard administrativo.
+
+### 10. Conexia Dashboard (Multi-tenant Admin & Client Dashboard)
+
+**Tech Stack:** React 19, TypeScript, Vite, TanStack Router, TanStack Query, Supabase (RLS), ShadcnUI, RadixUI, Recharts, Zustand, Zod
+**Repository:** GitLab (conexia-agency/dev/dashboard)
+**Fecha:** Enero 2026
+**Descripción:** Dashboard dual (Admin & Client) para gestionar chatbots de n8n, visualizar analytics, historial de conversaciones y comunicación cliente-equipo. Arquitectura multi-tenant con Supabase usando Row Level Security (RLS) para seguridad a nivel de datos. Incluye modo claro/oscuro, responsive, accesible, sidebar integrado, búsqueda global y soporte RTL.
+
+### 11. SK Engenharia (Corporate Website)
+
+**Tech Stack:** Next.js, Payload CMS, PostgreSQL, TypeScript, Tailwind CSS, Shadcn/UI, Docker
+**GitHub:** https://github.com/Dalvae/sk-engenharia
+**URL:** https://www.skengenharia.com/en
+**Fecha:** Septiembre 2025
+**Descripción:** Sitio corporativo para empresa de ingeniería brasileña SK Engenharia. Basado en Payload Website Template con Next.js App Router, incluye blog, páginas con layout builder, SEO optimizado, búsqueda, redirects, modo oscuro y deploy con Docker. Base de datos PostgreSQL con migraciones.
 
 ---
 
-## 💼 Experiencia Laboral Actual
+## 💼 Experiencia Laboral
 
 ### Equipo Asiático - WordPress/WooCommerce Optimization
 
 **Tipo:** Trabajo por horas  
-**Duración:** Actual (≈2 horas diarias)  
+**Duración:** Completado  
 **Responsabilidades:**
 
 - Optimización de sistema de televisión on-demand gestionado con WordPress/WooCommerce
@@ -196,12 +243,13 @@ Soy desarrollador full-stack con 3+ años de experiencia, originario de San Pedr
 **URL:** https://petrapanel.ai/  
 **Tipo:** Trabajo por horas  
 **Stack:** Node.js, Replit (usa Claude)  
+**Duración:** Completado
 **Descripción:** Desarrollo y mantenimiento de aplicación AI
 
 ### Carcaj Magazine - Support & Development
 
 **URL:** https://carcaj.cl  
-**Tipo:** Soporte continuo  
+**Tipo:** Soporte continuo (actual)  
 **Responsabilidades:** Soporte y mantenimiento de revista digital. Como es una revista, no requiere mucho tiempo, lo que me da disponibilidad para otros proyectos.
 
 ---
@@ -237,6 +285,10 @@ Soy desarrollador full-stack con 3+ años de experiencia, originario de San Pedr
 - **TypeScript first** - Siempre empiezo con TypeScript, los tipos son mi adición predeterminada
 - **PHP puro para WordPress** - Sigo pensando que es la mejor forma de hacer temas
 - **Clean code** - Me enorgullezco del código limpio y mantenible
+
+### Pasión por el código
+
+Soy apasionado por el código y me encanta producir. Hay algo muy satisfactorio en ver mis productos afuera, funcionando y siendo usados por personas. Cada proyecto terminado es un logro personal que me motiva a seguir creando cosas mejores.
 
 ### IA & Herramientas
 
@@ -362,5 +414,3 @@ Cuando necesito grabar video introductions, cubro:
 **Portfolio:** https://portfolio.dalvae.cl/
 
 ---
-
-¿Te parece completo este backup? ¿Quieres que agregue o modifique algo?
