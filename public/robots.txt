@@ -1,4 +1,4 @@
 User-Agent: *
 Allow: /
 
-Sitemap: https://diegoalvarez.dev/sitemap.xml
+Sitemap: https://portfolio.dalvae.cl/sitemap.xml

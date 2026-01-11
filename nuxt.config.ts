@@ -31,9 +31,7 @@ export default defineNuxtConfig({
   ],
 
   ogImage: {
-    defaults: {
-      cacheMaxAgeSeconds: 60 * 60 * 24 * 7, // 7 days
-    },
+    fonts: ["Manrope:400", "Manrope:700"],
   },
 
   // Experimental features for better performance
@@ -65,12 +63,12 @@ export default defineNuxtConfig({
     compilation: {
       strictMessage: false,
     },
-    baseUrl: "https://diegoalvarez.dev",
+    baseUrl: "https://portfolio.dalvae.cl",
   },
 
   // Site metadata for SEO
   site: {
-    url: "https://diegoalvarez.dev",
+    url: "https://portfolio.dalvae.cl",
     name: "Dalvae",
     description:
       "Full Stack Developer from San Pedro de Atacama. Specialist in React, Nuxt and Modern Architectures.",
@@ -130,7 +128,7 @@ export default defineNuxtConfig({
       ],
       link: [
         { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
-        { rel: "canonical", href: "https://diegoalvarez.dev" },
+        { rel: "canonical", href: "https://portfolio.dalvae.cl" },
       ],
     },
   },

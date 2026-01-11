@@ -6,8 +6,13 @@ const { t, locale } = useI18n();
 const localePath = useLocalePath();
 const switchLocalePath = useSwitchLocalePath();
 
-const siteUrl = "https://diegoalvarez.dev";
-const ogImage = "https://res.cloudinary.com/dwxc8s4mq/image/upload/w_1200,h_630,c_fill,q_auto,f_auto/v1748560366/portfolio/avatar_szpmal.webp";
+const siteUrl = "https://portfolio.dalvae.cl";
+
+// OG Image - generada dinámicamente con nuxt-og-image
+defineOgImageComponent('Portfolio', {
+  title: 'Diego Alvarez',
+  description: 'Full Stack Developer',
+});
 
 // SEO - Complete meta tags
 useHead({
@@ -22,14 +27,9 @@ useHead({
     { property: "og:title", content: "Dalvae - Full Stack Developer" },
     { property: "og:description", content: t("seo.description") },
     { property: "og:url", content: locale.value === "es" ? `${siteUrl}/es` : siteUrl },
-    { property: "og:image", content: ogImage },
-    { property: "og:image:width", content: "1200" },
-    { property: "og:image:height", content: "630" },
-    { property: "og:image:alt", content: "Diego Alvarez - Full Stack Developer" },
     // Twitter
     { name: "twitter:title", content: "Dalvae - Full Stack Developer" },
     { name: "twitter:description", content: t("seo.description") },
-    { name: "twitter:image", content: ogImage },
   ],
   link: [
     // Favicon
@@ -53,7 +53,7 @@ useSchemaOrg([
     jobTitle: "Full Stack Developer",
     description: t("seo.description"),
     url: siteUrl,
-    image: ogImage,
+    image: "https://res.cloudinary.com/dwxc8s4mq/image/upload/w_400,h_400,c_fill,q_auto,f_auto/v1748560366/portfolio/avatar_szpmal.webp",
     email: "diego.alvarez.e@ug.uchile.cl",
     address: {
       "@type": "PostalAddress",
