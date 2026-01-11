@@ -27,7 +27,14 @@ export default defineNuxtConfig({
     "@nuxtjs/i18n",
     "nuxt-schema-org",
     "@nuxtjs/sitemap",
+    "nuxt-og-image",
   ],
+
+  ogImage: {
+    defaults: {
+      cacheMaxAgeSeconds: 60 * 60 * 24 * 7, // 7 days
+    },
+  },
 
   // Experimental features for better performance
   experimental: {

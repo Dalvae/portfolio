@@ -39,6 +39,7 @@
     "@nuxtjs/i18n": "10.2.1",
     "@nuxtjs/sitemap": "^7.4.7",
     "@tailwindcss/vite": "^4.1.17",
+    "nuxt-og-image": "^5.1.13",
     "nuxt-schema-org": "^5.0.9",
     "nuxt-seo-utils": "7.0.18",
     "nuxt-vitalizer": "2.0.0",
