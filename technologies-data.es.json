@@ -113,5 +113,45 @@
     "name": "Payload",
     "iconIdentifier": "SiPayloadcms",
     "iconBg": "#000000"
+  },
+  "upwork": {
+    "name": "Upwork",
+    "iconIdentifier": "FaUpwork",
+    "iconBg": "#4CAF50"
+  },
+  "java": {
+    "name": "Java",
+    "iconIdentifier": "FaJava",
+    "iconBg": "#007396"
+  },
+  "springboot": {
+    "name": "Spring Boot",
+    "iconIdentifier": "SiSpringboot",
+    "iconBg": "#6DB33F"
+  },
+  "vue": {
+    "name": "Vue.js",
+    "iconIdentifier": "FaVuejs",
+    "iconBg": "#4FC08D"
+  },
+  "nuxt": {
+    "name": "Nuxt",
+    "iconIdentifier": "SiNuxtdotjs",
+    "iconBg": "#00DC82"
+  },
+  "supabase": {
+    "name": "Supabase",
+    "iconIdentifier": "SiSupabase",
+    "iconBg": "#3ECF8E"
+  },
+  "docker": {
+    "name": "Docker",
+    "iconIdentifier": "FaDocker",
+    "iconBg": "#2496ED"
+  },
+  "n8n": {
+    "name": "n8n",
+    "iconIdentifier": "SiN8n",
+    "iconBg": "#FF6D5B"
   }
 }

@@ -138,11 +138,11 @@ Soy desarrollador full-stack con 3+ años de experiencia, originario de San Pedr
 
 ### 1. Northern Chile Tours (SaaS)
 
-**Tech Stack:** Java, Vue/Nuxt, PostgreSQL  
+**Tech Stack:** Java (Spring Boot), Vue/Nuxt, PostgreSQL  
 **GitHub:** https://github.com/Dalvae/northernchile  
 **URL:** https://www.northernchile.com/  
 **Fecha:** Diciembre 2025 - Enero 2026
-**Descripción:** SaaS para gestión de tours con autenticación OAuth con Google, gestión de usuarios, y stack enterprise-ready.
+**Descripción:** SaaS para gestión de tours con backend Java Spring Boot, autenticación OAuth con Google, gestión de usuarios, y stack enterprise-ready.
 
 ### 2. Carcaj Magazine
 
@@ -329,7 +329,7 @@ Soy apasionado por el código y me encanta producir. Hay algo muy satisfactorio 
 **Disponibilidad actual:** 30 horas semanales  
 **Rate:** $18 USD/hora  
 **Preferencia de trabajo:** Remoto, flexible  
-**Zona horaria:** GMT-4 (Chile, horario de invierno)
+**Zona horaria:** Dinámica (Chile, America/Santiago)
 
 ### Tipo de proyectos que me interesan
 
