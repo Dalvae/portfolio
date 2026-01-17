@@ -6,7 +6,7 @@
     "imageMobile": "https://res.cloudinary.com/dwxc8s4mq/image/upload/v1768072811/portfolio/northern-chile-mobile.webp",
     "technologies": ["java", "springboot", "vue", "nuxt", "postgresql", "int"],
     "github": "https://github.com/Dalvae/northernchile",
-    "description": "SaaS for tour management with Java Spring Boot, Google OAuth authentication and enterprise-ready stack."
+    "description": "Booking and e-commerce for local tourist industry. Payment integrations, weather integrations, lunar calendars, media management and transactional mailing."
   },
   {
     "name": "Conexia Dashboard",

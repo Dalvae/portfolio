@@ -136,13 +136,13 @@ Soy desarrollador full-stack con 3+ años de experiencia, originario de San Pedr
 
 ## 💼 Proyectos Destacados
 
-### 1. Northern Chile Tours (SaaS)
+### 1. Northern Chile Tours
 
 **Tech Stack:** Java (Spring Boot), Vue/Nuxt, PostgreSQL  
 **GitHub:** https://github.com/Dalvae/northernchile  
 **URL:** https://www.northernchile.com/  
 **Fecha:** Diciembre 2025 - Enero 2026
-**Descripción:** SaaS para gestión de tours con backend Java Spring Boot, autenticación OAuth con Google, gestión de usuarios, y stack enterprise-ready.
+**Descripción:** Booking y e-commerce para mi industria turística local. Integración de pagos, integración de clima, calendarios lunares, gestión de medios y mailing transaccional.
 
 ### 2. Carcaj Magazine
 

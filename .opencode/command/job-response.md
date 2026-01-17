@@ -10,7 +10,7 @@ $ARGUMENTS
 ## Process
 1. Read backupinfo.md to understand Diego's profile, experience, skills, and preferences
 2. Analyze the job posting description provided
-3. Generate a personalized response in SPANISH:
+3. Generate a personalized response in the same language as the job posting:
    - Addresses the specific role and company
    - Highlights relevant skills and experience from backupinfo.md
    - Mentions relevant projects (Carcaj, Northern Chile Tours, etc.)
@@ -22,7 +22,7 @@ $ARGUMENTS
 5. Provide the user with the file path
 
 ## Important Notes
-- Always write in Spanish
+- Write in the same language as the job posting
 - Tailor the response to each specific job posting
 - Be authentic and honest about experience levels
 - Reference Diego's unique background (Sociology, Maritime Guard) if relevant
