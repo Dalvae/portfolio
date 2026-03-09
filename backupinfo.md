@@ -140,11 +140,11 @@ Soy desarrollador full-stack con 3+ años de experiencia, originario de San Pedr
 
 ### 1. Northern Chile Tours
 
-**Tech Stack:** Java (Spring Boot), Vue/Nuxt, PostgreSQL  
+**Tech Stack:** Java (Spring Boot), Vue/Nuxt, PostgreSQL, Docker, GitHub Actions CI/CD  
 **GitHub:** https://github.com/Dalvae/northernchile  
 **URL:** https://www.northernchile.com/  
 **Fecha:** Diciembre 2025 - Enero 2026
-**Descripción:** Plataforma de reservas para tours astronómicos y de aventura con catálogo multiidioma, pagos, disponibilidad y panel administrativo.
+**Descripción:** Plataforma de reservas para tours astronómicos y de aventura con catálogo multiidioma, pagos, disponibilidad y panel administrativo. Backend en Java Spring Boot dockerizado, autenticación OAuth con Google y CI/CD con GitHub Actions.
 
 ### 2. Carcaj Magazine
 
@@ -152,7 +152,7 @@ Soy desarrollador full-stack con 3+ años de experiencia, originario de San Pedr
 **URL:** https://carcaj.cl  
 **GitHub:** https://github.com/Dalvae/carcaj  
 **Fecha:** Septiembre 2025
-**Descripción:** Tema WordPress hecho desde cero para una revista digital, desarrollado con PHP, Vite y Tailwind.
+**Descripción:** Tema WordPress hecho desde cero para una revista digital, desarrollado con PHP, Vite y Tailwind. Sigue siendo uno de mis proyectos favoritos por su arquitectura y performance.
 
 ### 3. Patricio Salinas (Multilingual Site)
 
@@ -214,7 +214,7 @@ Soy desarrollador full-stack con 3+ años de experiencia, originario de San Pedr
 **Tech Stack:** React 19, TypeScript, Vite, TanStack Router, TanStack Query, Supabase (RLS), ShadcnUI, RadixUI, Recharts, Zustand, Zod
 **Repository:** GitLab (conexia-agency/dev/dashboard)
 **Fecha:** Enero 2026
-**Descripción:** Dashboard multi-tenant para administrar chatbots, analytics e historial de conversaciones con separación de roles y datos mediante Supabase RLS.
+**Descripción:** Dashboard dual (Admin & Client) multi-tenant para administrar chatbots, analytics e historial de conversaciones, con separación de roles y datos mediante Supabase RLS. Incluye modo claro/oscuro, responsive, búsqueda global y sidebar integrado.
 
 ### 11. SK Engenharia (Corporate Website)
 
@@ -222,7 +222,7 @@ Soy desarrollador full-stack con 3+ años de experiencia, originario de San Pedr
 **GitHub:** https://github.com/Dalvae/sk-engenharia
 **URL:** https://www.skengenharia.com/en
 **Fecha:** Septiembre 2025
-**Descripción:** Sitio corporativo multiidioma con Payload CMS, blog, layout builder y despliegue con Docker.
+**Descripción:** Sitio corporativo multiidioma basado en Payload CMS y Next.js App Router, con blog, layout builder, búsqueda, redirects, SEO optimizado y modo oscuro. Despliegue con Docker y PostgreSQL con migraciones.
 
 ---
 
@@ -449,7 +449,7 @@ Cuando necesito grabar video introductions, cubro:
 3. **Proyectos destacados:** Carcaj, Northern Chile, trabajo con equipo asiático
 4. **Fortalezas:** Performance optimization, security, debugging
 5. **Lo que busco:** Proyectos interesantes, colaboración a largo plazo
-6. **Disponibilidad:** 30 hrs/semana, $18/hr
+6. **Disponibilidad:** 45 hrs/semana, $18/hr
 
 ---
 

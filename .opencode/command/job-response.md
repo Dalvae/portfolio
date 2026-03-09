@@ -19,7 +19,7 @@ $ARGUMENTS
 - Never invent facts, availability, rate, years of experience, or client history.
 - If a detail is unclear or conflicting, omit it or phrase it conservatively.
 - Use only projects and technologies that are supported by `backupinfo.md`, repo files, or recent GitHub metadata.
-- Match the language of the job posting.
+- Match the language of the job posting unless the user explicitly requests another language. If the posting language is unclear, default to English.
 - Keep the response specific and credible, not generic.
 
 ## Process
