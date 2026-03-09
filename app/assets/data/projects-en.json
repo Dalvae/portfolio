@@ -6,7 +6,7 @@
     "imageMobile": "https://res.cloudinary.com/dwxc8s4mq/image/upload/v1768072811/portfolio/northern-chile-mobile.webp",
     "technologies": ["java", "springboot", "vue", "nuxt", "postgresql", "int"],
     "github": "https://github.com/Dalvae/northernchile",
-    "description": "Booking and e-commerce for local tourist industry. Payment integrations, weather integrations, lunar calendars, media management and transactional mailing."
+    "description": "Booking platform for astronomical and adventure tours with multilingual catalog, payments, availability, and an admin dashboard."
   },
   {
     "name": "Conexia Dashboard",
@@ -15,7 +15,23 @@
     "imageMobile": "/placeholder-mobile.svg",
     "technologies": ["react", "typescript", "supabase", "tailwind"],
     "isPrivate": true,
-    "description": "Dual dashboard (Admin & Client) multi-tenant for managing n8n chatbots, analytics and conversation history."
+    "description": "Multi-tenant dashboard for managing chatbots, analytics, and conversation history with role and data separation."
+  },
+  {
+    "name": "Upwork Insights",
+    "link": "https://upwork-insights.diego-alvarez-e.workers.dev/",
+    "imageDesktop": "/project-screenshots/upwork-insights.webp",
+    "technologies": ["typescript", "hono", "supabase", "svelte", "tailwind"],
+    "github": "https://github.com/Dalvae/upworkinsights",
+    "description": "Firefox/Chrome extension that captures the Upwork jobs you manually visit and sends them to a Hono backend for analysis in a Svelte dashboard."
+  },
+  {
+    "name": "TaptoLogs",
+    "link": "https://taptologs-web.pages.dev/",
+    "imageDesktop": "/project-screenshots/taptologs.webp",
+    "technologies": ["rust", "svelte", "typescript"],
+    "github": "https://github.com/Dalvae/taptologs",
+    "description": "World of Warcraft combat log parser and viewer built with Rust/WASM, Parquet, and DuckDB-WASM, with parsing running in the browser."
   },
   {
     "name": "LeDressing Chatbot",
@@ -25,7 +41,7 @@
     "technologies": ["typescript", "node", "n8n", "postgresql"],
     "github": "https://github.com/Dalvae/ledressing-chatbot",
     "isPrivate": true,
-    "description": "Hybrid RAG chatbot developed with n8n and Node.js for automation and inventory scrapping."
+    "description": "E-commerce assistant built with n8n RAG flows, operational automations, and inventory synchronization."
   },
   {
     "name": "Acquireconvert",
@@ -35,7 +51,7 @@
     "technologies": ["payload", "astro", "typescript"],
     "github": "https://github.com/Dalvae/acquireconvert",
     "isPrivate": true,
-    "description": "WordPress to Payload CMS migration with Astro. Perfect PageSpeed score."
+    "description": "WordPress to Payload CMS migration with an Astro frontend focused on performance, SEO, and flexible editing."
   },
   {
     "name": "SK Engenharia",
@@ -45,7 +61,7 @@
     "technologies": ["payload", "tailwind", "postgresql", "int", "react", "next", "docker"],
     "github": "https://github.com/Dalvae/sk-engenharia",
     "isPrivate": true,
-    "description": "Corporate site with Payload CMS, blog, layout builder, multi-language and Docker deployment."
+    "description": "Multilingual corporate site built with Payload CMS, blog, layout builder, and Docker-based deployment."
   },
   {
     "name": "MAA Steel Detailing",
@@ -55,7 +71,7 @@
     "technologies": ["payload", "tailwind", "postgresql", "int", "react", "next"],
     "github": "https://github.com/Dalvae/maa",
     "isPrivate": true,
-    "description": "Headless CMS with Payload, 3 languages and perfect SEO."
+    "description": "Corporate site powered by Payload CMS with 3 languages and an editorial structure optimized for SEO."
   },
   {
     "name": "Nexon Store",
@@ -73,16 +89,16 @@
       "redis"
     ],
     "github": "https://github.com/Dalvae/medusa-nexon-store",
-    "description": "Full-stack ecommerce platform built with Medusa.js, offering multi-language support, region-specific pricing and high-performance storefront."
+    "description": "E-commerce storefront built with Medusa and Next.js, including multilingual support, region-based pricing, and international catalog flows."
   },
   {
-    "name": "Patricio Salinas personal site",
+    "name": "Patricio Salinas",
     "link": "https://www.patriciosalinas.com/",
     "imageDesktop": "https://res.cloudinary.com/dwxc8s4mq/image/upload/v1768072815/portfolio/patricio-salinas-desktop.webp",
     "imageMobile": "https://res.cloudinary.com/dwxc8s4mq/image/upload/v1768072817/portfolio/patricio-salinas-mobile.webp",
     "technologies": ["astro", "typescript", "tailwind", "wordpress", "int"],
     "github": "https://github.com/Dalvae/patriciosalinas",
-    "description": "A high-performance frontend for Patricio Salinas, a photographer and visual thinker. This project utilizes WordPress as a headless CMS, internationalization support for multiple languages and image optimization techniques"
+    "description": "Headless site for a photographer using WordPress and Astro, with multilingual content, static frontend delivery, and image optimization."
   },
   {
     "name": "Sublimahyca",
@@ -99,16 +115,16 @@
       "redis"
     ],
     "github": "https://github.com/Dalvae/sublistorefront",
-    "description": "High-performing ecommerce platform meticulously crafted using the Medusa framework, featuring seamless integration capabilities."
+    "description": "E-commerce implementation with Medusa for storefront and catalog flows, focused on performance and backend/frontend integration."
   },
   {
     "name": "Carcaj",
     "link": "https://carcaj.cl/",
     "imageDesktop": "https://res.cloudinary.com/dwxc8s4mq/image/upload/v1768072778/portfolio/carcaj-desktop.webp",
     "imageMobile": "https://res.cloudinary.com/dwxc8s4mq/image/upload/v1768072779/portfolio/carcaj-mobile.webp",
-    "technologies": ["wordpress", "php", "sass", "mysql"],
+    "technologies": ["wordpress", "php", "vite", "tailwind"],
     "github": "https://github.com/Dalvae/carcaj",
-    "description": "Literature, essays, and poetry. Crafted from the ground up with PHP and Sass."
+    "description": "Custom WordPress theme for a digital magazine, built from scratch with PHP, Vite, and Tailwind."
   },
   {
     "name": "BUC",
@@ -116,8 +132,7 @@
     "imageDesktop": "https://res.cloudinary.com/dwxc8s4mq/image/upload/v1768072774/portfolio/buc-desktop.webp",
     "imageMobile": "https://res.cloudinary.com/dwxc8s4mq/image/upload/v1768072775/portfolio/buc-mobile.webp",
     "technologies": ["wordpress", "php", "bootstrap", "mysql"],
-    "github": "https://github.com/Dalvae/buc",
-    "description": "My inaugural website: a custom-built Wordpress theme using Bootstrap tailored for a consulting firm."
+    "description": "First professional website: a custom WordPress theme for a consulting firm, built with PHP and Bootstrap."
   },
   {
     "name": "Pokedex",
@@ -126,7 +141,7 @@
     "imageMobile": "https://res.cloudinary.com/dwxc8s4mq/image/upload/v1768072819/portfolio/pokedex-mobile.webp",
     "technologies": ["next", "react", "typescript", "tailwind"],
     "github": "https://github.com/Dalvae/pokedex",
-    "description": "Performant Pokedex utilizing the PokeAPI and Approuter from Next.js."
+    "description": "Frontend project for exploring the PokeAPI with Next.js App Router, TypeScript, and optimized rendering."
   },
   {
     "name": "Internet is great",
@@ -135,6 +150,6 @@
     "imageMobile": "https://res.cloudinary.com/dwxc8s4mq/image/upload/v1768072782/portfolio/internet-is-great-mobile.webp",
     "technologies": ["next", "react", "typescript", "tailwind", "aws"],
     "github": "https://github.com/Dalvae/internetisgreat",
-    "description": "Just a meme page, using AWS and Approuter from Next.js."
+    "description": "Lightweight site for curated links and memes, built with Next.js, TypeScript, and AWS deployment."
   }
 ]

@@ -42,9 +42,9 @@ Soy desarrollador full-stack con 3+ años de experiencia, originario de San Pedr
 
 ### Frontend
 
-- **Frameworks:** React, Next.js, Vue, Nuxt, Astro
+- **Frameworks:** React, Next.js, Vue, Nuxt, Astro, Svelte/SvelteKit
 - **Styling:** Tailwind CSS, Alpine.js
-- **Build Tools:** Vite (mi favorito), Webpack
+- **Build Tools:** Vite (mi favorito), Bun, Webpack
 - **Animation:** Framer Motion
 - **TypeScript** (siempre empiezo con TypeScript - los tipos son lo único que añado)
 
@@ -52,7 +52,7 @@ Soy desarrollador full-stack con 3+ años de experiencia, originario de San Pedr
 
 - **Python:** FastAPI (me gusta mucho, especialmente con Alembic y Pydantic)
 - **Java:** Spring Boot (mi lenguaje favorito, aprendido en la universidad)
-- **Node.js:** Express, NestJS
+- **Node.js:** Express, NestJS, Hono
 - **PHP:** WordPress, temas personalizados desde cero
 
 ### Databases
@@ -60,6 +60,7 @@ Soy desarrollador full-stack con 3+ años de experiencia, originario de San Pedr
 - **PostgreSQL** (mi preferencia principal para nuevos sistemas)
 - **MySQL/MariaDB**
 - **Supabase**
+- **pgvector**
 - **Oracle Data Modeler**
 
 ### ORMs & Tools
@@ -86,8 +87,9 @@ Soy desarrollador full-stack con 3+ años de experiencia, originario de San Pedr
 ### Desarrollo de IA
 
 - **Herramientas:** Aider, OpenCode (no Cursor específicamente)
-- **Experiencia reciente:** RAG y retrieval con n8n
-- **Integraciones:** OpenAI API, embeddings, similarity analysis
+- **Experiencia reciente:** RAG y retrieval con n8n, agentes con LangGraph y experimentación con Knowledge Graph
+- **Integraciones:** OpenAI API, Claude/Anthropic, embeddings, similarity analysis
+- **Observabilidad:** Langfuse
 - **Automatizaciones:** Flujos de trabajo AI-driven
 
 ### Otros
@@ -142,7 +144,7 @@ Soy desarrollador full-stack con 3+ años de experiencia, originario de San Pedr
 **GitHub:** https://github.com/Dalvae/northernchile  
 **URL:** https://www.northernchile.com/  
 **Fecha:** Diciembre 2025 - Enero 2026
-**Descripción:** Booking y e-commerce para mi industria turística local. Integración de pagos, integración de clima, calendarios lunares, gestión de medios y mailing transaccional.
+**Descripción:** Plataforma de reservas para tours astronómicos y de aventura con catálogo multiidioma, pagos, disponibilidad y panel administrativo.
 
 ### 2. Carcaj Magazine
 
@@ -150,7 +152,7 @@ Soy desarrollador full-stack con 3+ años de experiencia, originario de San Pedr
 **URL:** https://carcaj.cl  
 **GitHub:** https://github.com/Dalvae/carcaj  
 **Fecha:** Septiembre 2025
-**Descripción:** Tema WordPress personalizado completamente desde cero. Código muy limpio, super optimizado. Mi proyecto del que más orgulloso estoy por su arquitectura y performance.
+**Descripción:** Tema WordPress hecho desde cero para una revista digital, desarrollado con PHP, Vite y Tailwind.
 
 ### 3. Patricio Salinas (Multilingual Site)
 
@@ -158,15 +160,15 @@ Soy desarrollador full-stack con 3+ años de experiencia, originario de San Pedr
 **URL:** https://www.patriciosalinas.com/en/  
 **GitHub:** https://github.com/Dalvae/patriciosalinas
 **Fecha:** Agosto 2024
-**Descripción:** WordPress como CMS headless con frontend en Astro generando sitio completamente estático. Implementación multiidioma con Polylang.
+**Descripción:** Sitio headless para fotógrafo usando WordPress y Astro, con multiidioma, frontend estático y optimización de imágenes.
 
 ### 4. Nexon Farm E-commerce
 
 **Tech Stack:** Medusa.js, Next.js  
 **URL:** https://nexonfarm-hu.exera.dev/hu/en  
-**GitHub:** https://github.com/Dalvae/nexon-storefront
+**GitHub:** https://github.com/Dalvae/medusa-nexon-store
 **Fecha:** 2024
-**Descripción:** Plataforma e-commerce construida con Medusa.js, demostrando experiencia con soluciones modernas de comercio electrónico.
+**Descripción:** Storefront e-commerce con Medusa y Next.js, con multiidioma, precios por región y catálogo internacional.
 
 ### 5. MAA (Payload CMS Project)
 
@@ -174,7 +176,7 @@ Soy desarrollador full-stack con 3+ años de experiencia, originario de San Pedr
 **URL:** https://maa-three.vercel.app/  
 **GitHub:** https://github.com/Dalvae/maa
 **Fecha:** Julio 2025
-**Descripción:** Proyecto completo usando Payload CMS para un cliente.
+**Descripción:** Sitio corporativo con Payload CMS, 3 idiomas y una estructura editorial optimizada para SEO.
 
 ### 6. Sublimahyca (E-commerce Full Stack)
 
@@ -182,7 +184,7 @@ Soy desarrollador full-stack con 3+ años de experiencia, originario de San Pedr
 **GitHub:** https://github.com/Dalvae/sublibackend/  
 **URL:** sublimahyca.cl (sitio anterior)  
 **Fecha:** 2024
-**Descripción:** E-commerce completo con backend Medusa.js y frontend React/Vue. Demostración de capacidades multi-tenant en e-commerce.
+**Descripción:** Implementación e-commerce con Medusa para storefront y catálogo, enfocada en rendimiento e integración backend/frontend.
 
 ### 7. Acquireconvert (CMS Migration Project)
 
@@ -191,28 +193,28 @@ Soy desarrollador full-stack con 3+ años de experiencia, originario de San Pedr
 **GitHub (starter):** https://github.com/Dalvae/astropayload-starter  
 **URL:** https://acquireconvert.com/  
 **Fecha:** 2025
-**Descripción:** CMS completo migrado desde WordPress a Payload CMS. Sitio en producción con perfect score en PageSpeed. Incluye starter customizado con Astro para optimización de performance.
+**Descripción:** Migración de WordPress a Payload CMS con frontend en Astro, enfocada en rendimiento, SEO y edición flexible.
 
 ### 8. LeDressing Chatbot (Hybrid RAG)
 
-**Tech Stack:** TypeScript, RAG system, Generative UI  
+**Tech Stack:** TypeScript, Node.js, n8n, PostgreSQL  
 **GitHub:** https://github.com/Dalvae/ledressing-chatbot  
 **URL:** https://ledressingtahiti.com/  
 **Fecha:** Noviembre 2025
-**Descripción:** Chatbot avanzado con arquitectura híbrida RAG (Retrieval-Augmented Generation) y generative UI para LeDressing Tahiti.
+**Descripción:** Asistente para e-commerce con flujos RAG en n8n, automatización operativa y sincronización de inventario.
 
 ### 9. Conexia Chatbot Platform
 
 **Tech Stack:** Generative UI, Dashboard  
 **Fecha:** 2025
-**Descripción:** Interfaz de ventana unificada para todos los chatbots de Conexia, implementada con GenUI e incluye dashboard administrativo.
+**Descripción:** Interfaz unificada para operar chatbots y herramientas internas, con foco en flujos de soporte y administración.
 
 ### 10. Conexia Dashboard (Multi-tenant Admin & Client Dashboard)
 
 **Tech Stack:** React 19, TypeScript, Vite, TanStack Router, TanStack Query, Supabase (RLS), ShadcnUI, RadixUI, Recharts, Zustand, Zod
 **Repository:** GitLab (conexia-agency/dev/dashboard)
 **Fecha:** Enero 2026
-**Descripción:** Dashboard dual (Admin & Client) para gestionar chatbots de n8n, visualizar analytics, historial de conversaciones y comunicación cliente-equipo. Arquitectura multi-tenant con Supabase usando Row Level Security (RLS) para seguridad a nivel de datos. Incluye modo claro/oscuro, responsive, accesible, sidebar integrado, búsqueda global y soporte RTL.
+**Descripción:** Dashboard multi-tenant para administrar chatbots, analytics e historial de conversaciones con separación de roles y datos mediante Supabase RLS.
 
 ### 11. SK Engenharia (Corporate Website)
 
@@ -220,7 +222,51 @@ Soy desarrollador full-stack con 3+ años de experiencia, originario de San Pedr
 **GitHub:** https://github.com/Dalvae/sk-engenharia
 **URL:** https://www.skengenharia.com/en
 **Fecha:** Septiembre 2025
-**Descripción:** Sitio corporativo para empresa de ingeniería brasileña SK Engenharia. Basado en Payload Website Template con Next.js App Router, incluye blog, páginas con layout builder, SEO optimizado, búsqueda, redirects, modo oscuro y deploy con Docker. Base de datos PostgreSQL con migraciones.
+**Descripción:** Sitio corporativo multiidioma con Payload CMS, blog, layout builder y despliegue con Docker.
+
+---
+
+## 🧪 Repositorios Recientes, Starters y Side Projects Utiles
+
+No todos mis repos recientes deberían ir al portfolio público como "flagship projects", pero varios sí sirven como evidencia real de lo que estoy haciendo ahora mismo. Algunos son starters, research repos, utilidades internas o toy projects, y aun así pueden ser útiles para contextualizar stack, criterio técnico y velocidad de ejecución.
+
+### WPVite Starter
+
+**Tech Stack:** WordPress, PHP, Vite 7, Tailwind CSS 4, Alpine.js, Turbo, Docker, WP-CLI  
+**GitHub:** https://github.com/Dalvae/wpvite  
+**Fecha:** Marzo 2026  
+**Descripción:** Starter theme para WordPress enfocado en DX moderna. Incluye entorno Docker, integración con Vite, Tailwind 4, Alpine y automatización de setup. Es una buena muestra de cómo me gusta estructurar proyectos WordPress actuales.
+
+### Upwork Insights
+
+**Tech Stack:** Hono, TypeScript, Bun, Supabase/PostgreSQL, Browser Extension, Tailwind CSS 4, Cloudflare Workers  
+**GitHub:** https://github.com/Dalvae/upworkinsights  
+**URL:** https://upwork-insights.diego-alvarez-e.workers.dev/  
+**Fecha:** Febrero 2026  
+**Descripción:** Extensión de Firefox/Chrome que captura los jobs que visito manualmente en Upwork y los envía a un backend en Hono para analizarlos en un dashboard con Svelte, filtros y scoring.
+
+### TaptoLogs
+
+**Tech Stack:** Rust/WASM, SvelteKit, TypeScript, Parquet, DuckDB-WASM, Cloudflare R2, D1, KV  
+**GitHub:** https://github.com/Dalvae/taptologs  
+**URL:** https://taptologs-web.pages.dev/  
+**Fecha:** Febrero 2026  
+**Descripción:** Parser y visor de combat logs de World of Warcraft. El parsing corre en el navegador con Rust/WASM y los reportes se consultan localmente con DuckDB-WASM sobre archivos Parquet.
+
+### AskZenit Platform (Private)
+
+**Tech Stack:** FastAPI, LangGraph, PostgreSQL, pgvector, JWT, Pydantic, SvelteKit, Knowledge Graph, RAG  
+**Repos:** zenit-backend / zenit-research / zenit-web (privados)  
+**Fecha:** Febrero 2026  
+**Descripción:** Plataforma de IA con backend en FastAPI, agente construido con LangGraph, vectores en PostgreSQL/pgvector y trabajo de research para Knowledge Graph + RAG. El frontend vive en un repo separado con SvelteKit.
+
+### Otros repos pequeños o experimentales que igual sirven como señal
+
+- **Lua / automation:** `nirotations`, `Gamble`, `Apep`, `zyp`
+- **SQL / database practice:** `consultadb`, `plsql`, `mbd`
+- **Utilidades y demos web publicas:** `simulador-creditos`, `pokedex`, `internetisgreat`
+
+Cuando un proyecto sea toy, experimental o starter, prefiero decirlo de frente en vez de venderlo como producto grande. Igual sirven para demostrar criterio, curiosidad y hands-on recent work.
 
 ---
 
@@ -326,7 +372,7 @@ Soy apasionado por el código y me encanta producir. Hay algo muy satisfactorio 
 
 ## 🎯 Disponibilidad & Preferencias
 
-**Disponibilidad actual:** 30 horas semanales  
+**Disponibilidad actual:** 45 horas semanales  
 **Rate:** $18 USD/hora  
 **Preferencia de trabajo:** Remoto, flexible  
 **Zona horaria:** Dinámica (Chile, America/Santiago)
@@ -376,10 +422,8 @@ Soy apasionado por el código y me encanta producir. Hay algo muy satisfactorio 
 
 - ❌ Laravel (aunque tengo Spring Boot, FastAPI, NestJS)
 - ❌ Cursor IDE específicamente (uso Aider, OpenCode)
-- ❌ n8n/Make.com (aunque lo veo interesante y dispuesto a aprender)
 - ❌ FiveM (pero me encantaría aprender)
 - ❌ Claude Code (uso Replit que tiene Claude)
-- ❌ Svelte (tengo React y Vue)
 
 ### Proyectos privados/menciones:
 

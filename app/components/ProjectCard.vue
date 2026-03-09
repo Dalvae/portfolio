@@ -23,8 +23,10 @@ const techIcons: Record<string, string> = {
   nextjs: "logos:nextjs-icon",
   vue: "logos:vue",
   nuxt: "logos:nuxt-icon",
+  hono: "simple-icons:hono",
   typescript: "logos:typescript-icon",
   javascript: "logos:javascript",
+  vite: "logos:vitejs",
   tailwind: "logos:tailwindcss-icon",
   node: "logos:nodejs-icon",
   nodejs: "logos:nodejs-icon",
@@ -96,7 +98,7 @@ const getTechIcon = (tech: string) => {
           <!-- GitHub link & Private badge -->
           <div class="mt-4 flex items-center gap-3">
             <a
-              v-if="project.github"
+              v-if="project.github && !project.isPrivate"
               :href="project.github"
               target="_blank"
               class="inline-flex items-center gap-1.5 text-sm text-zinc-400 hover:text-teal-400 transition-colors"
