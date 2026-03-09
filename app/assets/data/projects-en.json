@@ -21,6 +21,7 @@
     "name": "Upwork Insights",
     "link": "https://upwork-insights.diego-alvarez-e.workers.dev/",
     "imageDesktop": "/project-screenshots/upwork-insights.webp",
+    "imageMobile": "/project-screenshots/upwork-insights-mobile.webp",
     "technologies": ["typescript", "hono", "supabase", "svelte", "tailwind"],
     "github": "https://github.com/Dalvae/upworkinsights",
     "description": "Firefox/Chrome extension that captures the Upwork jobs you manually visit and sends them to a Hono backend for analysis in a Svelte dashboard."
@@ -29,6 +30,7 @@
     "name": "TaptoLogs",
     "link": "https://taptologs-web.pages.dev/",
     "imageDesktop": "/project-screenshots/taptologs.webp",
+    "imageMobile": "/project-screenshots/taptologs-mobile.webp",
     "technologies": ["rust", "svelte", "typescript"],
     "github": "https://github.com/Dalvae/taptologs",
     "description": "World of Warcraft combat log parser and viewer built with Rust/WASM, Parquet, and DuckDB-WASM, with parsing running in the browser."
