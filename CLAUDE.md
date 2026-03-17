@@ -113,3 +113,6 @@ The homepage uses a CSS Grid with dynamic column/row spans:
 
 ## Package Manager
 This project uses **pnpm** (see `pnpm-lock.yaml`). Use `pnpm` for all dependency management.
+
+## Environment
+- **Display Server**: Wayland. Use `wl-copy` for clipboard operations, NOT `xclip`.
