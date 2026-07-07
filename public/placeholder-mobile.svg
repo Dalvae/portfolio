@@ -1,0 +1,32 @@
+<svg width="400" height="800" viewBox="0 0 400 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="800" fill="#18181b"/>
+  
+  <!-- Grid pattern -->
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#27272a" stroke-width="1"/>
+    </pattern>
+    <linearGradient id="glow" x1="200" y1="250" x2="200" y2="550" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#a855f7" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#a855f7" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  
+  <rect width="400" height="800" fill="url(#grid)"/>
+  
+  <!-- Purple glow -->
+  <ellipse cx="200" cy="400" rx="150" ry="150" fill="url(#glow)"/>
+  
+  <!-- Icon -->
+  <g transform="translate(140, 340)">
+    <rect x="20" y="0" width="80" height="60" rx="8" stroke="#a855f7" stroke-width="2" fill="none"/>
+    <circle cx="45" cy="25" r="8" stroke="#a855f7" stroke-width="2" fill="none"/>
+    <path d="M55 35 L70 50 L85 30" stroke="#a855f7" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="0" y="70" width="120" height="8" rx="4" fill="#3f3f46"/>
+    <rect x="20" y="85" width="80" height="6" rx="3" fill="#27272a"/>
+  </g>
+  
+  <!-- Text -->
+  <text x="200" y="500" text-anchor="middle" fill="#a855f7" font-family="system-ui, sans-serif" font-size="22" font-weight="600">Coming Soon</text>
+  <text x="200" y="530" text-anchor="middle" fill="#71717a" font-family="system-ui, sans-serif" font-size="13">Private Project</text>
+</svg>

@@ -1,0 +1,42 @@
+# Nuxt dev/build outputs
+.output
+.data
+.nuxt
+.nitro
+.cache
+dist
+
+# Node dependencies
+node_modules
+
+# Logs
+logs
+*.log
+
+# Misc
+.DS_Store
+.fleet
+.idea
+
+# Local env files
+.env
+.env.*
+!.env.example
+
+# Job applications
+job-responses/
+
+# Private agent context — lives in private repo Dalvae/agent-harness
+backupinfo.md
+client-response*.md
+kurrow-response.md
+icalia-technical-prep.md
+meeting.md
+todo.md
+job-reports/
+reactive_resume-*.json
+.claude/
+.opencode/
+.omc/
+.playwright-cli/
+verify-form.yml
